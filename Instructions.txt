@@ -1,0 +1,497 @@
+In the current folder , there are already 2 projects . i'll need you to rework them to have the same design as the requirements below . do not do all the simulations at once , after reaching 10 stop then i'll test them out and if i'm satisftied you'll continue reapiting the whole process/steps until we reach the 32nd simulation 
+
+Create a single self-contained HTML file that is a beautiful, interactive educational simulation hub for SpecCon Academy (specconacademy.co.za) — a South African CAPS-aligned education platform for Grade 4 Natural Science learners (ages 9–10).
+
+═══════════════════════════════════════════════
+BRAND IDENTITY — SPECCON ACADEMY
+═══════════════════════════════════════════════
+Primary colours (infer from a friendly, South African kids-education brand):
+  --speccon-navy:     #1A2E5A   (deep professional navy — header/footer/labels)
+  --speccon-orange:   #F4831F   (vibrant warm orange — primary CTAs, highlights)
+  --speccon-green:    #3CB64A   (fresh green — success states, nature themes)
+  --speccon-sky:      #4AB8E8   (sky blue — backgrounds, science themes)
+  --speccon-yellow:   #FFD700   (gold/yellow — energy, sun, stars, rewards)
+  --speccon-white:    #FFFFFF
+  --speccon-light-bg: #F0F7FF   (very light blue-tinted background)
+
+Typography:
+  - Headings: 'Nunito', sans-serif (rounded, friendly, child-appropriate)
+  - Body/Labels: 'Open Sans', sans-serif
+  - Import both from Google Fonts
+
+Logo text rendering: In the top header, render "SpecCon Academy" with "SpecCon" in --speccon-navy bold and "Academy" in --speccon-orange bold, inside a rounded rectangle badge. Below it render "Grade 4 · Natural Science · CAPS-Aligned" as a subtitle in --speccon-sky.
+
+═══════════════════════════════════════════════
+OVERALL PAGE STRUCTURE
+═══════════════════════════════════════════════
+1. STICKY TOP HEADER (navy background)
+   - Left: SpecCon Academy logo text badge (described above)
+   - Centre: "Grade 4 Natural Science Simulations" in white Nunito bold
+   - Right: South African flag emoji 🇿🇦 + "CAPS Aligned" pill badge in orange
+
+2. SIMULATION SELECTOR GRID
+   - A responsive 3-column card grid (wraps to 2 on tablet, 1 on mobile)
+   - Each card has: coloured icon area (SVG or emoji), topic title, simulation title, "Launch" button
+   - Cards group by topic colour-coded:
+       • Structures & Materials → orange tint
+       • Living Things & Habitats → green tint
+       • Earth, Moon & Sun → navy/sky tint
+       • Energy & Sound → yellow tint
+   - Hover: card lifts with box-shadow + subtle scale transform
+   - Active/selected card gets a glowing orange border
+
+3. SIMULATION VIEWPORT (below or overlay)
+   - A large centred panel (900×540px, responsive) with rounded corners, navy border
+   - Shows the currently selected simulation
+   - Top bar: breadcrumb (Topic → Simulation Title) + Play ▶ / Pause ⏸ / Replay 🔄 buttons
+   - Bottom bar: a clear text label area (white card) that auto-updates with explanatory text as animation progresses
+
+4. FOOTER
+   - "© 2026 SpecCon Academy · CAPS-Aligned Content · specconacademy.co.za"
+   - SpecCon orange line divider
+
+═══════════════════════════════════════════════
+ANIMATION ENGINE REQUIREMENTS
+═══════════════════════════════════════════════
+- All animations built with pure CSS keyframes + JavaScript (requestAnimationFrame / setTimeout / setInterval)
+- Each simulation is a <canvas> or an absolutely-positioned SVG/div scene inside the viewport panel
+- Play button triggers the animation sequence; Replay resets and restarts
+- Animations loop automatically unless stated otherwise
+- Each simulation has 3–5 auto-advancing "phases" with descriptive text labels shown in the bottom bar
+- Particle systems, glowing effects, pulsing arrows, and smooth transitions should be used generously
+- Use CSS drop-shadow, radial-gradient glows, and smooth cubic-bezier easing throughout
+
+═══════════════════════════════════════════════
+THE 32 SIMULATIONS — IMPLEMENT ALL OF THEM
+═══════════════════════════════════════════════
+Implement every simulation below as a fully animated scene. Each simulation object in your JavaScript data array must have: id, topic, title, subtopic, bgColor (gradient string), accentColor, icon (emoji), and a render(canvas, phase) function that draws/animates the scene on a 900×540 canvas using the Canvas 2D API (or builds an HTML/CSS scene in a div). All text inside simulations uses Nunito font.
+
+──────────────────────────────────
+SIM 01 — Animal Shelter Structures
+Topic: Structures & Materials
+──────────────────────────────────
+Background: warm sandy gradient (#F5E6C8 → #E8D5A3)
+Scene: Draw 5 animal shelters side by side — nest (circle of twigs), burrow (arch into ground), shell (spiral), kennel (house shape), kraal (circular fence).
+Phase 1: Static display of all shelters with name labels below each
+Phase 2: Structural outline glows appear over each shelter — dashed lines trace the SHELL or FRAME structure type in orange/navy
+Phase 3: Support lines pulse with golden glow showing load paths
+Phase 4: Rain animation (blue dashes falling) — shelters resist rain; label "Protected!" appears
+Phase 5: Summary text: "Shelters are shell or frame structures that protect animals from the environment."
+
+──────────────────────────────────
+SIM 02 — Change of State (Water)
+Topic: Energy & Matter
+──────────────────────────────────
+Background: cool blue gradient (#C8E6F5 → #A3C8E8)
+Scene: Ice block on left, thermometer on right with mercury rising
+Phase 1: Blue cube with "ICE" label, temperature shows 0°C, particle diagram shows tightly packed blue dots
+Phase 2: Temperature rises to 50°C, ice melts — blue cube animates into a puddle of wavy water, particles spread
+Phase 3: Temperature rises to 100°C, steam wisps rise upward (animated wavy lines), particles spread wide
+Phase 4: Labels appear: "Melting Point 0°C", "Boiling Point 100°C", "Evaporation"
+Phase 5: Summary: "Matter changes state when heated or cooled: solid → liquid → gas."
+
+──────────────────────────────────
+SIM 03 — What Plants Need to Grow
+Topic: Living Things
+──────────────────────────────────
+Background: rich soil gradient (#8B6914 bottom → #87CEEB top, representing ground and sky)
+Scene: 4 identical small plant pots labelled: "No Light", "No Water", "No Warmth", "All Conditions"
+Phase 1: All 4 pots identical, seeds showing
+Phase 2: Time-lapse — only "All Conditions" plant grows tall and green (animated stem extending, leaves expanding)
+Phase 3: Other 3 plants wilt, yellow, or stay small — drooping animation
+Phase 4: Sun icon, water droplet icon, and thermometer icon glow green above the healthy plant
+Phase 5: Summary: "Plants need sunlight, water and warmth to grow."
+
+──────────────────────────────────
+SIM 04 — Animal Habitats
+Topic: Living Things
+──────────────────────────────────
+Background: split 4-panel scene
+Scene: 4 mini habitat panels: Forest (dark greens), Desert (sandy orange), River (blues), Grassland (yellows)
+Phase 1: Habitat backgrounds drawn with gradients and silhouettes
+Phase 2: Animals appear in correct habitats — bird in forest, camel in desert, fish in river, zebra in grassland
+Phase 3: Icons appear below each: 🍃 Food, 💧 Water, 🏠 Shelter — pop in with bounce animation
+Phase 4: Desert habitat loses water icon — camel fades/becomes translucent showing survival impact
+Phase 5: Summary: "Habitats provide food, water, shelter and space for animals to survive."
+
+──────────────────────────────────
+SIM 05 — Earth and Space (Orbits)
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: deep space gradient (#000814 → #001440) with 50 star dots
+Scene: Sun in centre (large yellow radial gradient circle), Earth on orbit path, Moon on smaller orbit around Earth
+Phase 1: Sun appears glowing with pulsing corona rays in yellow/orange
+Phase 2: Orbit ellipse paths appear as dashed white lines
+Phase 3: Earth animates along its orbit (blue/green circle with rotation)
+Phase 4: Moon animates around Earth simultaneously
+Phase 5: Labels: "Sun", "Earth", "Moon — Earth's only natural satellite". Summary: "Earth is a planet that orbits the Sun. The Moon orbits the Earth."
+
+──────────────────────────────────
+SIM 06 — Energy Around Us
+Topic: Energy & Sound
+──────────────────────────────────
+Background: light tech gradient (#E8F4FF → #D0E8FF)
+Scene: 3 appliances: Kettle (left), Torch (centre), Fan (right) — drawn as simple coloured shapes
+Phase 1: Appliances shown off, no arrows
+Phase 2: Kettle — blue electrical input arrow IN, red heat arrow OUT + white steam arrow OUT
+Phase 3: Torch — electrical input arrow IN, yellow light beam OUT
+Phase 4: Fan — electrical input arrow IN, curved wind arrows OUT (kinetic energy)
+Phase 5: Summary: "Energy can be transformed from one type to another by devices."
+
+──────────────────────────────────
+SIM 07 — Energy from the Sun
+Topic: Energy & Sound
+──────────────────────────────────
+Background: warm outdoor gradient (#FFF7C8 → #87CEEB)
+Scene: Sun (left), Plant (centre), Animal (right) in a straight line
+Phase 1: All three appear static
+Phase 2: Large glowing yellow arrows flow from Sun → Plant (pulsing)
+Phase 3: Smaller green arrows flow from Plant → Animal
+Phase 4: Arrow sizes shrink at each stage to visualise energy loss
+Phase 5: Summary: "The Sun is the primary source of energy. Energy decreases at each step in the chain."
+
+──────────────────────────────────
+SIM 08 — Energy for Life (Food Chain)
+Topic: Energy & Sound
+──────────────────────────────────
+Background: gradient (#E8FFE8 → #C8EBC8)
+Scene: Horizontal food chain: Sun → Grass → Grasshopper → Frog → Eagle, connected by arrows
+Phase 1: All organisms appear with name labels
+Phase 2: Animated energy arrows pulse along the chain left → right
+Phase 3: Grasshopper fades/greys out — all arrows downstream stop and grey out
+Phase 4: Grasshopper reappears, chain reactivates
+Phase 5: Summary: "Energy flows from producers to consumers. Removing one organism disrupts the chain."
+
+──────────────────────────────────
+SIM 09 — Features of the Earth
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: space gradient with rotating globe
+Scene: A globe (blue sphere with green continent outlines), slowly rotating
+Phase 1: Globe appears and rotates
+Phase 2: Mountains highlight (brown glow) — label "Mountains" appears
+Phase 3: Rivers trace in blue — label "Rivers"
+Phase 4: Oceans pulse deep blue — label "Oceans"
+Phase 5: Continents glow green — label "Continents". Summary: "Earth has mountains, rivers, oceans and continents."
+
+──────────────────────────────────
+SIM 10 — Features of the Moon
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: dark space (#000814 → #0A0A2A) with stars
+Scene: Large detailed Moon (grey gradient circle with crater circles drawn)
+Phase 1: Moon appears with soft glow
+Phase 2: Individual craters highlight with white rim glow one by one, "Crater" labels flash
+Phase 3: A size-comparison outline of Earth appears beside Moon (Earth is ~3.7x bigger)
+Phase 4: Surface label: "Rocky, airless surface", "No liquid water"
+Phase 5: Summary: "The Moon's surface has craters, mountains and plains. It has no atmosphere."
+
+──────────────────────────────────
+SIM 11 — Indigenous Frame Structures
+Topic: Structures & Materials
+──────────────────────────────────
+Background: warm earth gradient (#D4A96A → #C4914A)
+Scene: Traditional South African rounded hut (ndlu/rondavel style)
+Phase 1: Full hut shown with thatched exterior
+Phase 2: Outer covering fades to 40% opacity revealing internal frame of curved poles
+Phase 3: Triangular strut joints glow orange/gold showing load transfer
+Phase 4: Weight arrow pushes down from roof peak — distributed along frame lines
+Phase 5: Summary: "Indigenous structures use frame construction. Triangles give the frame its strength."
+
+──────────────────────────────────
+SIM 12 — Input and Output Energy
+Topic: Energy & Sound
+──────────────────────────────────
+Background: clean white/light grey (#F5F5F5 → #E8E8E8)
+Scene: 3 devices in sequence: Iron, Light Bulb, Car Engine — each a simple box shape
+Phase 1: All devices shown with no arrows
+Phase 2: Iron — electrical arrow IN → heat arrow OUT + steam arrow OUT
+Phase 3: Light bulb — electrical arrow IN → light arrow OUT + heat arrow OUT (wasted energy)
+Phase 4: Car engine — chemical (fuel) arrow IN → kinetic arrow OUT + heat arrow OUT + sound arrow OUT
+Phase 5: Summary: "Devices transform input energy into useful output energy, often with some waste heat."
+
+──────────────────────────────────
+SIM 13 — Living Things
+Topic: Living Things
+──────────────────────────────────
+Background: warm natural gradient (#FFF8E7 → #E8F5E9)
+Scene: A tree (left), a dog (right), a flower (centre)
+Phase 1: All three organisms appear
+Phase 2: Growth icon 📈 glows beside each — "Growth" label pulses
+Phase 3: Movement icon animates — dog's legs move, flower turns toward light
+Phase 4: Reproduction icon — seeds fall from flower, puppy icon appears beside dog
+Phase 5: Summary: "Living things grow, move, reproduce, breathe and respond to their environment."
+
+──────────────────────────────────
+SIM 14 — Making Sounds (Drum)
+Topic: Energy & Sound
+──────────────────────────────────
+Background: deep warm gradient (#2D1B0E → #5C3317) — performance stage feel
+Scene: Large drum in centre with drumsticks above
+Phase 1: Drum and sticks shown, silent
+Phase 2: Drumstick strikes — drum skin visibly dips and bounces (animated arc deformation)
+Phase 3: Concentric sound wave rings radiate outward from drum in orange/yellow
+Phase 4: Wave rings slow and fade — "vibration produces sound" label glows
+Phase 5: Summary: "Sound is produced when an object vibrates. Vibrations travel as waves through the air."
+
+──────────────────────────────────
+SIM 15 — Rocket Systems (Balloon)
+Topic: Structures & Materials
+──────────────────────────────────
+Background: sky blue gradient (#87CEEB → #4A90D9)
+Scene: A string stretches horizontally across the scene. Inflated balloon attached to string
+Phase 1: Balloon inflated (large oval, red/orange), held by a finger
+Phase 2: Air rushes out backward — animated jet of white/grey dots exit the balloon nozzle
+Phase 3: Balloon moves rapidly LEFT to RIGHT along the string — trailing motion blur
+Phase 4: Arrows show: backward arrow "Action (air out)" and forward arrow "Reaction (balloon moves)"
+Phase 5: Summary: "Newton's 3rd Law: Every action has an equal and opposite reaction."
+
+──────────────────────────────────
+SIM 16 — Musical Instruments (Guitar)
+Topic: Energy & Sound
+──────────────────────────────────
+Background: warm wood gradient (#8B4513 → #D2691E)
+Scene: An acoustic guitar outline (can be simplified to string + body outline)
+Phase 1: Guitar shown, string straight and taut
+Phase 2: String is plucked — animates into a sine wave oscillation
+Phase 3: Sound waves radiate outward in golden yellow arcs
+Phase 4: String vibration speed increases — wave frequency tightens — "Higher pitch!" label
+Phase 5: Summary: "Faster vibrations create higher pitch sounds. Slower vibrations create lower pitch sounds."
+
+──────────────────────────────────
+SIM 17 — Earth's Orbit (365 Days)
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: deep space (#000814 → #001440) with stars
+Scene: Sun centred, Earth on circular orbit
+Phase 1: Sun glows, orbit ellipse path shown as dashed line
+Phase 2: Earth begins moving along orbit, day counter increments: 0...100...200...300...365
+Phase 3: At 365, a "1 Year Complete!" banner flashes in orange
+Phase 4: Earth continues for a second loop showing seasons (tilt with N/S labels)
+Phase 5: Summary: "Earth takes 365 days (1 year) to complete one full orbit around the Sun."
+
+──────────────────────────────────
+SIM 18 — Habitat Needs
+Topic: Living Things
+──────────────────────────────────
+Background: lush savanna gradient (#8BC34A → #558B2F) with blue sky top
+Scene: A single elephant standing in the centre of a savanna scene
+Phase 1: Elephant alone, looking left and right
+Phase 2: 🍃 Food icon floats in from left with label — elephant looks healthy
+Phase 3: 💧 Water droplet icon floats in — elephant takes a step
+Phase 4: 🏠 Shelter (tree) icon appears — elephant becomes fully active and "happy"
+Phase 5: Summary: "Animals need food, water, shelter and space to survive in a habitat."
+
+──────────────────────────────────
+SIM 19 — Noise Pollution
+Topic: Energy & Sound
+──────────────────────────────────
+Background: urban grey gradient (#8B9EB5 → #607D8B)
+Scene: City street with buildings silhouette. Sound level meter/gauge on right side
+Phase 1: Quiet street. Meter shows GREEN zone (Safe: <70dB label)
+Phase 2: Construction sounds — animated drill and jackhammer icons appear, meter rises
+Phase 3: Meter enters RED zone (Danger: >85dB) — red flash border on the viewport
+Phase 4: Scene quietens — cars leave, meter slowly drops back to GREEN
+Phase 5: Summary: "Loud sounds above 85dB can damage hearing. This is called noise pollution."
+
+──────────────────────────────────
+SIM 20 — Non-Living Things
+Topic: Living Things
+──────────────────────────────────
+Background: neutral stone gradient (#D5C5A1 → #C4B48A)
+Scene: Three objects: Rock (grey), River water (blue ripple), Fire (orange flicker)
+Phase 1: All three objects shown
+Phase 2: Growth icon with red ✗ appears beside rock: "Does NOT grow"
+Phase 3: Reproduction icon with red ✗: "Does NOT reproduce"
+Phase 4: Breathing icon with red ✗ beside all three: "Does NOT breathe or respond"
+Phase 5: Summary: "Non-living things do not carry out life processes like growth, movement or reproduction."
+
+──────────────────────────────────
+SIM 21 — Our Closest Star (The Sun)
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: deep space → warm orange near sun (#000814 → #FF6600 gradient radially from sun)
+Scene: Giant Sun (left 40%), small Earth (right)
+Phase 1: Size comparison — Sun enormous, Earth tiny beside it. Label sizes.
+Phase 2: Light rays animate outward from Sun as straight golden lines
+Phase 3: Rays reach Earth — Earth lights up on sunward side
+Phase 4: Heat shimmer effect around Sun (wavy distortion lines around it)
+Phase 5: Summary: "The Sun is a star — a massive ball of hot gas. It is Earth's closest star and our main energy source."
+
+──────────────────────────────────
+SIM 22 — Phases of the Moon
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: deep space (#000814) with stars
+Scene: Earth in centre, Moon on circular orbit, Sun off to the right (light source)
+Phase 1: Setup shows Earth, Moon, Sun positions with orbit path
+Phase 2: Moon moves through orbit — at each cardinal position the illuminated portion changes:
+   - Position 1 (between Earth+Sun): New Moon (dark circle)
+   - Position 2 (90° right): First Quarter (right half lit)
+   - Position 3 (opposite Sun): Full Moon (fully lit circle)
+   - Position 4 (90° left): Last Quarter (left half lit)
+Phase 3: Phase name labels flash at each position
+Phase 4: Small phase diagram row appears at bottom showing all 4 phases in sequence
+Phase 5: Summary: "The Moon's phases are caused by different portions of the lit side being visible from Earth."
+
+──────────────────────────────────
+SIM 23 — Properties of Materials
+Topic: Structures & Materials
+──────────────────────────────────
+Background: clean workshop gradient (#F5F0E8 → #E8E0D0)
+Scene: 3 material panels side by side: Rubber (red), Steel (grey), Plastic (yellow)
+Phase 1: Materials shown as labeled rectangular blocks
+Phase 2: Rubber panel — block bends/flexes with animation. Label: "Flexible"
+Phase 3: Steel panel — key/scratch object slides across, mark appears. Label: "Hard, Durable"
+Phase 4: Plastic panel — water droplets roll off. Label: "Waterproof"
+Phase 5: Summary: "Materials have properties: flexibility, hardness, strength, and waterproofing that determine their use."
+
+──────────────────────────────────
+SIM 24 — Raw vs Manufactured Materials
+Topic: Structures & Materials
+──────────────────────────────────
+Background: industrial but warm gradient (#D4C5A9 → #C4B49A)
+Scene: Two transformation sequences side by side
+Left: Tree → Plank → Paper (3 step animation)
+Right: Clay lump → Brick mould → Fired Brick (3 step animation)
+Phase 1: Both raw materials shown (Tree, Clay lump)
+Phase 2: Processing step — saw cuts tree to planks, clay pressed into mould
+Phase 3: Manufactured product revealed — paper stack, brick
+Phase 4: Labels: "Raw Material" (green badge) → "Manufactured Product" (orange badge) with arrow
+Phase 5: Summary: "Raw materials come from nature. They are processed to make manufactured products."
+
+──────────────────────────────────
+SIM 25 — Solids, Liquids and Gases
+Topic: Energy & Matter
+──────────────────────────────────
+Background: clean scientific blue-white gradient (#EEF5FF → #D8EAFF)
+Scene: Three panels: SOLID (blue box), LIQUID (blue container with waves), GAS (pale cloud/square)
+Phase 1: All three shown static with labels
+Phase 2: SOLID — particles (small circles) vibrate tightly together in grid pattern, vibrating slightly
+Phase 3: LIQUID — particles slide past each other fluidly, filling container shape
+Phase 4: GAS — particles zoom around rapidly in all directions, spreading widely
+Phase 5: Summary: "In solids, particles are close and vibrate. In liquids they flow. In gases they spread out freely."
+
+──────────────────────────────────
+SIM 26 — Structure of Animals
+Topic: Living Things
+──────────────────────────────────
+Background: warm cream (#FFF8E1 → #FFF3CD)
+Scene: A large animal outline (lion/cat profile) in the centre
+Phase 1: Full silhouette shown
+Phase 2: HEAD highlights (golden glow) — "Head: Brain, eyes, ears, nose, mouth" label
+Phase 3: LIMBS highlight — "Limbs: Used for movement"
+Phase 4: SENSE ORGANS highlight — "Eyes, ears, nose: detect environment"
+Phase 5: Summary: "Animals have body parts such as a head, limbs, and sense organs that help them survive."
+
+──────────────────────────────────
+SIM 27 — Structure of Plants
+Topic: Living Things
+──────────────────────────────────
+Background: natural gradient (#E8F5E9 → #C8E6C9) — garden feel
+Scene: A large labelled plant diagram (roots below ground, stem, leaves, flower above)
+Phase 1: Full plant visible, dashed ground line separating roots from above
+Phase 2: ROOTS glow blue — animated water droplets travel upward through stem — "Absorb water from soil"
+Phase 3: LEAVES glow yellow-green — sun rays hit leaves — "Absorb sunlight for photosynthesis"
+Phase 4: FLOWER glows pink/white — "Reproduction" label
+Phase 5: Summary: "Roots absorb water, stems transport it, leaves make food using sunlight — this is photosynthesis."
+
+──────────────────────────────────
+SIM 28 — Struts and Frame Structures
+Topic: Structures & Materials
+──────────────────────────────────
+Background: engineering blueprint gradient (#1A2E5A → #263F75) — deep navy grid
+Scene: Square frame (left) and triangular frame (right) built from thick lines
+Phase 1: Both frames shown with dimension labels — "Square Frame" and "Triangle Frame"
+Phase 2: Equal weight (downward arrow + weight block) applied to both frames
+Phase 3: Square frame distorts/collapses — sides buckle inward (animated)
+Phase 4: Triangle frame remains perfectly stable — glows green with "STABLE!" label
+Phase 5: Summary: "Triangles are the strongest shape because they cannot be distorted without changing their side lengths."
+
+──────────────────────────────────
+SIM 29 — The Sun and Life
+Topic: Earth, Moon & Sun
+──────────────────────────────────
+Background: warm daylight gradient (#FFF7C8 → #87CEEB)
+Scene: Sun (top left), Earth (centre), Plants and water visible
+Phase 1: Sun shines on Earth
+Phase 2: Plants grow upward toward the sun — animated stems rising
+Phase 3: Water ripples on ocean surface → evaporation wisps rise → form cloud
+Phase 4: Rain falls from cloud onto plants — growth arrow accelerates
+Phase 5: Summary: "The Sun provides energy for plant growth, drives the water cycle, and supports all life on Earth."
+
+──────────────────────────────────
+SIM 30 — The Water Cycle
+Topic: Energy & Matter
+──────────────────────────────────
+Background: beautiful sky/ocean gradient (#87CEEB top → #2196F3 ocean)
+Scene: Ocean (bottom), Land with mountains (bottom right), Clouds (top)
+Phase 1: Static scene established
+Phase 2: EVAPORATION — wavy blue lines rise from ocean surface upward — "Evaporation" label
+Phase 3: CONDENSATION — lines form into cloud shape — "Condensation" label — cloud darkens
+Phase 4: PRECIPITATION — rain drops fall from cloud onto mountain/land — "Precipitation" label
+Phase 5: COLLECTION — water flows down mountain as river back to ocean — cycle arrow wraps. Summary: "Water continuously cycles through evaporation, condensation, and precipitation."
+
+──────────────────────────────────
+SIM 31 — Vibrations and Sound (Ruler)
+Topic: Energy & Sound
+──────────────────────────────────
+Background: warm wooden desk gradient (#A0522D → #8B4513)
+Scene: Table edge visible, ruler clamped with most of it hanging over the edge
+Phase 1: Ruler shown still and straight
+Phase 2: Ruler vibrates rapidly — short sine wave oscillation at the free end
+Phase 3: Sound wave arcs radiate outward in light yellow
+Phase 4: Ruler pulled further back — vibrates with larger amplitude — BIGGER waves radiate
+Phase 5: Summary: "Larger vibrations produce louder sounds. The distance a vibrating object moves determines sound volume."
+
+──────────────────────────────────
+SIM 32 — Ways to Strengthen Materials
+Topic: Structures & Materials
+──────────────────────────────────
+Background: clean workshop (#F0EDE8 → #E0DDD8)
+Scene: Three paper/cardboard shapes: Flat sheet (left), Folded/corrugated sheet (centre), Rolled tube (right)
+Phase 1: All three shown — flat, folded, rolled — with shape labels
+Phase 2: Equal weight added to all three simultaneously (weight block drops onto each)
+Phase 3: FLAT sheet buckles and bends downward immediately
+Phase 4: FOLDED sheet bends slightly but holds longer
+Phase 5: ROLLED tube holds perfectly — "Strongest!" badge glows orange. Summary: "Changing the shape of a material (folding, rolling) greatly increases its strength without adding mass."
+
+═══════════════════════════════════════════════
+NAVIGATION & UX
+═══════════════════════════════════════════════
+- The home screen shows the full card grid
+- Clicking "Launch" on any card hides the grid and shows the Simulation Viewport with that simulation loaded and immediately playing
+- A "← Back to All Simulations" button in the viewport header returns to the grid
+- The Play/Pause button toggles animation
+- Replay resets to phase 1 and restarts
+- Phase text in the bottom bar smoothly crossfades when changing
+- Add a subtle progress bar below the top of the simulation viewport showing which phase (1–5) is active, using orange fill
+
+═══════════════════════════════════════════════
+TECHNICAL REQUIREMENTS
+═══════════════════════════════════════════════
+- SINGLE HTML FILE — all CSS, JS, and simulation code inline
+- No external libraries except Google Fonts
+- Each simulation rendered on a <canvas> element sized 900×540 (scales down on mobile via CSS transform)
+- All 32 simulations implemented in a JavaScript array of simulation objects
+- Each simulation object has a start(), tick(frame), and reset() method
+- A global animation loop calls tick(frame) for the active simulation
+- Phase advancement happens at defined frame thresholds (e.g. every 180 frames = 3 seconds at 60fps)
+- Text labels inside canvas drawn with ctx.font using Nunito (loaded via FontFace API or CSS)
+- Canvas background cleared and redrawn every frame
+- Responsive: on mobile the canvas scales to fit viewport width using CSS transform: scale()
+- Smooth 60fps animation using requestAnimationFrame
+
+═══════════════════════════════════════════════
+VISUAL POLISH CHECKLIST
+═══════════════════════════════════════════════
+✓ All arrows are smooth with arrowhead triangles (not just lines)
+✓ Glowing effects use radial gradients or shadowBlur on canvas
+✓ All text labels have a semi-transparent white rounded pill background for legibility
+✓ Particle systems (rain, steam, gas particles) use actual moving dot arrays
+✓ Phase transitions fade text labels in/out smoothly
+✓ The simulation card grid has micro-interactions on hover (lift + shadow)
+✓ Animated background dots/stars in space simulations
+✓ The bottom label bar has a smooth text crossfade transition
+✓ All simulation scenes feel rich, colourful and visually engaging — appropriate for 9-10 year old South African learners
+✓ The overall aesthetic is friendly, professional, bright and educational — matching the SpecCon Academy brand

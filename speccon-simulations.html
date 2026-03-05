@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpecCon Academy - Grade 4 Natural Science Simulations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --speccon-navy: #1A2E5A;
+            --speccon-orange: #F4831F;
+            --speccon-green: #3CB64A;
+            --speccon-sky: #4AB8E8;
+            --speccon-yellow: #FFD700;
+            --speccon-white: #FFFFFF;
+            --speccon-light-bg: #F0F7FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--speccon-light-bg);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Sticky Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--speccon-navy);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-text {
+            background: var(--speccon-white);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            gap: 4px;
+        }
+
+        .logo-text .speccon {
+            color: var(--speccon-navy);
+        }
+
+        .logo-text .academy {
+            color: var(--speccon-orange);
+        }
+
+        .logo-subtitle {
+            color: var(--speccon-sky);
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 2px;
+            margin-left: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            color: var(--speccon-white);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .caps-badge {
+            background: var(--speccon-orange);
+            color: var(--speccon-white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Simulation Grid */
+        .sim-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .sim-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sim-grid {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            .header-title {
+                font-size: 1rem;
+            }
+        }
+
+        .sim-card {
+            background: var(--speccon-white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .sim-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .sim-card.selected {
+            border-color: var(--speccon-orange);
+            box-shadow: 0 0 0 4px rgba(244, 131, 31, 0.3);
+        }
+
+        .sim-card.structures { border-top: 4px solid var(--speccon-orange); }
+        .sim-card.living { border-top: 4px solid var(--speccon-green); }
+        .sim-card.earth { border-top: 4px solid var(--speccon-navy); }
+        .sim-card.energy { border-top: 4px solid var(--speccon-yellow); }
+
+        .sim-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .sim-card.structures .sim-icon { background: linear-gradient(135deg, #FFE4C4, #FFDAB9); }
+        .sim-card.living .sim-icon { background: linear-gradient(135deg, #C8E6C9, #A5D6A7); }
+        .sim-card.earth .sim-icon { background: linear-gradient(135deg, #BBDEFB, #90CAF9); }
+        .sim-card.energy .sim-icon { background: linear-gradient(135deg, #FFF9C4, #FFF59D); }
+
+        .sim-topic {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .sim-card.structures .sim-topic { color: var(--speccon-orange); }
+        .sim-card.living .sim-topic { color: var(--speccon-green); }
+        .sim-card.earth .sim-topic { color: var(--speccon-navy); }
+        .sim-card.energy .sim-topic { color: #B8860B; }
+
+        .sim-title {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .launch-btn {
+            background: var(--speccon-orange);
+            color: var(--speccon-white);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .launch-btn:hover {
+            background: #E07800;
+            transform: scale(1.05);
+        }
+
+        /* Simulation Viewport */
+        .sim-viewport {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sim-viewport.active {
+            display: flex;
+        }
+
+        .sim-grid.hidden {
+            display: none;
+        }
+
+        .viewport-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--speccon-white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .breadcrumb-topic {
+            color: var(--speccon-sky);
+            font-weight: 600;
+        }
+
+        .breadcrumb-sep {
+            color: #94A3B8;
+        }
+
+        .breadcrumb-title {
+            color: var(--speccon-navy);
+            font-weight: 700;
+        }
+
+        .viewport-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .control-btn.play {
+            background: var(--speccon-green);
+            color: white;
+        }
+
+        .control-btn.pause {
+            background: var(--speccon-orange);
+            color: white;
+        }
+
+        .control-btn.replay {
+            background: var(--speccon-navy);
+            color: white;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .back-btn {
+            background: #E2E8F0;
+            color: #475569;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: #CBD5E1;
+        }
+
+        .canvas-container {
+            background: var(--speccon-white);
+            border: 4px solid var(--speccon-navy);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .simulation-canvas {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            aspect-ratio: 900/540;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 960px) {
+            .simulation-canvas {
+                transform: scale(1);
+                max-width: 100%;
+            }
+        }
+
+        .phase-progress {
+            height: 6px;
+            background: #E2E8F0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .phase-progress-fill {
+            height: 100%;
+            background: var(--speccon-orange);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .label-bar {
+            background: var(--speccon-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            min-height: 80px;
+        }
+
+        .label-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--speccon-navy);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem;
+            text-align: center;
+            border-top: 3px solid var(--speccon-orange);
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        .footer-brand {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--speccon-navy);
+        }
+
+        /* Animation helpers */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 8px currentColor); }
+            50% { filter: drop-shadow(0 0 20px currentColor); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-badge">
+            <div class="logo-text">
+                <span class="speccon">SpecCon</span><span class="academy">Academy</span>
+            </div>
+            <span class="logo-subtitle">Grade 4 · Natural Science · CAPS-Aligned</span>
+        </div>
+        <div class="header-title">Grade 4 Natural Science Simulations</div>
+        <div class="header-right">
+            <span style="font-size: 1.5rem;">🇿🇦</span>
+            <span class="caps-badge">CAPS Aligned</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="simGrid" class="sim-grid"></div>
+        
+        <div id="simViewport" class="sim-viewport">
+            <div class="viewport-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="back-btn" onclick="goBack()">← Back to All Simulations</button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-topic" id="breadcrumbTopic">Topic</span>
+                        <span class="breadcrumb-sep">→</span>
+                        <span class="breadcrumb-title" id="breadcrumbTitle">Simulation</span>
+                    </div>
+                </div>
+                <div class="viewport-controls">
+                    <button class="control-btn play" id="playPauseBtn" onclick="togglePlay()">▶</button>
+                    <button class="control-btn replay" onclick="replaySim()">🔄</button>
+                </div>
+            </div>
+            
+            <div class="phase-progress">
+                <div class="phase-progress-fill" id="phaseProgress" style="width: 20%"></div>
+            </div>
+
+            <div class="canvas-container">
+                <canvas id="simCanvas" class="simulation-canvas" width="900" height="540"></canvas>
+            </div>
+
+            <div class="label-bar">
+                <p class="label-text" id="labelText">Loading simulation...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p><span class="footer-brand">© 2026 SpecCon Academy</span> · CAPS-Aligned Content · specconacademy.co.za</p>
+    </footer>
+
+    <script>
+        // Simulation data - First 10 simulations
+        const simulations = [
+            {
+                id: 1,
+                topic: 'Structures & Materials',
+                topicClass: 'structures',
+                title: 'Animal Shelter Structures',
+                subtopic: 'Shell and Frame Structures',
+                bgColor: 'linear-gradient(to bottom, #F5E6C8, #E8D5A3)',
+                accentColor: '#F4831F',
+                icon: '🏠',
+                phases: [
+                    { text: 'Meet 5 different animal shelters: nest, burrow, shell, kennel, and kraal!' },
+                    { text: 'Watch as we reveal the shell or frame structure of each shelter!' },
+                    { text: 'Support lines show how load is distributed through the structure!' },
+                    { text: 'Rain falls! Watch how shelters protect animals from the weather!' },
+                    { text: 'Shelters are shell or frame structures that protect animals from the environment.' }
+                ]
+            },
+            {
+                id: 2,
+                topic: 'Energy & Matter',
+                topicClass: 'structures',
+                title: 'Change of State (Water)',
+                subtopic: 'States of Matter',
+                bgColor: 'linear-gradient(to bottom, #C8E6F5, #A3C8E8)',
+                accentColor: '#4AB8E8',
+                icon: '💧',
+                phases: [
+                    { text: 'This is ICE - a solid at 0°C. Particles are packed tightly together!' },
+                    { text: 'Heat is applied! The ice melts into water. Particles spread apart and move freely!' },
+                    { text: 'More heat! Water boils at 100°C and turns to steam - particles spread very far apart!' },
+                    { text: 'Labels appear: Melting Point 0°C, Boiling Point 100°C, Evaporation!' },
+                    { text: 'Matter changes state when heated or cooled: solid → liquid → gas.' }
+                ]
+            },
+            {
+                id: 3,
+                topic: 'Living Things',
+                topicClass: 'living',
+                title: 'What Plants Need to Grow',
+                subtopic: 'Plant Requirements',
+                bgColor: 'linear-gradient(to bottom, #87CEEB, #8B6914)',
+                accentColor: '#3CB64A',
+                icon: '🌱',
+                phases: [
+                    { text: 'Four identical pots with seeds. What do plants need to grow?' },
+                    { text: 'Time passes! Only the plant with ALL conditions grows tall and strong!' },
+                    { text: 'Without light, water, or warmth - the other plants wilt and struggle to survive!' },
+                    { text: 'Sunlight, water, and warmth icons glow above the healthy plant!' },
+                    { text: 'Plants need sunlight, water and warmth to grow.' }
+                ]
+            },
+            {
+                id: 4,
+                topic: 'Living Things',
+                topicClass: 'living',
+                title: 'Animal Habitats',
+                subtopic: 'Habitat Requirements',
+                bgColor: 'linear-gradient(135deg, #E8F5E9 25%, #FFF8E1 25%, #FFF8E1 50%, #E3F2FD 50%, #E3F2FD 75%, #FFF3E0 75%)',
+                accentColor: '#3CB64A',
+                icon: '🦁',
+                phases: [
+                    { text: 'Four different habitats: Forest, Desert, River, and Grassland!' },
+                    { text: 'Animals appear in their correct habitats: bird, camel, fish, and zebra!' },
+                    { text: 'Each habitat provides: Food 🍃, Water 💧, and Shelter 🏠!' },
+                    { text: 'What happens when water disappears from the desert? The habitat changes!' },
+                    { text: 'Habitats provide food, water, shelter and space for animals to survive.' }
+                ]
+            },
+            {
+                id: 5,
+                topic: 'Earth, Moon & Sun',
+                topicClass: 'earth',
+                title: 'Earth and Space (Orbits)',
+                subtopic: 'Solar System',
+                bgColor: 'linear-gradient(to bottom, #000814, #001440)',
+                accentColor: '#FFD700',
+                icon: '🌍',
+                phases: [
+                    { text: 'The Sun - our star! It glows with pulsing corona rays in the centre.' },
+                    { text: 'Earth orbits the Sun on this elliptical path. The Moon orbits Earth!' },
+                    { text: 'Watch Earth travel around the Sun - it takes one year for one orbit!' },
+                    { text: 'The Moon orbits Earth while Earth orbits the Sun - cosmic dance!' },
+                    { text: 'Earth is a planet that orbits the Sun. The Moon orbits the Earth.' }
+                ]
+            },
+            {
+                id: 6,
+                topic: 'Energy & Sound',
+                topicClass: 'energy',
+                title: 'Energy Around Us',
+                subtopic: 'Energy Transformation',
+                bgColor: 'linear-gradient(to bottom, #E8F4FF, #D0E8FF)',
+                accentColor: '#FFD700',
+                icon: '⚡',
+                phases: [
+                    { text: 'Three everyday appliances: Kettle, Torch, and Fan!' },
+                    { text: 'Kettle: Electrical energy comes IN → Heat and steam go OUT!' },
+                    { text: 'Torch: Electrical energy → Light beam shining OUT!' },
+                    { text: 'Fan: Electrical energy IN → Kinetic energy (wind) OUT!' },
+                    { text: 'Energy can be transformed from one type to another by devices.' }
+                ]
+            },
+            {
+                id: 7,
+                topic: 'Energy & Sound',
+                topicClass: 'energy',
+                title: 'Energy from the Sun',
+                subtopic: 'Energy Flow',
+                bgColor: 'linear-gradient(to bottom, #FFF7C8, #87CEEB)',
+                accentColor: '#FFD700',
+                icon: '☀️',
+                phases: [
+                    { text: 'The Sun is the ultimate source of energy for life on Earth!' },
+                    { text: 'Energy flows from the Sun to the Plant - watch the glowing arrows!' },
+                    { text: 'Energy flows from Plant to Animal - the herbivore eats the plant!' },
+                    { text: 'Energy decreases at each step - less energy reaches the consumer!' },
+                    { text: 'The Sun is the primary source of energy. Energy decreases at each step in the chain.' }
+                ]
+            },
+            {
+                id: 8,
+                topic: 'Energy & Sound',
+                topicClass: 'energy',
+                title: 'Energy for Life (Food Chain)',
+                subtopic: 'Food Webs',
+                bgColor: 'linear-gradient(to bottom, #E8FFE8, #C8EBC8)',
+                accentColor: '#3CB64A',
+                icon: '🦗',
+                phases: [
+                    { text: 'A food chain: Sun → Grass → Grasshopper → Frog → Eagle!' },
+                    { text: 'Energy arrows pulse along the chain from producer to consumer!' },
+                    { text: 'What if the grasshopper disappears? The chain breaks downstream!' },
+                    { text: 'The grasshopper returns - the food chain reconnects!' },
+                    { text: 'Energy flows from producers to consumers. Removing one organism disrupts the chain.' }
+                ]
+            },
+            {
+                id: 9,
+                topic: 'Earth, Moon & Sun',
+                topicClass: 'earth',
+                title: 'Features of the Earth',
+                subtopic: 'Earth\'s Surface',
+                bgColor: 'linear-gradient(to bottom, #001440, #000814)',
+                accentColor: '#4AB8E8',
+                icon: '🌍',
+                phases: [
+                    { text: 'Our beautiful Earth! A rotating globe with continents and oceans!' },
+                    { text: 'Mountains rise high! They are rocky landforms on Earth\'s surface.' },
+                    { text: 'Rivers flow across the land, carrying fresh water to the oceans!' },
+                    { text: 'Oceans cover most of Earth - they are home to countless creatures!' },
+                    { text: 'Earth has mountains, rivers, oceans and continents.' }
+                ]
+            },
+            {
+                id: 10,
+                topic: 'Earth, Moon & Sun',
+                topicClass: 'earth',
+                title: 'Features of the Moon',
+                subtopic: 'Earth\'s Satellite',
+                bgColor: 'linear-gradient(to bottom, #0A0A2A, #000814)',
+                accentColor: '#C0C0C0',
+                icon: '🌙',
+                phases: [
+                    { text: 'The Moon - Earth\'s only natural satellite! It has a rocky, cratered surface.' },
+                    { text: 'Craters! Impact marks from asteroids and meteoroids over billions of years.' },
+                    { text: 'The Moon is much smaller than Earth - about 1/4 of Earth\'s size!' },
+                    { text: 'The Moon has no atmosphere - no air, no weather, just space!' },
+                    { text: 'The Moon\'s surface has craters, mountains and plains. It has no atmosphere.' }
+                ]
+            }
+        ];
+
+        // Global state
+        let currentSim = null;
+        let isPlaying = true;
+        let frame = 0;
+        let phase = 0;
+        const PHASE_DURATION = 180; // 3 seconds at 60fps
+        let animationId = null;
+
+        // Canvas context
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw simulation grid
+        function renderGrid() {
+            const grid = document.getElementById('simGrid');
+            grid.innerHTML = '';
+            
+            simulations.forEach(sim => {
+                const card = document.createElement('div');
+                card.className = `sim-card ${sim.topicClass}`;
+                card.innerHTML = `
+                    <div class="sim-icon">${sim.icon}</div>
+                    <div class="sim-topic">${sim.topic}</div>
+                    <div class="sim-title">${sim.title}</div>
+                    <button class="launch-btn" onclick="launchSim(${sim.id})">Launch</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Launch simulation
+        function launchSim(id) {
+            currentSim = simulations.find(s => s.id === id);
+            if (!currentSim) return;
+
+            document.getElementById('simGrid').classList.add('hidden');
+            document.getElementById('simViewport').classList.add('active');
+            
+            document.getElementById('breadcrumbTopic').textContent = currentSim.topic;
+            document.getElementById('breadcrumbTitle').textContent = currentSim.title;
+            
+            phase = 0;
+            frame = 0;
+            isPlaying = true;
+            updatePlayPauseBtn();
+            
+            if (animationId) cancelAnimationFrame(animationId);
+            animationLoop();
+        }
+
+        // Go back to grid
+        function goBack() {
+            document.getElementById('simGrid').classList.remove('hidden');
+            document.getElementById('simViewport').classList.remove('active');
+            
+            if (animationId) cancelAnimationFrame(animationId);
+            currentSim = null;
+        }
+
+        // Toggle play/pause
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            updatePlayPauseBtn();
+        }
+
+        function updatePlayPauseBtn() {
+            const btn = document.getElementById('playPauseBtn');
+            btn.textContent = isPlaying ? '⏸' : '▶';
+            btn.className = `control-btn ${isPlaying ? 'pause' : 'play'}`;
+        }
+
+        // Replay simulation
+        function replaySim() {
+            phase = 0;
+            frame = 0;
+            if (!isPlaying) {
+                isPlaying = true;
+                updatePlayPauseBtn();
+            }
+        }
+
+        // Animation loop
+        function animationLoop() {
+            if (!currentSim || !isPlaying) {
+                animationId = requestAnimationFrame(animationLoop);
+                return;
+            }
+
+            frame++;
+            
+            // Check for phase change
+            if (frame >= PHASE_DURATION) {
+                frame = 0;
+                phase++;
+                if (phase >= currentSim.phases.length) {
+                    phase = currentSim.phases.length - 1; // Stay on last phase
+                }
+            }
+
+            // Update UI
+            document.getElementById('phaseProgress').style.width = `${((phase + 1) / currentSim.phases.length) * 100}%`;
+            document.getElementById('labelText').textContent = currentSim.phases[phase].text;
+
+            // Render simulation
+            renderSimulation();
+
+            animationId = requestAnimationFrame(animationLoop);
+        }
+
+        // Main render function - routes to specific simulation
+        function renderSimulation() {
+            if (!currentSim) return;
+
+            // Clear canvas
+            ctx.fillStyle = currentSim.bgColor;
+            
+            // Handle gradient backgrounds
+            if (currentSim.bgColor.includes('gradient')) {
+                const gradient = createGradientFromCSS(currentSim.bgColor);
+                ctx.fillStyle = gradient;
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Route to specific simulation renderer
+            switch(currentSim.id) {
+                case 1: renderSim01(frame, phase); break;
+                case 2: renderSim02(frame, phase); break;
+                case 3: renderSim03(frame, phase); break;
+                case 4: renderSim04(frame, phase); break;
+                case 5: renderSim05(frame, phase); break;
+                case 6: renderSim06(frame, phase); break;
+                case 7: renderSim07(frame, phase); break;
+                case 8: renderSim08(frame, phase); break;
+                case 9: renderSim09(frame, phase); break;
+                case 10: renderSim10(frame, phase); break;
+            }
+        }
+
+        function createGradientFromCSS(css) {
+            if (css.includes('135deg')) {
+                const colors = css.match(/#[\da-fA-F]{6}/g);
+                if (colors && colors.length >= 2) {
+                    const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    grad.addColorStop(0, colors[0]);
+                    grad.addColorStop(1, colors[1]);
+                    return grad;
+                }
+            }
+            if (css.includes('to bottom')) {
+                const colors = css.match(/#[\da-fA-F]{6}/g);
+                if (colors && colors.length >= 2) {
+                    const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                    grad.addColorStop(0, colors[0]);
+                    grad.addColorStop(1, colors[1]);
+                    return grad;
+                }
+            }
+            return '#ffffff';
+        }
+
+        // ============================================
+        // SIMULATION 1: Animal Shelter Structures
+        // ============================================
+        function renderSim01(f, p) {
+            const shelters = [
+                { name: 'Nest', x: 100, y: 350, type: 'circle' },
+                { name: 'Burrow', x: 260, y: 350, type: 'arch' },
+                { name: 'Shell', x: 420, y: 350, type: 'spiral' },
+                { name: 'Kennel', x: 580, y: 350, type: 'house' },
+                { name: 'Kraal', x: 740, y: 350, type: 'circleFence' }
+            ];
+
+            // Draw shelters
+            shelters.forEach((shelter, i) => {
+                ctx.save();
+                ctx.translate(shelter.x, shelter.y);
+                
+                // Label
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 16px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText(shelter.name, 0, 140);
+                
+                // Phase 2+: Show structure outlines
+                if (p >= 1) {
+                    ctx.strokeStyle = i % 2 === 0 ? '#F4831F' : '#1A2E5A';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 5]);
+                    ctx.globalAlpha = Math.min(1, (f / 30));
+                    ctx.beginPath();
+                    if (shelter.type === 'house') {
+                        ctx.moveTo(-30, 30); ctx.lineTo(0, -20); ctx.lineTo(30, 30);
+                    }
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    ctx.globalAlpha = 1;
+                }
+                
+                // Phase 3+: Support lines with glow
+                if (p >= 2) {
+                    const glowIntensity = Math.sin(f * 0.1) * 0.5 + 0.5;
+                    ctx.strokeStyle = `rgba(255, 215, 0, ${glowIntensity})`;
+                    ctx.lineWidth = 3;
+                    ctx.shadowColor = '#FFD700';
+                    ctx.shadowBlur = 10;
+                    ctx.beginPath();
+                    if (shelter.type === 'house') {
+                        ctx.moveTo(0, -20); ctx.lineTo(0, 40);
+                        ctx.moveTo(-30, 30); ctx.lineTo(0, 40); ctx.lineTo(30, 30);
+                    }
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                }
+                
+                // Draw shelter shapes
+                ctx.fillStyle = '#8B4513';
+                if (shelter.type === 'circle') {
+                    // Nest - circle of twigs
+                    for (let a = 0; a < Math.PI * 2; a += 0.3) {
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 35 + Math.cos(a) * 5, 20 + Math.sin(a) * 5, a, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                } else if (shelter.type === 'arch') {
+                    // Burrow - arch into ground
+                    ctx.beginPath();
+                    ctx.arc(0, 20, 30, Math.PI, 0);
+                    ctx.stroke();
+                    ctx.fillRect(-30, 20, 60, 20);
+                } else if (shelter.type === 'spiral') {
+                    // Shell - spiral
+                    for (let r = 0; r < 35; r += 3) {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, r, 0, Math.PI * 1.5);
+                        ctx.stroke();
+                    }
+                } else if (shelter.type === 'house') {
+                    // Kennel - house shape
+                    ctx.beginPath();
+                    ctx.moveTo(0, -30);
+                    ctx.lineTo(40, 30);
+                    ctx.lineTo(-40, 30);
+                    ctx.closePath();
+                    ctx.fillStyle = '#DEB887';
+                    ctx.fill();
+                    ctx.stroke();
+                    // Door
+                    ctx.fillStyle = '#4A3728';
+                    ctx.fillRect(-12, 10, 24, 30);
+                } else if (shelter.type === 'circleFence') {
+                    // Kraal - circular fence
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 40, 0, Math.PI * 2);
+                    ctx.stroke();
+                    // Posts
+                    for (let a = 0; a < Math.PI * 2; a += Math.PI / 4) {
+                        ctx.beginPath();
+                        ctx.moveTo(Math.cos(a) * 35, Math.sin(a) * 35);
+                        ctx.lineTo(Math.cos(a) * 45, Math.sin(a) * 45);
+                        ctx.stroke();
+                    }
+                }
+                
+                ctx.restore();
+            });
+
+            // Phase 4: Rain animation
+            if (p >= 3) {
+                ctx.fillStyle = '#4AB8E8';
+                for (let i = 0; i < 50; i++) {
+                    const x = (i * 37 + f * 3) % 900;
+                    const y = ((i * 23 + f * 8) % 540);
+                    ctx.fillRect(x, y, 2, 8);
+                }
+                
+                // Protected label
+                ctx.fillStyle = '#3CB64A';
+                ctx.font = 'bold 24px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Protected!', 450, 200);
+            }
+
+            // Phase 5: Summary handled by label bar
+        }
+
+        // ============================================
+        // SIMULATION 2: Change of State (Water)
+        // ============================================
+        function renderSim02(f, p) {
+            const temp = p < 1 ? 0 : (p < 2 ? 50 : 100);
+            
+            // Thermometer
+            const thermX = 780;
+            const thermY = 270;
+            
+            // Thermometer body
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.roundRect(thermX - 15, thermY - 100, 30, 220, 15);
+            ctx.fill();
+            ctx.stroke();
+            
+            // Bulb
+            ctx.beginPath();
+            ctx.arc(thermX, thermY + 130, 25, 0, Math.PI * 2);
+            ctx.fillStyle = '#EF4444';
+            ctx.fill();
+            ctx.stroke();
+            
+            // Mercury level
+            const mercuryHeight = (temp / 120) * 180;
+            ctx.fillStyle = '#EF4444';
+            ctx.fillRect(thermX - 8, thermY + 130 - mercuryHeight, 16, mercuryHeight);
+            
+            // Temperature label
+            ctx.fillStyle = '#1A2E5A';
+            ctx.font = 'bold 28px Nunito';
+            ctx.textAlign = 'center';
+            ctx.fillText(`${temp}°C`, thermX, thermY + 180);
+            
+            // Ice/Water/Steam visualization
+            const centerX = 350;
+            const centerY = 300;
+            
+            if (p === 0) {
+                // Ice cube
+                ctx.fillStyle = '#A5F3FC';
+                ctx.strokeStyle = '#0EA5E9';
+                ctx.lineWidth = 3;
+                ctx.fillRect(centerX - 60, centerY - 60, 120, 120);
+                ctx.strokeRect(centerX - 60, centerY - 60, 120, 120);
+                
+                ctx.fillStyle = '#0EA5E9';
+                ctx.font = 'bold 20px Nunito';
+                ctx.fillText('ICE', centerX, centerY + 5);
+                
+                // Particles - tightly packed
+                ctx.fillStyle = 'white';
+                for (let row = 0; row < 6; row++) {
+                    for (let col = 0; col < 6; col++) {
+                        const px = centerX - 40 + col * 16 + Math.sin(f * 0.1 + row) * 2;
+                        const py = centerY - 40 + row * 16 + Math.cos(f * 0.1 + col) * 2;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 4, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            } else if (p === 1) {
+                // Melting - puddle
+                ctx.fillStyle = '#0EA5E9';
+                ctx.beginPath();
+                ctx.ellipse(centerX, centerY + 30, 80, 25, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Wavy water surface
+                ctx.fillStyle = '#7DD3FC';
+                ctx.beginPath();
+                for (let x = centerX - 80; x <= centerX + 80; x += 5) {
+                    const y = centerY + Math.sin((x + f * 2) * 0.05) * 8;
+                    if (x === centerX - 80) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.lineTo(centerX + 80, centerY + 50);
+                ctx.lineTo(centerX - 80, centerY + 50);
+                ctx.closePath();
+                ctx.fill();
+                
+                // Particles - spreading
+                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                for (let i = 0; i < 30; i++) {
+                    const angle = (i / 30) * Math.PI * 2;
+                    const dist = 30 + Math.sin(f * 0.05 + i) * 15;
+                    const px = centerX + Math.cos(angle) * dist;
+                    const py = centerY + 20 + Math.sin(angle) * dist * 0.4;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            } else {
+                // Steam - rising wisps
+                for (let i = 0; i < 8; i++) {
+                    const offset = (i * 50 + f * 2) % 200;
+                    const x = centerX - 40 + i * 12;
+                    const y = centerY - 80 - offset;
+                    const alpha = 1 - offset / 200;
+                    
+                    ctx.strokeStyle = `rgba(200, 200, 200, ${alpha})`;
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + 30);
+                    ctx.quadraticCurveTo(x + Math.sin(f * 0.1 + i) * 10, y + 15, x, y);
+                    ctx.stroke();
+                }
+                
+                // Particles - spread wide
+                ctx.fillStyle = 'rgba(150, 150, 150, 0.5)';
+                for (let i = 0; i < 40; i++) {
+                    const x = centerX - 100 + ((i * 17 + f) % 200);
+                    const y = centerY - 100 + ((i * 23 + f * 2) % 150);
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Phase 4: Labels
+            if (p >= 3) {
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 14px Nunito';
+                
+                const drawLabel = (text, x, y, color) => {
+                    const width = ctx.measureText(text).width + 20;
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.roundRect(x - width/2, y - 12, width, 24, 12);
+                    ctx.fill();
+                    ctx.fillStyle = '#1A2E5A';
+                    ctx.fillText(text, x, y + 4);
+                };
+                
+                drawLabel('Melting Point 0°C', 200, 150, '#A5F3FC');
+                drawLabel('Boiling Point 100°C', 450, 100, '#F4831F');
+                drawLabel('Evaporation', 600, 150, '#C0C0C0');
+            }
+        }
+
+        // ============================================
+        // SIMULATION 3: What Plants Need to Grow
+        // ============================================
+        function renderSim03(f, p) {
+            // Ground
+            ctx.fillStyle = '#8B6914';
+            ctx.fillRect(0, 400, 900, 140);
+            
+            // Sky gradient
+            const skyGrad = ctx.createLinearGradient(0, 0, 0, 400);
+            skyGrad.addColorStop(0, '#87CEEB');
+            skyGrad.addColorStop(1, '#E0F7FA');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, 900, 400);
+
+            // Sun (top right)
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(800, 80, 50, 0, Math.PI * 2);
+            ctx.fill();
+            // Sun rays
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2 + f * 0.02;
+                ctx.strokeStyle = '#FFD700';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(800 + Math.cos(angle) * 60, 80 + Math.sin(angle) * 60);
+                ctx.lineTo(800 + Math.cos(angle) * 80, 80 + Math.sin(angle) * 80);
+                ctx.stroke();
+            }
+
+            const pots = [
+                { x: 100, label: 'No Light', hasLight: false, hasWater: true, hasWarmth: true },
+                { x: 300, label: 'No Water', hasLight: true, hasWater: false, hasWarmth: true },
+                { x: 500, label: 'No Warmth', hasLight: true, hasWater: true, hasWarmth: false },
+                { x: 700, label: 'All Conditions', hasLight: true, hasWater: true, hasWarmth: true }
+            ];
+
+            pots.forEach((pot, i) => {
+                const baseY = 420;
+                
+                // Pot
+                ctx.fillStyle = '#8B4513';
+                ctx.beginPath();
+                ctx.moveTo(pot.x - 40, baseY);
+                ctx.lineTo(pot.x - 30, baseY + 60);
+                ctx.lineTo(pot.x + 30, baseY + 60);
+                ctx.lineTo(pot.x + 40, baseY);
+                ctx.closePath();
+                ctx.fill();
+                
+                // Soil
+                ctx.fillStyle = '#5D4037';
+                ctx.fillRect(pot.x - 35, baseY - 10, 70, 15);
+                
+                // Seed
+                ctx.fillStyle = '#8B7355';
+                ctx.beginPath();
+                ctx.ellipse(pot.x, baseY - 5, 8, 4, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Plant growth based on conditions
+                let growth = 0;
+                if (pot.hasLight && pot.hasWater && pot.hasWarmth) {
+                    growth = Math.min(1, (f / 60)) * 100;
+                } else if (p >= 2) {
+                    growth = 10;
+                } else {
+                    growth = Math.min(0.2, (f / 100)) * 20;
+                }
+
+                if (growth > 5) {
+                    // Stem
+                    ctx.strokeStyle = pot.hasLight && pot.hasWater && pot.hasWarmth ? '#3CB64A' : '#8B7355';
+                    ctx.lineWidth = 4;
+                    ctx.beginPath();
+                    ctx.moveTo(pot.x, baseY - 10);
+                    ctx.quadraticCurveTo(pot.x + 5, baseY - 50, pot.x, baseY - 10 - growth);
+                    ctx.stroke();
+                    
+                    // Leaves
+                    if (growth > 30) {
+                        ctx.fillStyle = '#4CAF50';
+                        const leafSize = growth * 0.3;
+                        
+                        // Left leaf
+                        ctx.beginPath();
+                        ctx.ellipse(pot.x - 10, baseY - 30 - growth * 0.3, leafSize, leafSize * 0.6, -0.5, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        // Right leaf
+                        ctx.beginPath();
+                        ctx.ellipse(pot.x + 10, baseY - 40 - growth * 0.4, leafSize, leafSize * 0.6, 0.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                // Phase 2+: Wilting for bad conditions
+                if (p >= 2 && !pot.hasLight) {
+                    ctx.strokeStyle = 'rgba(139, 69, 19, 0.5)';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 5]);
+                    ctx.beginPath();
+                    ctx.arc(pot.x + 60, baseY - 80, 15, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                // Phase 3: Wilted plants
+                if (p >= 2) {
+                    if (!pot.hasLight || !pot.hasWater || !pot.hasWarmth) {
+                        ctx.strokeStyle = '#8B7355';
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.moveTo(pot.x, baseY - 10);
+                        ctx.quadraticCurveTo(pot.x + 30, baseY - 30, pot.x + 20, baseY + 20);
+                        ctx.stroke();
+                        
+                        // Droopy leaves
+                        ctx.fillStyle = '#9E9D24';
+                        ctx.beginPath();
+                        ctx.ellipse(pot.x + 15, baseY + 10, 15, 5, 0.8, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                // Label
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 14px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText(pot.label, pot.x, baseY + 90);
+            });
+
+            // Phase 4: Condition icons
+            if (p >= 3) {
+                const healthyPot = pots[3];
+                
+                // Sun icon
+                ctx.fillStyle = '#FFD700';
+                ctx.beginPath();
+                ctx.arc(healthyPot.x, 280, 20, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 12px Nunito';
+                ctx.fillText('☀', healthyPot.x, 284);
+                
+                // Water icon
+                ctx.fillStyle = '#4AB8E8';
+                ctx.beginPath();
+                ctx.moveTo(healthyPot.x - 10, 320);
+                ctx.quadraticCurveTo(healthyPot.x, 300, healthyPot.x + 10, 320);
+                ctx.quadraticCurveTo(healthyPot.x, 340, healthyPot.x - 10, 320);
+                ctx.fill();
+                
+                // Warmth icon
+                ctx.fillStyle = '#F4831F';
+                ctx.beginPath();
+                ctx.arc(healthyPot.x, 360, 18, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.fillText('°', healthyPot.x, 365);
+            }
+        }
+
+        // ============================================
+        // SIMULATION 4: Animal Habitats
+        // ============================================
+        function renderSim04(f, p) {
+            const habitats = [
+                { name: 'Forest', x: 112, y: 135, bg: 'linear-gradient(to bottom, #1B5E20, #4CAF50)', animal: '🐦', animalName: 'Bird' },
+                { name: 'Desert', x: 337, y: 135, bg: 'linear-gradient(to bottom, #FF8F00, #FFCC80)', animal: '🐪', animalName: 'Camel' },
+                { name: 'River', x: 562, y: 135, bg: 'linear-gradient(to bottom, #1565C0, #42A5F5)', animal: '🐟', animalName: 'Fish' },
+                { name: 'Grassland', x: 787, y: 135, bg: 'linear-gradient(to bottom, #7CB342, #C5E1A5)', animal: '🦓', animalName: 'Zebra' }
+            ];
+
+            habitats.forEach((hab, i) => {
+                // Habitat background
+                const grad = ctx.createLinearGradient(hab.x - 100, 0, hab.x + 100, 0);
+                if (hab.name === 'Forest') {
+                    grad.addColorStop(0, '#1B5E20'); grad.addColorStop(1, '#4CAF50');
+                } else if (hab.name === 'Desert') {
+                    grad.addColorStop(0, '#FF8F00'); grad.addColorStop(1, '#FFCC80');
+                } else if (hab.name === 'River') {
+                    grad.addColorStop(0, '#1565C0'); grad.addColorStop(1, '#42A5F5');
+                } else {
+                    grad.addColorStop(0, '#7CB342'); grad.addColorStop(1, '#C5E1A5');
+                }
+                ctx.fillStyle = grad;
+                ctx.fillRect(hab.x - 110, hab.y - 110, 220, 220);
+                
+                // Border
+                ctx.strokeStyle = '#1A2E5A';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(hab.x - 110, hab.y - 110, 220, 220);
+                
+                // Habitat features
+                ctx.fillStyle = 'rgba(0,0,0,0.2)';
+                if (hab.name === 'Forest') {
+                    // Trees
+                    for (let t = 0; t < 3; t++) {
+                        ctx.beginPath();
+                        ctx.moveTo(hab.x - 80 + t * 60, hab.y + 80);
+                        ctx.lineTo(hab.x - 65 + t * 60, hab.y + 30);
+                        ctx.lineTo(hab.x - 50 + t * 60, hab.y + 80);
+                        ctx.fill();
+                    }
+                } else if (hab.name === 'Desert') {
+                    // Cactus
+                    ctx.fillRect(hab.x - 10, hab.y + 20, 8, 50);
+                    ctx.fillRect(hab.x - 20, hab.y + 35, 10, 6);
+                    ctx.fillRect(hab.x + 2, hab.y + 40, 10, 6);
+                } else if (hab.name === 'River') {
+                    // Water waves
+                    for (let w = 0; w < 5; w++) {
+                        ctx.beginPath();
+                        ctx.arc(hab.x - 50 + w * 25, hab.y + 60, 10, 0, Math.PI);
+                        ctx.stroke();
+                    }
+                } else {
+                    // Grass
+                    for (let g = 0; g < 20; g++) {
+                        ctx.beginPath();
+                        ctx.moveTo(hab.x - 90 + g * 10, hab.y + 90);
+                        ctx.lineTo(hab.x - 87 + g * 10, hab.y + 75);
+                        ctx.stroke();
+                    }
+                }
+
+                // Phase 2: Animals
+                if (p >= 1) {
+                    const fadeIn = Math.min(1, f / 30);
+                    ctx.globalAlpha = fadeIn;
+                    ctx.font = '40px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(hab.animal, hab.x, hab.y + 20);
+                    ctx.globalAlpha = 1;
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 12px Nunito';
+                    ctx.fillText(hab.animalName, hab.x, hab.y + 45);
+                }
+
+                // Phase 3: Needs icons
+                if (p >= 2) {
+                    const bounce = Math.sin(f * 0.1 + i) * 5;
+                    ctx.font = '24px Arial';
+                    ctx.fillText('🍃', hab.x - 40, hab.y + 90 + bounce);
+                    ctx.fillText('💧', hab.x, hab.y + 90 + bounce);
+                    ctx.fillText('🏠', hab.x + 40, hab.y + 90 + bounce);
+                }
+
+                // Phase 4: Desert loses water
+                if (p >= 3 && hab.name === 'Desert') {
+                    const fadeOut = Math.min(1, f / 60);
+                    ctx.globalAlpha = 1 - fadeOut * 0.7;
+                    ctx.font = '24px Arial';
+                    ctx.fillText('💧', hab.x, hab.y + 90);
+                    ctx.globalAlpha = 1;
+                    
+                    if 0.5 (fadeOut >) {
+                        ctx.fillStyle = 'rgba(139, 69, 19, 0.5)';
+                        ctx.font = 'bold 14px Nunito';
+                        ctx.fillText('No water!', hab.x, hab.y - 60);
+                    }
+                }
+
+                // Habitat name
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Nunito';
+                ctx.fillText(hab.name, hab.x, hab.y - 85);
+            });
+        }
+
+        // ============================================
+        // SIMULATION 5: Earth and Space (Orbits)
+        // ============================================
+        function renderSim05(f, p) {
+            // Deep space background with stars
+            ctx.fillStyle = '#000814';
+            ctx.fillRect(0, 0, 900, 540);
+            
+            // Stars
+            ctx.fillStyle = 'white';
+            for (let i = 0; i < 50; i++) {
+                const sx = (i * 137) % 900;
+                const sy = (i * 97) % 540;
+                const size = (i % 3) + 1;
+                ctx.beginPath();
+                ctx.arc(sx, sy, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const centerX = 450;
+            const centerY = 270;
+
+            // Phase 1: Sun
+            if (p >= 0) {
+                // Corona rays
+                const rayCount = 12;
+                for (let i = 0; i < rayCount; i++) {
+                    const angle = (i / rayCount) * Math.PI * 2 + f * 0.01;
+                    const pulse = Math.sin(f * 0.05) * 10 + 70;
+                    
+                    ctx.strokeStyle = `rgba(255, 200, 0, ${0.3 + Math.sin(f * 0.05 + i) * 0.2})`;
+                    ctx.lineWidth = 4;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX + Math.cos(angle) * 60, centerY + Math.sin(angle) * 60);
+                    ctx.lineTo(centerX + Math.cos(angle) * pulse, centerY + Math.sin(angle) * pulse);
+                    ctx.stroke();
+                }
+                
+                // Sun glow
+                const sunGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 60);
+                sunGrad.addColorStop(0, '#FFF700');
+                sunGrad.addColorStop(0.5, '#FFD700');
+                sunGrad.addColorStop(1, '#FF8C00');
+                ctx.fillStyle = sunGrad;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 50, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 14px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Sun', centerX, centerY + 75);
+            }
+
+            // Phase 2: Orbit paths
+            if (p >= 1) {
+                ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([10, 5]);
+                
+                // Earth orbit
+                ctx.beginPath();
+                ctx.ellipse(centerX, centerY, 200, 80, 0, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                // Moon orbit
+                ctx.setLineDash([]);
+            }
+
+            // Phase 3-4: Earth and Moon animation
+            if (p >= 2) {
+                const orbitProgress = (f % 360) / 360;
+                const earthAngle = orbitProgress * Math.PI * 2;
+                
+                // Earth position on orbit
+                const earthX = centerX + Math.cos(earthAngle) * 200;
+                const earthY = centerY + Math.sin(earthAngle) * 80;
+                
+                // Earth
+                const earthGrad = ctx.createRadialGradient(earthX - 5, earthY - 5, 0, earthX, earthY, 25);
+                earthGrad.addColorStop(0, '#4CAF50');
+                earthGrad.addColorStop(0.5, '#2196F3');
+                earthGrad.addColorStop(1, '#1565C0');
+                ctx.fillStyle = earthGrad;
+                ctx.beginPath();
+                ctx.arc(earthX, earthY, 20, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Continents (rotating)
+                ctx.save();
+                ctx.translate(earthX, earthY);
+                ctx.rotate(f * 0.02);
+                ctx.fillStyle = '#4CAF50';
+                ctx.beginPath();
+                ctx.ellipse(-5, -5, 8, 6, 0.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(6, 4, 6, 5, -0.3, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 12px Nunito';
+                ctx.fillText('Earth', earthX, earthY + 35);
+                
+                // Phase 4: Moon orbiting Earth
+                if (p >= 3) {
+                    const moonAngle = orbitProgress * Math.PI * 4; // Faster
+                    const moonDist = 50;
+                    const moonX = earthX + Math.cos(moonAngle) * moonDist;
+                    const moonY = earthY + Math.sin(moonAngle) * moonDist;
+                    
+                    // Moon orbit path
+                    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                    ctx.beginPath();
+                    ctx.arc(earthX, earthY, moonDist, 0, Math.PI * 2);
+                    ctx.stroke();
+                    
+                    // Moon
+                    ctx.fillStyle = '#C0C0C0';
+                    ctx.beginPath();
+                    ctx.arc(moonX, moonY, 8, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 10px Nunito';
+                    ctx.fillText('Moon', moonX, moonY + 20);
+                }
+            }
+
+            // Phase 5: Labels
+            if (p >= 4) {
+                ctx.fillStyle = '#FFD700';
+                ctx.font = 'bold 16px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText("Moon — Earth's only natural satellite", 450, 500);
+            }
+        }
+
+        // ============================================
+        // SIMULATION 6: Energy Around Us
+        // ============================================
+        function renderSim06(f, p) {
+            // Background
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, 540);
+            bgGrad.addColorStop(0, '#E8F4FF');
+            bgGrad.addColorStop(1, '#D0E8FF');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 900, 540);
+
+            const appliances = [
+                { name: 'Kettle', x: 150, color: '#607D8B', input: 'Electrical', output1: 'Heat', output2: 'Steam' },
+                { name: 'Torch', x: 450, color: '#FFC107', input: 'Electrical', output1: 'Light' },
+                { name: 'Fan', x: 750, color: '#03A9F4', input: 'Electrical', output1: 'Wind (Kinetic)' }
+            ];
+
+            appliances.forEach((app, i) => {
+                // Appliance shape
+                ctx.fillStyle = app.color;
+                ctx.strokeStyle = '#333';
+                ctx.lineWidth = 2;
+                
+                if (app.name === 'Kettle') {
+                    // Kettle body
+                    ctx.beginPath();
+                    ctx.roundRect(app.x - 50, 280, 100, 100, 10);
+                    ctx.fill();
+                    ctx.stroke();
+                    // Spout
+                    ctx.beginPath();
+                    ctx.moveTo(app.x + 50, 300);
+                    ctx.lineTo(app.x + 80, 280);
+                    ctx.lineTo(app.x + 80, 320);
+                    ctx.stroke();
+                    // Handle
+                    ctx.strokeStyle = '#333';
+                    ctx.lineWidth = 8;
+                    ctx.beginPath();
+                    ctx.arc(app.x - 55, 330, 25, Math.PI * 0.5, Math.PI * 1.5);
+                    ctx.stroke();
+                } else if (app.name === 'Torch') {
+                    // Torch body
+                    ctx.fillRect(app.x - 30, 300, 60, 120);
+                    ctx.strokeRect(app.x - 30, 300, 60, 120);
+                    // Head
+                    ctx.fillStyle = '#FFC107';
+                    ctx.beginPath();
+                    ctx.arc(app.x, 290, 35, Math.PI, 0);
+                    ctx.fill();
+                    ctx.stroke();
+                } else {
+                    // Fan
+                    ctx.fillStyle = '#546E7A';
+                    ctx.beginPath();
+                    ctx.arc(app.x, 330, 40, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                    // Blades
+                    for (let b = 0; b < 3; b++) {
+                        const angle = (b / 3) * Math.PI * 2 + (p >= 3 ? f * 0.2 : 0);
+                        ctx.fillStyle = '#03A9F4';
+                        ctx.beginPath();
+                        ctx.ellipse(
+                            app.x + Math.cos(angle) * 25,
+                            330 + Math.sin(angle) * 25,
+                            30, 10, angle, 0, Math.PI * 2
+                        );
+                        ctx.fill();
+                    }
+                }
+                
+                // Label
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 18px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText(app.name, app.x, 420);
+
+                // Phase 2-4: Energy arrows
+                if (p >= 1) {
+                    // Input arrow (electrical) - IN
+                    if (i === 0 && p >= 1 || i === 1 && p >= 2 || i === 2 && p >= 3) {
+                        drawArrow(app.x, 250, app.x, 275, '#2196F3', 'IN');
+                    }
+                    
+                    // Output arrows
+                    if (i === 0 && p >= 1) {
+                        // Heat out
+                        drawArrow(app.x - 40, 330, app.x - 40, 200, '#F44336', 'Heat');
+                        // Steam out
+                        drawArrow(app.x + 80, 280, app.x + 120, 240, '#B0BEC5', 'Steam');
+                    } else if (i === 1 && p >= 2) {
+                        // Light out
+                        drawLightBeam(app.x, 250, '#FFEB3B', f);
+                    } else if (i === 2 && p >= 3) {
+                        // Wind arrows out
+                        drawWindArrows(app.x + 50, 330, f);
+                    }
+                }
+            });
+        }
+
+        function drawArrow(x1, y1, x2, y2, color, label) {
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = 4;
+            
+            const angle = Math.atan2(y2 - y1, x2 - x1);
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            
+            // Arrowhead
+            ctx.beginPath();
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - 15 * Math.cos(angle - Math.PI / 6), y2 - 15 * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(x2 - 15 * Math.cos(angle + Math.PI / 6), y2 - 15 * Math.sin(angle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fill();
+            
+            // Label
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 12px Nunito';
+            ctx.textAlign = 'center';
+            const midX = (x1 + x2) / 2;
+            const midY = (y1 + y2) / 2;
+            ctx.fillText(label, midX, midY);
+        }
+
+        function drawLightBeam(x, y, color, f) {
+            const pulse = Math.sin(f * 0.1) * 0.3 + 0.7;
+            ctx.fillStyle = `rgba(255, 235, 59, ${pulse})`;
+            
+            ctx.beginPath();
+            ctx.moveTo(x - 15, y - 30);
+            ctx.lineTo(x - 80, y - 150);
+            ctx.lineTo(x + 80, y - 150);
+            ctx.lineTo(x + 15, y - 30);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawWindArrows(x, y, f) {
+            for (let w = 0; w < 3; w++) {
+                const offset = (f * 3 + w * 30) % 60;
+                ctx.strokeStyle = `rgba(3, 169, 244, ${1 - offset / 60})`;
+                ctx.lineWidth = 3;
+                
+                ctx.beginPath();
+                ctx.moveTo(x + offset, y - 20 + w * 15);
+                ctx.quadraticCurveTo(x + offset + 20, y - 10 + w * 15, x + offset + 40, y - 20 + w * 15);
+                ctx.stroke();
+            }
+        }
+
+        // ============================================
+        // SIMULATION 7: Energy from the Sun
+        // ============================================
+        function renderSim07(f, p) {
+            // Background
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, 540);
+            bgGrad.addColorStop(0, '#FFF7C8');
+            bgGrad.addColorStop(1, '#87CEEB');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 900, 540);
+
+            const sunX = 150;
+            const plantX = 450;
+            const animalX = 750;
+
+            // Sun
+            const sunGrad = ctx.createRadialGradient(sunX, 270, 0, sunX, 270, 60);
+            sunGrad.addColorStop(0, '#FFF700');
+            sunGrad.addColorStop(1, '#FF8C00');
+            ctx.fillStyle = sunGrad;
+            ctx.beginPath();
+            ctx.arc(sunX, 270, 50, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#1A2E5A';
+            ctx.font = 'bold 14px Nunito';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sun', sunX, 340);
+
+            // Plant
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(plantX - 5, 350, 10, 60);
+            
+            ctx.fillStyle = '#4CAF50';
+            ctx.beginPath();
+            ctx.ellipse(plantX - 20, 320, 25, 15, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(plantX + 20, 310, 25, 15, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(plantX, 280, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#1A2E5A';
+            ctx.fillText('Plant', plantX, 430);
+
+            // Animal
+            ctx.font = '50px Arial';
+            ctx.fillText('🐰', animalX, 350);
+            ctx.fillStyle = '#1A2E5A';
+            ctx.font = 'bold 14px Nunito';
+            ctx.fillText('Animal', animalX, 380);
+
+            // Phase 2: Sun to Plant arrows
+            if (p >= 1) {
+                const pulse = Math.sin(f * 0.1) * 0.3 + 0.7;
+                drawEnergyArrow(sunX + 60, 270, plantX - 40, 300, '#FFD700', pulse, 8);
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 12px Nunito';
+                ctx.fillText('Energy', (sunX + plantX) / 2, 250);
+            }
+
+            // Phase 3: Plant to Animal arrows
+            if (p >= 2) {
+                const pulse = Math.sin(f * 0.1 + 1) * 0.3 + 0.7;
+                drawEnergyArrow(plantX + 40, 320, animalX - 30, 320, '#4CAF50', pulse, 5);
+                ctx.fillStyle = '#1A2E5A';
+                ctx.font = 'bold 12px Nunito';
+                ctx.fillText('Energy', (plantX + animalX) / 2, 300);
+            }
+
+            // Phase 4: Arrow size comparison
+            if (p >= 3) {
+                ctx.fillStyle = '#F44336';
+                ctx.font = 'bold 14px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Energy decreases →', 450, 200);
+                
+                // Visual size indicators
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.3)';
+                ctx.beginPath();
+                ctx.arc(200, 220, 40, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = 'rgba(76, 175, 80, 0.3)';
+                ctx.beginPath();
+                ctx.arc(450, 230, 25, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = 'rgba(244, 67, 54, 0.3)';
+                ctx.beginPath();
+                ctx.arc(750, 240, 15, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function drawEnergyArrow(x1, y1, x2, y2, color, alpha, thickness) {
+            ctx.strokeStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = thickness;
+            ctx.setLineDash([10, 5]);
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            
+            ctx.setLineDash([]);
+            ctx.globalAlpha = 1;
+        }
+
+        // ============================================
+        // SIMULATION 8: Energy for Life (Food Chain)
+        // ============================================
+        function renderSim08(f, p) {
+            // Background
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, 540);
+            bgGrad.addColorStop(0, '#E8FFE8');
+            bgGrad.addColorStop(1, '#C8EBC8');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 900, 540);
+
+            const chain = [
+                { name: 'Sun', icon: '☀️', x: 90, color: '#FFD700' },
+                { name: 'Grass', icon: '🌿', x: 225, color: '#4CAF50' },
+                { name: 'Grasshopper', icon: '🦗', x: 360, color: '#8BC34A' },
+                { name: 'Frog', icon: '🐸', x: 495, color: '#4CAF50' },
+                { name: 'Eagle', icon: '🦅', x: 630, color: '#795548' }
+            ];
+
+            // Draw chain
+            chain.forEach((item, i) => {
+                const isAffected = p >= 2 && i >= 2;
+                const isActive = p < 2 || (p >= 2 && i < 2) || (p === 3);
+                
+                ctx.globalAlpha = isAffected ? 0.3 : 1;
+                
+                // Icon
+                ctx.font = '50px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(item.icon, item.x, 270);
+                
+                // Label
+                ctx.fillStyle = isAffected ? '#999' : '#1A2E5A';
+                ctx.font = 'bold 14px Nunito';
+                ctx.fillText(item.name, item.x, 310);
+                
+                ctx.globalAlpha = 1;
+            });
+
+            // Arrows between chain elements
+            if (p >= 1) {
+                for (let i = 0; i < chain.length - 1; i++) {
+                    const isAffected = p >= 2 && i >= 1;
+                    const pulse = Math.sin(f * 0.1 + i) * 0.3 + 0.7;
+                    
+                    ctx.strokeStyle = isAffected ? '#999' : '#FFD700';
+                    ctx.globalAlpha = isAffected ? 0.3 : pulse;
+                    ctx.lineWidth = isAffected ? 2 : 5;
+                    ctx.setLineDash([10, 5]);
+                    
+                    const x1 = chain[i].x + 30;
+                    const x2 = chain[i + 1].x - 30;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(x1, 270);
+                    ctx.lineTo(x2, 270);
+                    ctx.stroke();
+                    
+                    // Arrowhead
+                    ctx.fillStyle = isAffected ? '#999' : '#FFD700';
+                    ctx.beginPath();
+                    ctx.moveTo(x2, 270);
+                    ctx.lineTo(x2 - 10, 263);
+                    ctx.lineTo(x2 - 10, 277);
+                    ctx.fill();
+                    
+                    ctx.setLineDash([]);
+                    ctx.globalAlpha = 1;
+                }
+            }
+
+            // Phase 3: Disruption message
+            if (p >= 2 && p < 3) {
+                ctx.fillStyle = '#F44336';
+                ctx.font = 'bold 20px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Chain Broken!', 450, 400);
+                ctx.font = 'bold 14px Nunito';
+                ctx.fillText('Without the grasshopper, the frog and eagle have no food!', 450, 430);
+            }
+
+            // Phase 4: Chain restored
+            if (p >= 3) {
+                ctx.fillStyle = '#3CB64A';
+                ctx.font = 'bold 20px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Chain Restored!', 450, 400);
+            }
+        }
+
+        // ============================================
+        // SIMULATION 9: Features of the Earth
+        // ============================================
+        function renderSim09(f, p) {
+            // Deep space background
+            ctx.fillStyle = '#000814';
+            ctx.fillRect(0, 0, 900, 540);
+
+            const centerX = 450;
+            const centerY = 270;
+            const radius = 150;
+
+            // Rotating globe
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(f * 0.01);
+            
+            // Ocean
+            const oceanGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
+            oceanGrad.addColorStop(0, '#1565C0');
+            oceanGrad.addColorStop(1, '#0D47A1');
+            ctx.fillStyle = oceanGrad;
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Continents
+            ctx.fillStyle = '#4CAF50';
+            
+            // Africa/Europe shape
+            ctx.beginPath();
+            ctx.ellipse(-30, -20, 40, 50, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Americas
+            ctx.beginPath();
+            ctx.ellipse(50, 10, 25, 60, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Asia/Australia
+            ctx.beginPath();
+            ctx.ellipse(20, 50, 35, 25, 0.1, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+
+            // Phase 2: Mountains
+            if (p >= 1) {
+                const pulse = Math.sin(f * 0.1) * 0.3 + 0.7;
+                ctx.strokeStyle = `rgba(139, 69, 19, ${pulse})`;
+                ctx.lineWidth = 4;
+                ctx.shadowColor = '#8B4513';
+                ctx.shadowBlur = 15;
+                
+                // Mountain peaks on globe edge
+                for (let m = 0; m < 5; m++) {
+                    const angle = (m / 5) * Math.PI * 2 + f * 0.01;
+                    const mx = centerX + Math.cos(angle) * radius;
+                    const my = centerY + Math.sin(angle) * radius;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(mx - 10, my);
+                    ctx.lineTo(mx, my - 20);
+                    ctx.lineTo(mx + 10, my);
+                    ctx.stroke();
+                }
+                
+                ctx.shadowBlur = 0;
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Mountains', 450, 80);
+            }
+
+            // Phase 3: Rivers
+            if (p >= 2) {
+                ctx.strokeStyle = '#42A5F5';
+                ctx.lineWidth = 3;
+                ctx.shadowColor = '#42A5F5';
+                ctx.shadowBlur = 10;
+                
+                // Animated river paths
+                ctx.beginPath();
+                ctx.moveTo(centerX - 20, centerY - 50);
+                ctx.quadraticCurveTo(centerX, centerY + 20, centerX + 30, centerY + 80);
+                ctx.stroke();
+                
+                ctx.shadowBlur = 0;
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Nunito';
+                ctx.fillText('Rivers', 450, 110);
+            }
+
+            // Phase 4: Oceans
+            if (p >= 3) {
+                const pulse = Math.sin(f * 0.08) * 0.3 + 0.7;
+                ctx.strokeStyle = `rgba(21, 101, 192, ${pulse})`;
+                ctx.lineWidth = 6;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius + 10, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Nunito';
+                ctx.fillText('Oceans', 450, 140);
+            }
+
+            // Phase 5: Continents
+            if (p >= 4) {
+                const pulse = Math.sin(f * 0.06) * 0.3 + 0.7;
+                ctx.strokeStyle = `rgba(76, 175, 80, ${pulse})`;
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius - 5, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Nunito';
+                ctx.fillText('Continents', 450, 170);
+            }
+        }
+
+        // ============================================
+        // SIMULATION 10: Features of the Moon
+        // ============================================
+        function renderSim10(f, p) {
+            // Dark space background
+            ctx.fillStyle = '#000814';
+            ctx.fillRect(0, 0, 900, 540);
+
+            // Stars
+            ctx.fillStyle = 'white';
+            for (let i = 0; i < 30; i++) {
+                const sx = (i * 97) % 900;
+                const sy = (i * 137) % 540;
+                ctx.beginPath();
+                ctx.arc(sx, sy, (i % 2) + 1, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const moonX = 350;
+            const moonY = 270;
+            const moonRadius = 120;
+
+            // Moon glow
+            const glowGrad = ctx.createRadialGradient(moonX, moonY, moonRadius * 0.8, moonX, moonY, moonRadius * 1.5);
+            glowGrad.addColorStop(0, 'rgba(255,255,255,0.3)');
+            glowGrad.addColorStop(1, 'transparent');
+            ctx.fillStyle = glowGrad;
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonRadius * 1.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Moon body
+            const moonGrad = ctx.createRadialGradient(moonX - 30, moonY - 30, 0, moonX, moonY, moonRadius);
+            moonGrad.addColorStop(0, '#E0E0E0');
+            moonGrad.addColorStop(0.7, '#BDBDBD');
+            moonGrad.addColorStop(1, '#9E9E9E');
+            ctx.fillStyle = moonGrad;
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Craters
+            const craters = [
+                { x: -30, y: -40, r: 25 },
+                { x: 40, y: 20, r: 18 },
+                { x: -20, y: 50, r: 15 },
+                { x: 50, y: -30, r: 12 },
+                { x: -50, y: 10, r: 10 }
+            ];
+
+            craters.forEach((crater, i) => {
+                // Phase 2: Highlight craters one by one
+                if (p >= 1) {
+                    const shouldHighlight = p === 1 && Math.floor(f / 60) === i;
+                    const highlightAlpha = shouldHighlight ? Math.sin(f * 0.2) * 0.5 + 0.5 : (p >= 2 ? 0.8 : 0.3);
+                    
+                    // Crater rim
+                    ctx.strokeStyle = `rgba(255,255,255,${highlightAlpha})`;
+                    ctx.lineWidth = shouldHighlight ? 4 : 2;
+                    ctx.beginPath();
+                    ctx.arc(moonX + crater.x, moonY + crater.y, crater.r, 0, Math.PI * 2);
+                    ctx.stroke();
+                    
+                    // Crater interior
+                    ctx.fillStyle = `rgba(100,100,100,${highlightAlpha * 0.5})`;
+                    ctx.beginPath();
+                    ctx.arc(moonX + crater.x, moonY + crater.y, crater.r * 0.8, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    if (shouldHighlight || p >= 2) {
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 12px Nunito';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('Crater', moonX + crater.x, moonY + crater.y + crater.r + 20);
+                    }
+                }
+            });
+
+            // Phase 3: Earth comparison
+            if (p >= 2) {
+                const earthX = 700;
+                const earthY = 270;
+                const earthRadius = 45; // Moon is ~3.7x smaller
+                
+                const earthGrad = ctx.createRadialGradient(earthX - 10, earthY - 10, 0, earthX, earthY, earthRadius);
+                earthGrad.addColorStop(0, '#4CAF50');
+                earthGrad.addColorStop(0.5, '#2196F3');
+                earthGrad.addColorStop(1, '#1565C0');
+                ctx.fillStyle = earthGrad;
+                ctx.beginPath();
+                ctx.arc(earthX, earthY, earthRadius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Size comparison line
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(moonX + moonRadius, moonY);
+                ctx.lineTo(earthX - earthRadius, earthY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // Labels
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 14px Nunito';
+                ctx.textAlign = 'center';
+                ctx.fillText('Moon', moonX, moonY + moonRadius + 50);
+                ctx.fillText('Earth', earthX, earthY + earthRadius + 30);
+                ctx.font = 'bold 12px Nunito';
+                ctx.fillText('~3.7x bigger!', (moonX + earthX) / 2, moonY + 20);
+            }
+
+            // Phase 4: Surface labels
+            if (p >= 3) {
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.font = 'bold 14px Nunito';
+                ctx.textAlign = 'center';
+                
+                const drawBadge = (text, x, y) => {
+                    const w = ctx.measureText(text).width + 20;
+                    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+                    ctx.beginPath();
+                    ctx.roundRect(x - w/2, y - 12, w, 24, 12);
+                    ctx.fill();
+                    ctx.fillStyle = 'white';
+                    ctx.fillText(text, x, y + 4);
+                };
+                
+                drawBadge('Rocky, airless surface', 350, 50);
+                drawBadge('No liquid water', 350, 80);
+            }
+        }
+
+        // Initialize
+        renderGrid();
+    </script>
+</body>
+</html>
