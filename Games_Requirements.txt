@@ -1,0 +1,72 @@
+Study the code and understand the games first. Then fix the bugs and make it more fun and engaging.
+after working on the bugs , update below each game and say "game updated" and move on to the next game, so that you remember which game you have updated. for example Animal shelter is between line 7 and 13 , on line 14 write a comment "Game Updated".
+you will do that for each game as i will keep adding on this file each game for you fix in specific areas 
+lets do like this everytime you update (include versions e.g update v1 and if i give further instructions on the same game , update it and say update v2)
+
+This document is for fixing all the bugs in the game and making it more fun and engaging.
+-on the test your knowledge section , there is no back button (for all simulations)
+
+1. Animal shelters
+
+- On top of each shelter type , there's click text instead  of the name of the shelter type
+-on a mobile screen , the shelters need to be in a horizontal order 
+- there back button still is not available on the test your knowledge section or page 
+- on a mobile screen , shelters need to vertical not horizontal 
+Game Updated - update v1
+
+2. Change of state 
+- the entire simulation is wrong . re-read the requirements again below
+A solid block of ice appears on screen with a visible temperature scale. When play is pressed, the temperature increases and the ice slowly melts into water and then evaporates into steam. A small particle diagram shows particles spreading further apart as heat increases. Text labels automatically appear at melting, evaporation and condensation stages.
+Game Updated - update v1
+
+
+3. What plants need to grow
+create an interactive simulation based on the following description .
+Four identical plants appear under different labelled conditions: no light, no water, no warmth and all conditions present. When play is pressed, a time-lapse animation runs showing growth differences over time. Only the plant with light, water and warmth grows tall and green while the others wilt or remain small. A final on-screen statement summarises that plants need light, water and warmth to grow.
+Game Updated - update v1
+
+4. Habitats of Animals
+create an interactive simulation based on the following description .
+Four habitat scenes appear side by side: forest, desert, river and grassland. When play is pressed, animals appear in their correct habitats and icons for food, water and shelter appear beneath each scene. One habitat briefly removes water and the animal fades to show survival impact. A short text reminder states that habitats must provide food, water, shelter and space.
+Game Updated - update v1
+
+
+5.Planet Earth
+create an interactive simulation based on the following description .
+A rotating Earth appears against a black space background. When play is pressed, orbit lines appear and Earth moves slowly around a stationary Sun while the Moon circles Earth. Simple labels identify Earth as a planet in the solar system. The motion loops smoothly.
+Game Updated - update v1
+
+6.Energy around us
+create an interactive simulation based on the following description .
+Everyday objects such as a kettle, torch and fan are displayed. When play is pressed, animated arrows show energy entering and leaving each object. Input and output energy types appear as short text labels beside each arrow. The sequence cycles through each object automatically.
+Game Updated - update v1
+
+7.Energy and Energy Transfer
+create an interactive simulation based on the following description .
+The Sun, a plant and an animal appear in a straight line. When play is pressed, glowing arrows move from the Sun to the plant and then to the animal. The arrows become smaller at each stage to show energy loss. A short text label states that the Sun is the primary source of energy.
+Game Updated - update v1
+
+
+8.Energy and Energy Transfer
+create an interactive simulation based on the following description .
+A simple food chain appears on screen. When play is pressed, energy flows through each organism using animated arrows. If one organism fades, the energy flow stops to show dependence. A brief label explains that energy flows from producers to consumers.
+Game Updated - update v1
+
+9.Planet Earth
+A globe appears with mountains, rivers, oceans and continents highlighted. When play is pressed, each feature lights up one at a time with its name appearing beside it. The globe rotates slowly throughout. The sequence repeats automatically.
+Game Updated - update v1
+
+10.The Moon
+create an interactive simulation based on the following description .
+A detailed image of the Moon appears. When play is pressed, craters highlight one by one and a size comparison outline of Earth appears beside the Moon. Text labels identify key surface features. The animation loops continuously.
+Game Updated - update v1
+
+11.Strong frame structures
+create an interactive simulation based on the following description .
+An indigenous hut appears on screen. When play is pressed, the outer covering fades slightly to reveal the internal frame structure. Triangular supports glow to show strength. A short text label identifies it as a frame structure.
+Game Updated - update v1
+
+12.Energy around us
+create an interactive simulation based on the following description .
+A simple appliance diagram appears showing arrows entering and leaving a device. When play is pressed, arrows animate to show input energy and output energy clearly. Labels identify each energy type. The animation repeats for two additional devices.
+Game Updated - update v1
