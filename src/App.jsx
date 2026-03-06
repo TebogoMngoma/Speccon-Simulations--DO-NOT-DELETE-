@@ -609,7 +609,7 @@ function App() {
     // Reset simulation-specific states
     if (activeSim?.id === 2) {
       setTemperature(-20);
-    } else if (activeSim?.id >= 3 && activeSim?.id <= 12) {
+    } else if (activeSim?.id >= 3 && activeSim?.id <= 20) {
       setAnimProgress(0);
       setAnimPhase(0);
       setBreakPoint(null);
@@ -636,11 +636,11 @@ function App() {
       return;
     }
 
-    // Simulations 3-12: click canvas "Press Play" button
-    if (activeSim.id >= 3 && activeSim.id <= 12) {
+    // Simulations 3-20: click canvas "Press Play" button
+    if (activeSim.id >= 3 && activeSim.id <= 20) {
       if (!isAnimating && animProgress <= 0) {
         // Broad click area for the Play hints
-        if (x >= 350 && x <= 550 && ((y >= 200 && y <= 245) || (y >= 400 && y <= 445) || (y >= 320 && y <= 365) || (y >= 420 && y <= 480))) {
+        if (x >= 350 && x <= 550 && ((y >= 150 && y <= 490))) {
           setIsAnimating(true);
         }
       }
@@ -1028,7 +1028,7 @@ function App() {
 
   // Animation effect for generic interactive sims (IDs 3-12)
   useEffect(() => {
-    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 12 && gameState === 'playing') {
+    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 20 && gameState === 'playing') {
       animationRef.current = setInterval(() => {
         setAnimProgress(prev => {
           // Special case for food chain (ID 8): stop if broken
@@ -1052,7 +1052,7 @@ function App() {
 
   // Continuous loop for rendering animations
   useEffect(() => {
-    if (activeSim?.id >= 3 && activeSim?.id <= 12 && gameState === 'playing') {
+    if (activeSim?.id >= 3 && activeSim?.id <= 20 && gameState === 'playing') {
       let frameId;
       const animate = () => {
         renderGame();
@@ -2028,9 +2028,9 @@ function App() {
     ctx.fillRect(0, 0, 900, 540);
 
     const devices = [
-      { name: 'Electric Iron', in: '⚡ Electrical', out: '🔥 Heat (Useful)', waste: '💨 Sound (Wasted)', icon: '💨' }, // icon hack for iron
+      { name: 'Electric Iron', in: '⚡ Electrical', out: '🔥 Heat (Useful)', waste: '💨 Sound (Wasted)', icon: '🔌' },
       { name: 'Light Bulb', in: '⚡ Electrical', out: '💡 Light (Useful)', waste: '🔥 Heat (Wasted)', icon: '💡' },
-      { name: 'Petrol Car', in: '⛽ Chemical', out: '🏎️ Kinetic (Useful)', waste: '🔊 Sound (Wasted)', icon: '🏎️' }
+      { name: 'Petrol Car', in: '⛽ Chemical', out: '🏎️ Kinetic (Useful)', waste: '🔊 Sound (Wasted)', icon: '🚗' }
     ];
 
     const idx = Math.floor(progress * 3);
@@ -2054,7 +2054,7 @@ function App() {
     ctx.stroke();
 
     ctx.font = '80px Arial';
-    ctx.fillText(device.name === 'Electric Iron' ? '🔌' : idx === 1 ? '💡' : '🚗', cx, cy + 30);
+    ctx.fillText(device.icon, cx, cy + 30);
 
     // Arrows
     const drawArrow = (x, y, tx, ty, color, label) => {
@@ -2070,6 +2070,7 @@ function App() {
       if (prog > 0.8) {
         ctx.fillStyle = color;
         ctx.font = 'bold 14px Nunito';
+        ctx.textAlign = 'center';
         ctx.fillText(label, tx, ty > y ? ty + 25 : ty - 15);
       }
     };
@@ -2097,6 +2098,454 @@ function App() {
       ctx.font = 'bold 18px Nunito, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('▶  Press Play', 450, 450);
+    }
+  };
+
+  // Renderer for ID 13: Living Things (Processes)
+  const renderLivingLifeProcesses = (ctx, progress) => {
+    ctx.fillStyle = '#E8F5E9';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const processes = [
+      { name: 'Growth', emoji: '📈', x: 250 },
+      { name: 'Movement', emoji: '🏃', x: 450 },
+      { name: 'Reproduction', emoji: '🐣', x: 650 }
+    ];
+
+    ctx.font = '100px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('🌻', 300, 250);
+    ctx.fillText('🐕', 600, 250);
+
+    const activeIdx = Math.floor(progress * processes.length);
+    processes.forEach((p, i) => {
+      const isActive = i === activeIdx && progress > 0;
+      ctx.globalAlpha = isActive ? 1.0 : 0.3;
+
+      ctx.fillStyle = isActive ? '#1A2E5A' : '#7F8C8D';
+      ctx.beginPath();
+      ctx.roundRect(p.x - 80, 400, 160, 100, 15);
+      ctx.fill();
+
+      ctx.fillStyle = 'white';
+      ctx.font = '40px Arial';
+      ctx.fillText(p.emoji, p.x, 445);
+      ctx.font = 'bold 16px Nunito';
+      ctx.fillText(p.name, p.x, 480);
+    });
+    ctx.globalAlpha = 1.0;
+
+    if (progress > 0.9) {
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 22px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText('Living things carry out all life processes!', 450, 100);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 320, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 350);
+    }
+  };
+
+  // Renderer for ID 14: Energy and Sound (Drum)
+  const renderMakingSoundsDrum = (ctx, progress) => {
+    ctx.fillStyle = '#FBFCFC';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const cx = 450, cy = 270;
+    const isVibrating = isAnimating;
+    const vibration = isVibrating ? Math.sin(Date.now() * 0.05) * 5 : 0;
+
+    ctx.fillStyle = '#A04000';
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 50, 150, 40, 0, 0, Math.PI);
+    ctx.fill();
+    ctx.fillRect(cx - 150, cy - 50 + vibration, 300, 100);
+
+    ctx.fillStyle = '#FAD7A0';
+    ctx.beginPath();
+    ctx.ellipse(cx, cy - 50 + vibration, 150, 40, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#873600';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    if (isAnimating) {
+      const waveProg = (progress * 5) % 1;
+      ctx.strokeStyle = `rgba(46, 134, 193, ${1 - waveProg})`;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(cx, cy - 50, 150 + waveProg * 200, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 22px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('Vibration produces sound!', 450, 100);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 15: Rocket Systems (Balloon)
+  const renderRocketSystemsBalloon = (ctx, progress) => {
+    ctx.fillStyle = '#F2F4F4';
+    ctx.fillRect(0, 0, 900, 540);
+
+    ctx.strokeStyle = '#BDC3C7';
+    ctx.setLineDash([5, 5]);
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(100, 270);
+    ctx.lineTo(800, 270);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const startX = 200;
+    const endX = 700;
+    const currentX = startX + (endX - startX) * progress;
+
+    if (isAnimating && progress < 0.9) {
+      ctx.fillStyle = 'rgba(52, 152, 219, 0.5)';
+      for (let i = 0; i < 5; i++) {
+        const px = currentX - 60 - Math.random() * 50;
+        const py = 270 + (Math.random() - 0.5) * 40;
+        ctx.beginPath();
+        ctx.arc(px, py, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.strokeStyle = '#E74C3C';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.moveTo(currentX - 80, 270);
+      ctx.lineTo(currentX - 150, 270);
+      ctx.stroke();
+      ctx.fillStyle = '#E74C3C';
+      ctx.font = 'bold 14px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText('Action: Air Backward', currentX - 120, 240);
+    }
+
+    ctx.fillStyle = '#E74C3C';
+    ctx.beginPath();
+    ctx.ellipse(currentX, 270, 60 - progress * 40, 40 - progress * 20, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (isAnimating) {
+      ctx.strokeStyle = '#27AE60';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.moveTo(currentX + 80, 270);
+      ctx.lineTo(currentX + 150, 270);
+      ctx.stroke();
+      ctx.fillStyle = '#27AE60';
+      ctx.font = 'bold 14px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText('Reaction: Balloon Forward', currentX + 120, 310);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 350, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 380);
+    }
+  };
+
+  // Renderer for ID 16: Musical Instruments (Guitar)
+  const renderMusicalInstrumentsGuitar = (ctx, progress) => {
+    ctx.fillStyle = '#FDEBD0';
+    ctx.fillRect(0, 0, 900, 540);
+
+    ctx.fillStyle = '#3E2723';
+    ctx.beginPath();
+    ctx.roundRect(50, 100, 800, 340, 20);
+    ctx.fill();
+
+    ctx.fillStyle = 'black';
+    ctx.beginPath();
+    ctx.arc(450, 270, 100, 0, Math.PI * 2);
+    ctx.fill();
+
+    const speed = progress < 0.5 ? 0.05 : 0.15;
+    const vibration = isAnimating ? Math.sin(Date.now() * speed) * (10 * (1 - progress)) : 0;
+
+    ctx.strokeStyle = '#D4AC0D';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(100, 270);
+    ctx.quadraticCurveTo(450, 270 + vibration * 2, 800, 270);
+    ctx.stroke();
+
+    if (isAnimating) {
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 20px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText(progress < 0.5 ? 'Low Pitch (Slow Vibration)' : 'High Pitch (Fast Vibration!)', 450, 150);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 460, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 490);
+    }
+  };
+
+  // Renderer for ID 17: Earth's Orbit (365 Days)
+  const renderEarthsOrbit365 = (ctx, progress) => {
+    ctx.fillStyle = '#05070A';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const cx = 450, cy = 270;
+    const sunGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, 60);
+    sunGrad.addColorStop(0, '#F1C40F');
+    sunGrad.addColorStop(1, '#D35400');
+    ctx.fillStyle = sunGrad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 200, 0, Math.PI * 2);
+    ctx.stroke();
+
+    const angle = progress * Math.PI * 2 - Math.PI / 2;
+    const ex = cx + Math.cos(angle) * 200;
+    const ey = cy + Math.sin(angle) * 200;
+
+    ctx.fillStyle = '#3498DB';
+    ctx.beginPath();
+    ctx.arc(ex, ey, 20, 0, Math.PI * 2);
+    ctx.fill();
+
+    const mAngle = progress * Math.PI * 24;
+    const mx = ex + Math.cos(mAngle) * 40;
+    const my = ey + Math.sin(mAngle) * 40;
+    ctx.fillStyle = '#BDC3C7';
+    ctx.beginPath();
+    ctx.arc(mx, my, 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.roundRect(350, 40, 200, 60, 10);
+    ctx.fill();
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText(Math.floor(progress * 365) + ' Days', 450, 78);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 18: Habitat Needs
+  const renderHabitatNeeds = (ctx, progress) => {
+    ctx.fillStyle = '#E8F6F3';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const needs = [
+      { name: 'Food', emoji: '🍎', x: 200 },
+      { name: 'Water', emoji: '💧', x: 450 },
+      { name: 'Shelter', emoji: '🏠', x: 700 }
+    ];
+
+    const isWoke = progress > 0.8;
+    ctx.font = '120px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('🐘', 450, 300);
+    if (!isWoke) {
+      ctx.fillStyle = '#7F8C8D';
+      ctx.font = 'bold 14px Nunito';
+      ctx.fillText('Zzz...', 480, 220);
+    } else {
+      ctx.fillStyle = '#27AE60';
+      ctx.font = 'bold 24px Nunito';
+      ctx.fillText('Healthy & Active!', 450, 180);
+    }
+
+    needs.forEach((n, i) => {
+      const isVisible = progress > (i / 4);
+      ctx.globalAlpha = isVisible ? 1.0 : 0.1;
+
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.roundRect(n.x - 60, 400, 120, 100, 15);
+      ctx.fill();
+      ctx.strokeStyle = '#1A2E5A';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = 'black';
+      ctx.font = '40px Arial';
+      ctx.fillText(n.emoji, n.x, 445);
+      ctx.font = 'bold 16px Nunito';
+      ctx.fillText(n.name, n.x, 480);
+    });
+    ctx.globalAlpha = 1.0;
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 320, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 350);
+    }
+  };
+
+  // Renderer for ID 19: Noise Pollution
+  const renderNoisePollutionMeter = (ctx, progress) => {
+    ctx.fillStyle = '#F4F6F7';
+    ctx.fillRect(0, 0, 900, 540);
+
+    ctx.fillStyle = '#BDC3C7';
+    ctx.fillRect(0, 400, 900, 140);
+
+    const cx = 450, cy = 480;
+    const r = 200;
+
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.moveTo(cx - r, cy);
+    ctx.arc(cx, cy, r, Math.PI, 0);
+    ctx.fill();
+
+    ctx.strokeStyle = '#27AE60';
+    ctx.lineWidth = 40;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r - 20, Math.PI, Math.PI + Math.PI / 3);
+    ctx.stroke();
+    ctx.strokeStyle = '#F1C40F';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r - 20, Math.PI + Math.PI / 3, Math.PI + 2 * Math.PI / 3);
+    ctx.stroke();
+    ctx.strokeStyle = '#C0392B';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r - 20, Math.PI + 2 * Math.PI / 3, Math.PI * 2);
+    ctx.stroke();
+
+    const level = progress < 0.3 ? progress * 3 * 1.0 : (progress < 0.7 ? 1.0 : 1.0 - (progress - 0.7) * 3);
+    const angle = Math.PI + level * Math.PI;
+    ctx.strokeStyle = '#2C3E50';
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * (r - 40), cy + Math.sin(angle) * (r - 40));
+    ctx.stroke();
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText(level > 0.8 ? 'UNSAFE: Too Loud!' : 'SAFE: Quiet', 450, 100);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 150, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 180);
+    }
+  };
+
+  // Renderer for ID 20: Non-Living Things
+  const renderNonLivingThings = (ctx, progress) => {
+    ctx.fillStyle = '#FEF9E7';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const items = [
+      { name: 'Rock', emoji: '🪨', x: 200 },
+      { name: 'River', emoji: '🌊', x: 450 },
+      { name: 'Fire', emoji: '🔥', x: 700 }
+    ];
+
+    const processes = ['Growth', 'Reproduction', 'Breathing'];
+
+    items.forEach((item, i) => {
+      ctx.font = '80px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(item.emoji, item.x, 200);
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillStyle = '#1A2E5A';
+      ctx.fillText(item.name, item.x, 240);
+
+      processes.forEach((p, pi) => {
+        const py = 300 + pi * 60;
+        const isShown = progress > ((i * processes.length + pi) / (items.length * processes.length));
+
+        ctx.globalAlpha = isShown ? 1.0 : 0.1;
+        ctx.font = '14px Nunito';
+        ctx.textAlign = 'right';
+        ctx.fillText(p + ':', item.x - 10, py);
+
+        if (isShown) {
+          ctx.fillStyle = '#E74C3C';
+          ctx.font = 'bold 16px Nunito';
+          ctx.textAlign = 'left';
+          ctx.fillText('❌ NO', item.x + 5, py);
+        }
+        ctx.fillStyle = '#1A2E5A';
+      });
+      ctx.globalAlpha = 1.0;
+    });
+
+    if (progress > 0.95) {
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 22px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText('Non-living things DO NOT carry out life processes!', 450, 60);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 460, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 490);
     }
   };
 
@@ -2138,6 +2587,30 @@ function App() {
       return;
     } else if (activeSim?.id === 12) {
       renderInputOutputEnergy(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 13) {
+      renderLivingLifeProcesses(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 14) {
+      renderMakingSoundsDrum(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 15) {
+      renderRocketSystemsBalloon(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 16) {
+      renderMusicalInstrumentsGuitar(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 17) {
+      renderEarthsOrbit365(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 18) {
+      renderHabitatNeeds(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 19) {
+      renderNoisePollutionMeter(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 20) {
+      renderNonLivingThings(ctx, animProgress);
       return;
     }
 
@@ -2517,7 +2990,7 @@ function App() {
                         </button>
                       </>
                     )}
-                    {(activeSim.id >= 3 && activeSim.id <= 12) && (
+                    {(activeSim.id >= 3 && activeSim.id <= 20) && (
                       <>
                         <button
                           onClick={() => {

@@ -70,3 +70,43 @@ Game Updated - update v1
 create an interactive simulation based on the following description .
 A simple appliance diagram appears showing arrows entering and leaving a device. When play is pressed, arrows animate to show input energy and output energy clearly. Labels identify each energy type. The animation repeats for two additional devices.
 Game Updated - update v1
+
+13. Living and Non-Living Things
+create an interactive simulation based on the following description .
+Images of plants and animals appear. When play is pressed, icons representing growth, movement and reproduction appear beside each organism. Each life process highlights briefly. A final text label states that living things carry out life processes.
+Game Updated - update v1
+
+14.Energy and Sound
+create an interactive simulation based on the following description .
+A drum appears in the centre of the screen. When play is pressed, the drum skin vibrates visibly and sound wave lines move outward. The vibration repeats at steady intervals. A short label states that vibration produces sound.
+Game Updated - update v1
+
+15. Rocket Systems
+create an interactive simulation based on the following description .
+A balloon attached to a string appears horizontally. When play is pressed, air rushes backward and the balloon moves forward along the string. Arrows show opposite directions of motion. The movement resets and repeats.
+Game Updated - update v1
+
+16. Movement and Energy in a system
+create an interactive simulation based on the following description .
+A guitar string appears stretched tightly. When play is pressed, the string vibrates rapidly and visible wave lines move outward. The vibration speed increases briefly to show higher pitch. The motion loops smoothly.
+Game Updated - update v1
+
+17.The Earth and the Sun
+create an interactive simulation based on the following description .
+The Sun appears in the centre with Earth on a circular orbit path. When play is pressed, Earth completes one full revolution while a small counter displays 365 days. The movement repeats automatically. Orbit lines remain visible.
+Game Updated - update v1
+
+18. Structures for animal shelters
+create an interactive simulation based on the following description .
+An animal appears standing alone. When play is pressed, icons for food, water and shelter appear around it one by one. As all needs appear, the animal becomes active and healthy. A short text statement summarises basic habitat needs.
+Game Updated - update v1
+
+19. Energy and Sound
+create an interactive simulation based on the following description .
+A city street scene appears with a sound meter on the side. When play is pressed, sound levels rise into a red zone. The meter then drops into green when the scene quietens. A short label explains safe and unsafe sound levels.
+Game Updated - update v1
+
+20.Living and Non-Living Things
+create an interactive simulation based on the following description .
+Images of a rock, river and fire appear. When play is pressed, comparison icons show absence of growth, reproduction and breathing. Each icon briefly shows a red cross. A short label states that non-living things do not carry out life processes.
+Game Updated - update v1
