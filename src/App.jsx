@@ -609,7 +609,7 @@ function App() {
     // Reset simulation-specific states
     if (activeSim?.id === 2) {
       setTemperature(-20);
-    } else if (activeSim?.id >= 3 && activeSim?.id <= 20) {
+    } else if (activeSim?.id >= 3 && activeSim?.id <= 31) {
       setAnimProgress(0);
       setAnimPhase(0);
       setBreakPoint(null);
@@ -636,11 +636,11 @@ function App() {
       return;
     }
 
-    // Simulations 3-20: click canvas "Press Play" button
-    if (activeSim.id >= 3 && activeSim.id <= 20) {
+    // Simulations 3-31: click canvas "Press Play" button
+    if (activeSim.id >= 3 && activeSim.id <= 31) {
       if (!isAnimating && animProgress <= 0) {
         // Broad click area for the Play hints
-        if (x >= 350 && x <= 550 && ((y >= 150 && y <= 490))) {
+        if (x >= 350 && x <= 550 && (y >= 150 && y <= 500)) {
           setIsAnimating(true);
         }
       }
@@ -1026,9 +1026,9 @@ function App() {
     }
   }, [activeSim?.id, gameState, temperature, isAnimating]);
 
-  // Animation effect for generic interactive sims (IDs 3-12)
+  // Animation effect for generic interactive sims (IDs 3-31)
   useEffect(() => {
-    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 20 && gameState === 'playing') {
+    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 31 && gameState === 'playing') {
       animationRef.current = setInterval(() => {
         setAnimProgress(prev => {
           // Special case for food chain (ID 8): stop if broken
@@ -1052,7 +1052,7 @@ function App() {
 
   // Continuous loop for rendering animations
   useEffect(() => {
-    if (activeSim?.id >= 3 && activeSim?.id <= 20 && gameState === 'playing') {
+    if (activeSim?.id >= 3 && activeSim?.id <= 31 && gameState === 'playing') {
       let frameId;
       const animate = () => {
         renderGame();
@@ -2549,6 +2549,744 @@ function App() {
     }
   };
 
+  // Renderer for ID 21: The Sun (Size Comparison)
+  const renderSunComparison = (ctx, progress) => {
+    ctx.fillStyle = '#05070A';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const cx = 300, cy = 270;
+
+    // Sun
+    const shimmer = Math.sin(Date.now() * 0.01) * 5;
+    const sunGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, 180 + shimmer);
+    sunGrad.addColorStop(0, '#F1C40F');
+    sunGrad.addColorStop(0.8, '#D35400');
+    sunGrad.addColorStop(1, 'rgba(211, 84, 0, 0)');
+
+    ctx.fillStyle = sunGrad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 200 + shimmer, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Earth (tiny)
+    const ex = 750, ey = 270;
+    ctx.fillStyle = '#3498DB';
+    ctx.beginPath();
+    ctx.arc(ex, ey, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Light rays
+    if (isAnimating) {
+      ctx.strokeStyle = 'rgba(241, 196, 15, 0.4)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 8; i++) {
+        const offset = (i * 45 * Math.PI) / 180;
+        const rayProg = (progress * 3 + i * 0.125) % 1;
+        const rx = cx + Math.cos(offset) * (200 + rayProg * 500);
+        const ry = cy + Math.sin(offset) * (200 + rayProg * 500);
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(offset) * 200, cy + Math.sin(offset) * 200);
+        ctx.lineTo(rx, ry);
+        ctx.stroke();
+      }
+    }
+
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('The Sun is our closest Star!', 450, 60);
+    ctx.font = '16px Nunito';
+    ctx.fillText('Sun (Huge)', cx, cy + 240);
+    ctx.fillText('Earth (Tiny)', ex, ey + 40);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 22: The Moon (Phases)
+  const renderMoonPhases = (ctx, progress) => {
+    ctx.fillStyle = '#05070A';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const cx = 450, cy = 270;
+
+    // Earth
+    ctx.fillStyle = '#3498DB';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Sun (light source from right)
+    ctx.fillStyle = '#F1C40F';
+    ctx.beginPath();
+    ctx.arc(850, cy, 40, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Moon Orbit
+    const angle = progress * Math.PI * 2;
+    const mx = cx + Math.cos(angle) * 180;
+    const my = cy + Math.sin(angle) * 180;
+
+    // Draw Moon with shadow
+    ctx.save();
+    ctx.translate(mx, my);
+
+    // Base moon (dark part)
+    ctx.fillStyle = '#2C3E50';
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Lit part (always facing right towards Sun)
+    // We mask the moon based on its position relative to the sun
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, -Math.PI / 2, Math.PI / 2);
+    ctx.clip();
+
+    // The "phase" is determined by how much of the lit side we see from Earth
+    // Actually, for simplicity on canvas, we'll draw the lit half facing the sun,
+    // and then potentially another circle to create the phases.
+    ctx.fillStyle = '#ECF0F1';
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    // Phase Labels
+    const phaseIdx = Math.floor(((progress + 0.0625) % 1) * 4);
+    const phases = ['New Moon', 'First Quarter', 'Full Moon', 'Last Quarter'];
+
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText(phases[phaseIdx], cx, 60);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 23: Solid Materials (Properties)
+  const renderMaterialProperties = (ctx, progress) => {
+    ctx.fillStyle = '#FBFCFC';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const panels = [
+      { name: 'Flexible', color: '#BDC3C7', label: 'Bends!', x: 150 },
+      { name: 'Hard', color: '#5D6D7E', label: 'Scratches!', x: 450 },
+      { name: 'Waterproof', color: '#3498DB', label: 'Repels Water!', x: 750 }
+    ];
+
+    panels.forEach((p, i) => {
+      const isActive = progress > (i / 3) && progress < ((i + 1) / 3);
+
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.roundRect(p.x - 120, 150, 240, 300, 15);
+      ctx.fill();
+      ctx.strokeStyle = isActive ? '#F1C40F' : '#D5DBDB';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 20px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText(p.name, p.x, 130);
+
+      // Demo animations
+      if (i === 0) { // Bending
+        const bend = isActive ? Math.sin(Date.now() * 0.01) * 30 : 0;
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 15;
+        ctx.beginPath();
+        ctx.moveTo(p.x - 80, 300);
+        ctx.quadraticCurveTo(p.x, 300 + bend, p.x + 80, 300);
+        ctx.stroke();
+      } else if (i === 1) { // Scratching
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x - 80, 280, 160, 40);
+        if (isActive) {
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 3;
+          const sx = p.x - 60 + Math.abs(Math.sin(Date.now() * 0.005)) * 120;
+          ctx.beginPath();
+          ctx.moveTo(sx, 270);
+          ctx.lineTo(sx - 20, 330);
+          ctx.stroke();
+        }
+      } else if (i === 2) { // Waterproof
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x - 80, 280, 160, 60);
+        if (isActive) {
+          const dropY = 180 + (Date.now() * 0.2 % 100);
+          ctx.fillStyle = '#5dade2';
+          ctx.beginPath();
+          ctx.arc(p.x, dropY, 8, 0, Math.PI * 2);
+          ctx.fill();
+          if (dropY > 280) {
+            const slideX = p.x + (dropY - 280);
+            ctx.beginPath();
+            ctx.arc(slideX, 270, 8, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      if (isActive) {
+        ctx.fillStyle = '#F39C12';
+        ctx.font = 'bold 22px Nunito';
+        ctx.fillText(p.label, p.x, 420);
+      }
+    });
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 470, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 500);
+    }
+  };
+
+  // Renderer for ID 24: Material Processing
+  const renderMaterialProcessing = (ctx, progress) => {
+    ctx.fillStyle = '#F4F6F7';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const stages = [
+      { raw: '🌲 Tree', manufactured: '📄 Paper', y: 180 },
+      { raw: '🧱 Clay', manufactured: '🏠 Bricks', y: 380 }
+    ];
+
+    stages.forEach((s, i) => {
+      ctx.font = 'bold 22px Nunito';
+      ctx.fillStyle = '#1A2E5A';
+      ctx.textAlign = 'left';
+      ctx.fillText('Raw Material', 150, s.y - 60);
+      ctx.textAlign = 'right';
+      ctx.fillText('Manufactured Product', 750, s.y - 60);
+
+      // Raw
+      ctx.font = '80px Arial';
+      ctx.textAlign = 'center';
+      ctx.globalAlpha = 1 - progress;
+      ctx.fillText(s.raw.split(' ')[1], 200, s.y);
+
+      // Arrow
+      ctx.globalAlpha = 1.0;
+      ctx.strokeStyle = '#BDC3C7';
+      ctx.lineWidth = 10;
+      ctx.beginPath();
+      ctx.moveTo(350, s.y - 10);
+      ctx.lineTo(550, s.y - 10);
+      ctx.stroke();
+
+      // Manufactured
+      ctx.globalAlpha = progress;
+      ctx.fillText(s.manufactured.split(' ')[1], 700, s.y);
+      ctx.globalAlpha = 1.0;
+
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText(s.raw.split(' ')[1] + ' becomes ' + s.manufactured.split(' ')[1], 450, s.y + 60);
+    });
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 470, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 500);
+    }
+  };
+
+  // Renderer for ID 25: Particle Model (States)
+  const renderParticleModelStates = (ctx, progress) => {
+    ctx.fillStyle = '#FFF9C4';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const states = [
+      { name: 'Solid', x: 150, behavior: 'Vibrate & Fixed' },
+      { name: 'Liquid', x: 450, behavior: 'Slide & Flow' },
+      { name: 'Gas', x: 750, behavior: 'Fly & Spread' }
+    ];
+
+    states.forEach((s, i) => {
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.roundRect(s.x - 120, 150, 240, 240, 10);
+      ctx.fill();
+      ctx.strokeStyle = '#1A2E5A';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 24px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText(s.name, s.x, 130);
+      ctx.font = '16px Nunito';
+      ctx.fillText(s.behavior, s.x, 420);
+
+      // Particles
+      ctx.fillStyle = '#3498DB';
+      const time = Date.now() * 0.005;
+
+      if (i === 0) { // Solid
+        for (let r = 0; r < 5; r++) {
+          for (let c = 0; c < 5; c++) {
+            const vx = Math.sin(time + r + c) * 2;
+            const vy = Math.cos(time + r + c) * 2;
+            ctx.beginPath();
+            ctx.arc(s.x - 60 + c * 30 + vx, 210 + r * 30 + vy, 10, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      } else if (i === 1) { // Liquid
+        for (let p = 0; p < 25; p++) {
+          const moveX = Math.sin(time + p) * 20;
+          const moveY = Math.cos(time + p * 0.5) * 10;
+          ctx.beginPath();
+          ctx.arc(s.x - 60 + (p % 5) * 30 + moveX, 300 + Math.floor(p / 5) * 10 + moveY, 10, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else if (i === 2) { // Gas
+        for (let p = 0; p < 15; p++) {
+          const gx = s.x + Math.sin(time * 0.5 + p * 100) * 100;
+          const gy = 270 + Math.cos(time * 0.7 + p * 200) * 100;
+          ctx.beginPath();
+          ctx.arc(gx, gy, 8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    });
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 460, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 490);
+    }
+  };
+
+  // Renderer for ID 26: Structure of Living Things
+  const renderLivingStructureHighlights = (ctx, progress) => {
+    ctx.fillStyle = '#E8F5E9';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const cx = 450, cy = 270;
+
+    // Simple Dog Outline
+    ctx.strokeStyle = '#1A2E5A';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    // Body
+    ctx.ellipse(cx, cy + 20, 120, 70, 0, 0, Math.PI * 2);
+    // Head
+    ctx.ellipse(cx - 150, cy - 50, 50, 45, 0, 0, Math.PI * 2);
+    // Legs
+    ctx.moveTo(cx - 80, cy + 80); ctx.lineTo(cx - 80, cy + 160);
+    ctx.moveTo(cx + 80, cy + 80); ctx.lineTo(cx + 80, cy + 160);
+    ctx.stroke();
+
+    const parts = [
+      { name: 'Head', x: cx - 150, y: cy - 50, r: 60 },
+      { name: 'Limbs', x: cx, y: cy + 120, r: 100, isEllipse: true },
+      { name: 'Sense Organs (Eyes/Ears)', x: cx - 170, y: cy - 70, r: 30 }
+    ];
+
+    const activeIdx = Math.floor(progress * parts.length);
+    if (progress > 0 && activeIdx < parts.length) {
+      const p = parts[activeIdx];
+      ctx.fillStyle = 'rgba(241, 196, 15, 0.4)';
+      ctx.beginPath();
+      if (p.isEllipse) {
+        ctx.ellipse(p.x, p.y, p.r * 1.5, p.r * 0.5, 0, 0, Math.PI * 2);
+      } else {
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      }
+      ctx.fill();
+
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 28px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText(p.name, cx, 80);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 27: Strong Frame Structures
+  const renderStrongFrames = (ctx, progress) => {
+    ctx.fillStyle = '#FBFCFC';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const squareX = 250, triX = 650, baseP = 400;
+    const size = 120;
+
+    // Weight falling
+    const weightY = 100 + progress * 150;
+
+    // Square Frame
+    const collapse = progress > 0.6 ? (progress - 0.6) * 100 : 0;
+    ctx.strokeStyle = '#2C3E50';
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    // Deforming square
+    ctx.moveTo(squareX - size / 2 + collapse, baseP - size);
+    ctx.lineTo(squareX + size / 2 + collapse, baseP - size);
+    ctx.lineTo(squareX + size / 2, baseP);
+    ctx.lineTo(squareX - size / 2, baseP);
+    ctx.closePath();
+    ctx.stroke();
+
+    // Triangle Frame
+    ctx.beginPath();
+    ctx.moveTo(triX, baseP - size);
+    ctx.lineTo(triX + size / 2, baseP);
+    ctx.lineTo(triX - size / 2, baseP);
+    ctx.closePath();
+    ctx.stroke();
+
+    // Weights
+    ctx.fillStyle = '#7B241C';
+    ctx.fillRect(squareX - 40 + collapse, weightY - 20, 80, 40);
+    ctx.fillRect(triX - 40, weightY - 20, 80, 40);
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 22px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('Square collapses', squareX, baseP + 60);
+    ctx.fillText('Triangle stays strong!', triX, baseP + 60);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 28: Sun's Role in Life
+  const renderSunsRole = (ctx, progress) => {
+    ctx.fillStyle = '#87CEEB'; // Sky
+    ctx.fillRect(0, 0, 900, 540);
+
+    ctx.fillStyle = '#4CAF50'; // Grass
+    ctx.fillRect(0, 400, 900, 140);
+
+    // Sun
+    const cx = 100, cy = 100;
+    const pulse = Math.sin(Date.now() * 0.01) * 5;
+    ctx.fillStyle = '#F1C40F';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 60 + pulse, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Sunbeams
+    ctx.strokeStyle = 'rgba(241, 196, 15, 0.3)';
+    ctx.lineWidth = 4;
+    for (let i = 0; i < 12; i++) {
+      const angle = i * 30 * Math.PI / 180;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(angle) * 800, cy + Math.sin(angle) * 800);
+      ctx.stroke();
+    }
+
+    // Growing Plants
+    const grow = progress * 100;
+    ctx.fillStyle = '#228B22';
+    for (let x = 300; x < 800; x += 150) {
+      ctx.fillRect(x, 400 - grow, 20, grow);
+      // Leaf
+      ctx.beginPath();
+      ctx.ellipse(x + 25, 400 - grow / 2, 10, 5, Math.PI / 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Water Evaporation
+    if (progress > 0.2) {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      for (let j = 0; j < 5; j++) {
+        const vy = 400 - ((progress * 500 + j * 50) % 300);
+        ctx.beginPath();
+        ctx.arc(200 + Math.sin(vy / 20) * 10, vy, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('Plants grow and clouds form! Life needs Sunlight.', 450, 60);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 29: Water Cycle
+  const renderWaterCycle = (ctx, progress) => {
+    ctx.fillStyle = '#E3F2FD';
+    ctx.fillRect(0, 0, 900, 540);
+
+    // Ocean
+    ctx.fillStyle = '#1976D2';
+    ctx.fillRect(0, 440, 400, 100);
+    // Land
+    ctx.fillStyle = '#795548';
+    ctx.fillRect(400, 400, 500, 140);
+
+    // Evaporation
+    if (progress < 0.4) {
+      ctx.fillStyle = 'rgba(25, 118, 210, 0.5)';
+      for (let i = 0; i < 10; i++) {
+        const ey = 440 - (progress * 1000) % 350;
+        ctx.beginPath();
+        ctx.arc(100 + (i * 30), ey, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText('Evaporation', 150, 200);
+    }
+
+    // Clouds
+    const cloudColor = progress > 0.5 ? '#90A4AE' : '#FFFFFF';
+    ctx.fillStyle = cloudColor;
+    const cx = 150 + progress * 500;
+    ctx.beginPath();
+    ctx.arc(cx, 100, 40, 0, Math.PI * 2);
+    ctx.arc(cx + 40, 100, 50, 0, Math.PI * 2);
+    ctx.arc(cx + 80, 100, 40, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (progress > 0.4 && progress < 0.7) {
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText('Condensation', cx + 40, 180);
+    }
+
+    // Rain
+    if (progress > 0.7) {
+      ctx.strokeStyle = '#1976D2';
+      ctx.lineWidth = 2;
+      for (let r = 0; r < 20; r++) {
+        const rx = cx + (r * 10) - 50;
+        const ry = 140 + ((progress * 1000 + r * 20) % 300);
+        if (ry < 450) {
+          ctx.beginPath();
+          ctx.moveTo(rx, ry);
+          ctx.lineTo(rx - 5, ry + 15);
+          ctx.stroke();
+        }
+      }
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText('Precipitation (Rain)', 650, 300);
+    }
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 30: Sound Amplitude (Ruler)
+  const renderSoundRuler = (ctx, progress) => {
+    ctx.fillStyle = '#FDFEFE';
+    ctx.fillRect(0, 0, 900, 540);
+
+    // Table
+    ctx.fillStyle = '#8D6E63';
+    ctx.fillRect(0, 300, 400, 40);
+    ctx.fillRect(100, 340, 20, 200);
+    ctx.fillRect(300, 340, 20, 200);
+
+    const isPhase2 = progress > 0.5;
+    const bendMult = isPhase2 ? 80 : 30;
+    const subProg = isPhase2 ? (progress - 0.5) * 2 : progress * 2;
+    // Vibration decay simulation
+    const vibration = isAnimating ? Math.sin(Date.now() * 0.1) * bendMult * (1 - (subProg % 1)) : 0;
+
+    // Ruler
+    ctx.fillStyle = '#F1C40F';
+    ctx.save();
+    ctx.translate(380, 300);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(300, vibration);
+    ctx.lineTo(300, vibration + 15);
+    ctx.lineTo(0, 15);
+    ctx.fill();
+    ctx.restore();
+    ctx.fillRect(100, 300, 280, 15);
+
+    // Waves
+    if (isAnimating) {
+      ctx.strokeStyle = `rgba(52, 152, 219, ${0.5 * (1 - (subProg % 1))})`;
+      ctx.lineWidth = 4;
+      const waveSize = bendMult * 2;
+      for (let w = 1; w <= 3; w++) {
+        const r = w * 50 + (subProg % 1) * 30;
+        ctx.beginPath();
+        ctx.arc(680, 300 + vibration, r * (bendMult / 30), -Math.PI / 4, Math.PI / 4);
+        ctx.stroke();
+      }
+    }
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText(isPhase2 ? 'Bigger Vibration = LOUDER Sound!' : 'Smaller Vibration = Quiet Sound', 450, 80);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
+  // Renderer for ID 31: Strengthening Materials (Shapes)
+  const renderStrengtheningShapes = (ctx, progress) => {
+    ctx.fillStyle = '#F4ECF7';
+    ctx.fillRect(0, 0, 900, 540);
+
+    const shapes = [
+      { name: 'Flat', x: 200, color: '#EAECEE' },
+      { name: 'Folded', x: 450, color: '#EAECEE' },
+      { name: 'Rolled', x: 700, color: '#EAECEE' }
+    ];
+
+    const weightY = 150 + progress * 200;
+
+    shapes.forEach((s, i) => {
+      const isFlat = i === 0;
+      const isFolded = i === 1;
+      const isRolled = i === 2;
+
+      // Base Pedestals
+      ctx.fillStyle = '#BDC3C7';
+      ctx.fillRect(s.x - 60, 450, 120, 90);
+
+      // Shapes
+      ctx.strokeStyle = '#2C3E50';
+      ctx.lineWidth = 3;
+      ctx.fillStyle = '#FFFFFF';
+
+      ctx.save();
+      ctx.translate(s.x, 430);
+
+      if (isFlat) {
+        const deform = progress > 0.4 ? (progress - 0.4) * 50 : 0;
+        ctx.beginPath();
+        ctx.moveTo(-70, 0);
+        ctx.lineTo(70, deform);
+        ctx.stroke();
+      } else if (isFolded) {
+        const deform = progress > 0.7 ? (progress - 0.7) * 30 : 0;
+        ctx.beginPath();
+        ctx.moveTo(-70, 0);
+        for (let f = 0; f < 5; f++) {
+          ctx.lineTo(-70 + (f * 28) + 14, -20 + deform);
+          ctx.lineTo(-70 + (f * 28) + 28, 0 + deform);
+        }
+        ctx.stroke();
+      } else if (isRolled) {
+        ctx.beginPath();
+        ctx.ellipse(0, -10, 30, 15, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(-30, -10); ctx.lineTo(-30, 30);
+        ctx.moveTo(30, -10); ctx.lineTo(30, 30);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // Weights
+      if (progress > 0.1) {
+        const wy = Math.min(weightY, isFlat && progress > 0.4 ? 430 : (isFolded && progress > 0.7 ? 420 : 400));
+        ctx.fillStyle = '#5D6D7E';
+        ctx.fillRect(s.x - 30, wy - 30, 60, 30);
+      }
+
+      ctx.fillStyle = '#1A2E5A';
+      ctx.font = 'bold 18px Nunito';
+      ctx.textAlign = 'center';
+      ctx.fillText(s.name, s.x, 520);
+    });
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 22px Nunito';
+    ctx.fillText('Rolling material makes it the strongest!', 450, 60);
+
+    if (!isAnimating && progress <= 0) {
+      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(350, 450, 200, 45, 22);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('▶  Press Play', 450, 480);
+    }
+  };
+
   const renderGame = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -2611,6 +3349,39 @@ function App() {
       return;
     } else if (activeSim?.id === 20) {
       renderNonLivingThings(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 21) {
+      renderSunComparison(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 22) {
+      renderMoonPhases(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 23) {
+      renderMaterialProperties(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 24) {
+      renderMaterialProcessing(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 25) {
+      renderParticleModelStates(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 26) {
+      renderLivingStructureHighlights(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 27) {
+      renderStrongFrames(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 28) {
+      renderSunsRole(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 29) {
+      renderWaterCycle(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 30) {
+      renderSoundRuler(ctx, animProgress);
+      return;
+    } else if (activeSim?.id === 31) {
+      renderStrengtheningShapes(ctx, animProgress);
       return;
     }
 
@@ -2990,7 +3761,7 @@ function App() {
                         </button>
                       </>
                     )}
-                    {(activeSim.id >= 3 && activeSim.id <= 20) && (
+                    {(activeSim.id >= 3 && activeSim.id <= 31) && (
                       <>
                         <button
                           onClick={() => {

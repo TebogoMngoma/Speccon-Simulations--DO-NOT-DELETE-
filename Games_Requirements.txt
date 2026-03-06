@@ -110,3 +110,54 @@ Game Updated - update v1
 create an interactive simulation based on the following description .
 Images of a rock, river and fire appear. When play is pressed, comparison icons show absence of growth, reproduction and breathing. Each icon briefly shows a red cross. A short label states that non-living things do not carry out life processes.
 Game Updated - update v1
+
+
+21. The Sun
+The Sun and Earth appear side by side for size comparison. When play is pressed, rays of light move from the Sun toward Earth. Heat shimmer effects appear around the Sun. A short label identifies the Sun as our closest star.
+Game Updated - update v1
+
+22.The Moon
+Earth appears in the centre with the Moon on a circular path and the Sun to one side. When the learner clicks the torch icon, sunlight shines toward the Moon and it moves around Earth. The illuminated portion changes automatically to show New Moon, First Quarter, Full Moon and Last Quarter. Phase names appear as text beside each position.
+Game Updated - update v1
+
+23.Solid materials
+Different materials appear in separate panels. When play is pressed, one bends, one scratches and one repels water. Property labels appear beside each demonstration. The sequence loops automatically.
+Game Updated - update v1
+
+24.Solid materials
+A tree transforms into paper and clay transforms into bricks in a simple step sequence. When play is pressed, the transformation happens automatically from raw to manufactured form. Labels identify raw material and manufactured product. The sequence repeats.
+Game Updated - update v1
+
+25.Material around us
+Three boxes show particles in solid, liquid and gas form. When play is pressed, solid particles vibrate closely together, liquid particles slide past each other and gas particles spread widely. Labels identify each state. The animation loops continuously.
+Game Updated - update v1
+
+26.Structure of Plants and Animals
+An animal outline appears on screen. When play is pressed, body parts such as head, limbs and sense organs highlight one at a time with labels. The highlighting cycles repeatedly. No interaction is required.
+Game Updated - update v1
+
+27.Strong frame structures
+A square frame and a triangular frame appear side by side. When play is pressed, weight is added to both structures. The square frame collapses while the triangular frame remains stable. A short label explains that triangles provide strength.
+Game Updated - update v1
+
+28. The Earth and the Sun
+The Sun shines onto Earth on screen. When play is pressed, plants grow and water evaporates to form clouds, showing the Sun’s role in supporting life. Simple text highlights that life depends on sunlight. The sequence loops.
+Game Updated - update v1
+
+29.Material around us
+An ocean, cloud and land scene appears. When play is pressed, water evaporates from the ocean, condenses into clouds and falls as rain onto land. Arrows show direction of movement. The cycle repeats continuously.
+Game Updated - update v1
+
+30.Energy and Sound
+A ruler hanging over a table edge appears. When play is pressed, the ruler vibrates and visible wave lines move outward. When the bend is larger, the waves appear larger. A short label states that stronger vibrations produce louder sounds.
+Game Updated - update v1
+
+31.Strengthening Materials
+Three paper shapes appear: flat sheet, folded sheet and rolled tube. When play is pressed, equal weight is placed on each. The flat sheet collapses first while the rolled tube holds the most weight. A short label identifies rolling as the strongest method.
+Game Updated - update v1
+
+
+32.
+
+
+
