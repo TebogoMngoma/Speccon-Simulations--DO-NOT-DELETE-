@@ -28,7 +28,10 @@ const simulations = [
     quiz: [
       { question: 'What type of structure is a snail shell?', options: ['Shell Structure', 'Frame Structure', 'Liquid Structure'], correct: 0 },
       { question: 'Which shelter is built underground?', options: ['Nest', 'Burrow', 'Kennel'], correct: 1 },
-      { question: 'What protects animals from rain?', options: ['Shelter', 'Food', 'Music'], correct: 0 }
+      { question: 'What protects animals from rain?', options: ['Shelter', 'Food', 'Music'], correct: 0 },
+      { question: 'What material do birds use for nests?', options: ['Twigs and grass', 'Mud only', 'Metal wires'], correct: 0 },
+      { question: 'Why are kraals circular?', options: ['To look nice', 'To protect animals from predators', 'To stop the wind'], correct: 1 },
+      { question: 'A burrow is which type of structure?', options: ['Shell', 'Frame', 'Solid'], correct: 1 }
     ]
   },
   {
@@ -55,7 +58,10 @@ const simulations = [
     quiz: [
       { question: 'At what temperature does water freeze?', options: ['0°C', '100°C', '50°C'], correct: 0 },
       { question: 'What happens to particles when water boils?', options: ['They freeze', 'They spread apart', 'They disappear'], correct: 1 },
-      { question: 'What is the melting point of ice?', options: ['0°C', '100°C', '-10°C'], correct: 0 }
+      { question: 'What is the melting point of ice?', options: ['0°C', '100°C', '-10°C'], correct: 0 },
+      { question: 'What is water vapour?', options: ['A solid', 'A liquid', 'A gas'], correct: 2 },
+      { question: 'Which state has the most energy?', options: ['Solid', 'Liquid', 'Gas'], correct: 2 },
+      { question: 'Does warm water move faster?', options: ['Yes', 'No', 'Only when frozen'], correct: 0 }
     ]
   },
   {
@@ -83,7 +89,10 @@ const simulations = [
     quiz: [
       { question: 'What do plants need from sunlight?', options: ['Food', 'Air', 'Music'], correct: 0 },
       { question: 'What part of the plant takes in water from soil?', options: ['Roots', 'Leaves', 'Flowers'], correct: 0 },
-      { question: 'What happens without warmth?', options: ['Plants grow faster', 'Plants grow slower', 'Nothing happens'], correct: 1 }
+      { question: 'What happens without warmth?', options: ['Plants grow faster', 'Plants grow slower', 'Nothing happens'], correct: 1 },
+      { question: 'What makes plants green?', options: ['Water', 'Chlorophyll', 'Dirt'], correct: 1 },
+      { question: 'Do plants grow in the dark?', options: ['Better', 'Not healthy/weak', 'Exactly the same'], correct: 1 },
+      { question: 'What does the stem do?', options: ['Gets water from air', 'Supports the plant and moves water', 'Makes seeds'], correct: 1 }
     ]
   },
   {
@@ -111,7 +120,10 @@ const simulations = [
     quiz: [
       { question: 'What do all habitats provide?', options: ['Food only', 'Food, water, shelter', 'Television'], correct: 1 },
       { question: 'Which animal lives in a forest?', options: ['Zebra', 'Bird', 'Fish'], correct: 1 },
-      { question: 'What is the most important thing in a habitat?', options: ['Rocks', 'Water', 'Sand'], correct: 1 }
+      { question: 'What is the most important thing in a habitat?', options: ['Rocks', 'Water', 'Sand'], correct: 1 },
+      { question: 'Camels store fat in their...?', options: ['Stomach', 'Humps', 'Legs'], correct: 1 },
+      { question: 'Fish habitats must have...?', options: ['Dry sand', 'Water', 'Big trees'], correct: 1 },
+      { question: 'Where are grasslands found?', options: ['Underwater', 'Large open areas like Africa', 'The Moon'], correct: 1 }
     ]
   },
   {
@@ -138,7 +150,10 @@ const simulations = [
     quiz: [
       { question: 'What does Earth orbit?', options: ['The Moon', 'The Sun', 'Mars'], correct: 1 },
       { question: 'How long does Earth take to orbit the Sun?', options: ['1 day', '1 month', '1 year'], correct: 2 },
-      { question: 'What is the Moon?', options: ['A planet', 'A star', 'A satellite'], correct: 2 }
+      { question: 'What is the Moon?', options: ['A planet', 'A star', 'A satellite'], correct: 2 },
+      { question: 'Which is the biggest?', options: ['The Earth', 'The Moon', 'The Sun'], correct: 2 },
+      { question: 'The Sun is...?', options: ['A planet', 'A star', 'A moon'], correct: 1 },
+      { question: 'Gravity keeps planets...?', options: ['In orbit', 'Cold', 'Underground'], correct: 0 }
     ]
   },
   {
@@ -165,7 +180,10 @@ const simulations = [
     quiz: [
       { question: 'What energy comes OUT of a kettle?', options: ['Light', 'Heat', 'Sound'], correct: 1 },
       { question: 'What energy comes OUT of a fan?', options: ['Cold', 'Movement', 'Food'], correct: 1 },
-      { question: 'What energy goes INTO all these devices?', options: ['Solar', 'Electrical', 'Nuclear'], correct: 1 }
+      { question: 'What energy goes INTO all these devices?', options: ['Solar', 'Electrical', 'Nuclear'], correct: 1 },
+      { question: 'What is wasted in a kettle?', options: ['Useful water', 'Wasted heat/steam', 'Light'], correct: 1 },
+      { question: 'A torch changes electricity to...?', options: ['Movement', 'Light', 'Sound'], correct: 1 },
+      { question: 'Energy from food is called...?', options: ['Electrical', 'Chemical', 'Solar'], correct: 1 }
     ]
   },
   {
@@ -192,7 +210,10 @@ const simulations = [
     quiz: [
       { question: 'What is the original source of energy?', options: ['The Sun', 'The Moon', 'Electricity'], correct: 0 },
       { question: 'What do plants use to capture sunlight?', options: ['Roots', 'Photosynthesis', 'Wings'], correct: 1 },
-      { question: 'Animals are called?', options: ['Producers', 'Consumers', 'Batteries'], correct: 1 }
+      { question: 'Animals are called?', options: ['Producers', 'Consumers', 'Batteries'], correct: 1 },
+      { question: 'Energy from the Sun travels as...?', options: ['Sound', 'Light', 'Rain'], correct: 1 },
+      { question: 'Which is a producer?', options: ['Grass', 'Lion', 'Dog'], correct: 0 },
+      { question: 'We get energy by...?', options: ['Sleeping', 'Eating food', 'Singing'], correct: 1 }
     ]
   },
   {
@@ -221,7 +242,10 @@ const simulations = [
     quiz: [
       { question: 'What happens if grass disappears?', options: ['Nothing', 'Food chain breaks', 'Animals are happier'], correct: 1 },
       { question: 'What are animals that eat plants called?', options: ['Producers', 'Consumers', 'Sun'], correct: 1 },
-      { question: 'Who is at the top of this food chain?', options: ['Grass', 'Grasshopper', 'Eagle'], correct: 2 }
+      { question: 'Who is at the top of this food chain?', options: ['Grass', 'Grasshopper', 'Eagle'], correct: 2 },
+      { question: 'Who eats the grasshopper?', options: ['The Sun', 'The Frog', 'The Grass'], correct: 1 },
+      { question: 'What is a primary consumer?', options: ['Eats plants', 'Eats meat', 'Makes food'], correct: 0 },
+      { question: 'Where does the grass get energy?', options: ['The Frog', 'The Sun', 'The Eagle'], correct: 1 }
     ]
   },
   {
@@ -249,7 +273,10 @@ const simulations = [
     quiz: [
       { question: 'What covers most of Earth?', options: ['Land', 'Oceans', 'Mountains'], correct: 1 },
       { question: 'What carries fresh water to the sea?', options: ['Mountains', 'Rivers', 'Oceans'], correct: 1 },
-      { question: 'How many continents are there?', options: ['5', '7', '10'], correct: 1 }
+      { question: 'How many continents are there?', options: ['5', '7', '10'], correct: 1 },
+      { question: 'What is most of Earth water?', options: ['Fresh water', 'Salt water', 'Juice'], correct: 1 },
+      { question: 'Mount Everest is a...?', options: ['River', 'Continent', 'Mountain'], correct: 2 },
+      { question: 'Oceans produce much of our...?', options: ['Food', 'Oxygen', 'Dirt'], correct: 1 }
     ]
   },
   {
@@ -274,9 +301,12 @@ const simulations = [
       { x: 480, y: 180, width: 50, height: 50, answer: 'MOUNTAINS - Rocky peaks on the Moon!', fact: 'Moon mountains can be as tall as Earth mountains. They were formed by asteroid impacts!' }
     ],
     quiz: [
-      { question: 'What are the dark spots on the Moon called?', options: ['Lakes', 'Craters', 'Holes'], correct: 1 },
+      { question: 'What the dark spots on the Moon called?', options: ['Lakes', 'Craters', 'Holes'], correct: 1 },
       { question: 'Does the Moon have an atmosphere?', options: ['Yes', 'No', 'Maybe'], correct: 1 },
-      { question: 'What is the Moon?', options: ['A star', 'A planet', 'A satellite'], correct: 2 }
+      { question: 'What is the Moon?', options: ['A star', 'A planet', 'A satellite'], correct: 2 },
+      { question: 'Is there sound on the Moon?', options: ['Yes', 'No', 'Only at night'], correct: 1 },
+      { question: 'The Moon surface is...?', options: ['Smooth', 'Rocky with craters', 'Soft sand'], correct: 1 },
+      { question: 'How big is Earth vs the Moon?', options: ['Same size', 'Earth is 4x bigger', 'Moon is bigger'], correct: 1 }
     ]
   },
   {
@@ -288,7 +318,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What shape makes frames strongest?', options: ['Circle', 'Triangle', 'Square'], correct: 1 },
-      { question: 'What materials were traditionally used?', options: ['Metal', 'Wood and grass', 'Plastic'], correct: 1 }
+      { question: 'What materials were traditionally used?', options: ['Metal', 'Wood and grass', 'Plastic'], correct: 1 },
+      { question: 'Traditional African builders use...?', options: ['Steel beams', 'Natural materials', 'Plastic bricks'], correct: 1 },
+      { question: 'A rondavel is usually...?', options: ['Square', 'Circular', 'Triangle'], correct: 1 },
+      { question: 'The frame of a hut is made of?', options: ['Bending poles', 'Bricks', 'Glass'], correct: 0 },
+      { question: 'What covers the frame for walls?', options: ['Paper', 'Mud and grass', 'Plastic'], correct: 1 }
     ]
   },
   {
@@ -301,7 +335,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What energy goes INTO a kettle?', options: ['Light', 'Electrical', 'Sound'], correct: 1 },
-      { question: 'What comes OUT of a light bulb?', options: ['Water', 'Light and heat', 'Sound'], correct: 1 }
+      { question: 'What comes OUT of a light bulb?', options: ['Water', 'Light and heat', 'Sound'], correct: 1 },
+      { question: 'A car uses energy from...?', options: ['Fuel/Petrol', 'The Moon', 'Wind'], correct: 0 },
+      { question: 'Useful energy from a bulb is?', options: ['Heat', 'Light', 'Sound'], correct: 1 },
+      { question: 'What is wasted energy?', options: ['Energy that is not useful', 'Strong energy', 'Magic'], correct: 0 },
+      { question: 'Chemical energy is found in?', options: ['Batteries and food', 'Only light', 'The T.V'], correct: 0 }
     ]
   },
   {
@@ -314,7 +352,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What is one life process?', options: ['Sleeping', 'Growth', 'Dreaming'], correct: 1 },
-      { question: 'Do plants grow?', options: ['No', 'Yes', 'Sometimes'], correct: 1 }
+      { question: 'Do plants grow?', options: ['No', 'Yes', 'Sometimes'], correct: 1 },
+      { question: 'Making new plants/babies is...?', options: ['Reproduction', 'Eating', 'Sleeping'], correct: 0 },
+      { question: 'Getting rid of waste is?', options: ['Nutrition', 'Excretion', 'Breathing'], correct: 1 },
+      { question: 'Living things react to...?', options: ['Changes around them', 'Only loud music', 'Colors'], correct: 0 },
+      { question: 'To make energy, we need...?', options: ['To play games', 'Nutrition/Food', 'To stay still'], correct: 1 }
     ]
   },
   {
@@ -326,7 +368,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What makes sound?', options: ['Light', 'Vibration', 'Color'], correct: 1 },
-      { question: 'What vibrates in a drum?', options: ['The air', 'The drum skin', 'Nothing'], correct: 1 }
+      { question: 'What vibrates in a drum?', options: ['The air', 'The drum skin', 'Nothing'], correct: 1 },
+      { question: 'Sound travels in...?', options: ['Squares', 'Waves', 'Straight lines'], correct: 1 },
+      { question: 'Louder sounds have...?', options: ['Bigger vibrations', 'Smaller vibrations', 'No vibrations'], correct: 0 },
+      { question: 'High pitch comes from...?', options: ['Slow vibrations', 'Fast vibrations', 'Quiet sounds'], correct: 1 },
+      { question: 'Can sound travel in space?', options: ['Yes', 'No', 'Always'], correct: 1 }
     ]
   },
   {
@@ -339,7 +385,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What happens when air rushes out?', options: ['Balloon stays still', 'Balloon moves opposite', 'Nothing'], correct: 1 },
-      { question: 'This is Newton\'s...?', options: ['First Law', 'Second Law', 'Third Law'], correct: 2 }
+      { question: 'This is Newton\'s...?', options: ['First Law', 'Second Law', 'Third Law'], correct: 2 },
+      { question: 'The air rushing out is the?', options: ['Action', 'Reaction', 'Gravity'], correct: 0 },
+      { question: 'The balloon moving forward is?', options: ['Action', 'Reaction', 'Friction'], correct: 1 },
+      { question: 'Action/Reaction forces are?', options: ['Equal and Opposite', 'Zero', 'One is bigger'], correct: 0 },
+      { question: 'Who discovered these laws?', options: ['Einstein', 'Isaac Newton', 'Darwin'], correct: 1 }
     ]
   },
   {
@@ -351,7 +401,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What makes the sound in a guitar?', options: ['The wood', 'String vibration', 'The player'], correct: 1 },
-      { question: 'Faster vibration = ?', options: ['Lower pitch', 'Higher pitch', 'No sound'], correct: 1 }
+      { question: 'Faster vibration = ?', options: ['Lower pitch', 'Higher pitch', 'No sound'], correct: 1 },
+      { question: 'A thick string makes a...?', options: ['High sound', 'Low sound', 'Quiet sound'], correct: 1 },
+      { question: 'The guitar body...?', options: ['Amplifies sound', 'Makes it quiet', 'Does nothing'], correct: 0 },
+      { question: 'Tighter strings produce?', options: ['Higher pitch', 'Lower pitch', 'No sound'], correct: 0 },
+      { question: 'Plucking harder makes?', options: ['Higher sound', 'Louder sound', 'Lower sound'], correct: 1 }
     ]
   },
   {
@@ -363,12 +417,16 @@ const simulations = [
     ],
     quiz: [
       { question: 'How long does Earth take to orbit the Sun?', options: ['1 day', '1 month', '1 year'], correct: 2 },
-      { question: 'What is at the center of our solar system?', options: ['The Moon', 'The Sun', 'Mars'], correct: 1 }
+      { question: 'What is at the center of our solar system?', options: ['The Moon', 'The Sun', 'Mars'], correct: 1 },
+      { question: 'Why do we have seasons?', options: ['Sun gets hot', 'Earth is tilted', 'Clouds'], correct: 1 },
+      { question: 'Leap years have how many days?', options: ['365', '366', '400'], correct: 1 },
+      { question: 'Earth path is called an?', options: ['Orbit', 'Circle', 'Line'], correct: 0 },
+      { question: 'The Sun is actually a...?', options: ['Planet', 'Star', 'Gas cloud'], correct: 1 }
     ]
   },
   {
-    id: 18, topic: 'Living Things', topicClass: 'living', title: 'Habitat Needs', icon: '🐘',
-    intro: { title: 'Elephant Survival!', description: 'Help an elephant find everything it needs!', instructions: ['Click to add resources', 'Give the elephant food, water, shelter', 'See what animals need to survive'], goal: 'Learn what animals need in a habitat!' },
+    id: 18, topic: 'Living Things', topicClass: 'living', title: 'Habitat Needs', icon: '🐕',
+    intro: { title: 'Dog Survival!', description: 'Help a dog find everything it needs!', instructions: ['Click to add resources', 'Give the dog food, water, shelter', 'See what animals need to survive'], goal: 'Learn what animals need in a habitat!' },
     interactions: [
       { x: 150, y: 350, width: 80, height: 80, answer: 'FOOD - All animals need to eat!', fact: 'Animals need food for energy to move, grow, and stay alive!' },
       { x: 350, y: 350, width: 80, height: 80, answer: 'WATER - Essential for life!', fact: 'All living things need water. Animals can survive longer without food than water!' },
@@ -376,7 +434,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What do animals need most?', options: ['Television', 'Water', 'Computer'], correct: 1 },
-      { question: 'What does shelter provide?', options: ['Entertainment', 'Protection', 'Music'], correct: 1 }
+      { question: 'What does shelter provide?', options: ['Entertainment', 'Protection', 'Music'], correct: 1 },
+      { question: 'Animals need oxygen from...?', options: ['Food', 'Air', 'Rocks'], correct: 1 },
+      { question: 'All animals need energy from?', options: ['Sleeping', 'Food', 'Playing'], correct: 1 },
+      { question: 'A natural home is called a?', options: ['Factory', 'Habitat', 'School'], correct: 1 },
+      { question: 'Survival requires...?', options: ['Games', 'Food, Water, Shelter', 'Money'], correct: 1 }
     ]
   },
   {
@@ -389,7 +451,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What dB level is dangerous?', options: ['50dB', '85dB', '20dB'], correct: 1 },
-      { question: 'Can loud sounds damage ears?', options: ['No', 'Yes', 'Maybe'], correct: 1 }
+      { question: 'Can loud sounds damage ears?', options: ['No', 'Yes', 'Maybe'], correct: 1 },
+      { question: 'Which sound is loudest?', options: ['Whisper', 'Jet engine', 'Talking'], correct: 1 },
+      { question: 'We measure sound in...?', options: ['Liters', 'Decibels (dB)', 'Meters'], correct: 1 },
+      { question: 'Earplugs help to...?', options: ['See', 'Protect hearing', 'Hear more'], correct: 1 },
+      { question: 'Noise pollution is...?', options: ['Dirty air', 'Too much loud sound', 'Old paper'], correct: 1 }
     ]
   },
   {
@@ -402,7 +468,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'Can rocks grow?', options: ['Yes', 'No', 'Sometimes'], correct: 1 },
-      { question: 'Is fire alive?', options: ['Yes', 'No', 'Maybe'], correct: 1 }
+      { question: 'Is fire alive?', options: ['Yes', 'No', 'Maybe'], correct: 1 },
+      { question: 'Is a robot alive?', options: ['Yes', 'No', 'Almost'], correct: 1 },
+      { question: 'Cars move but cannot...?', options: ['Eat fuel', 'Reproduce/Make babies', 'Be cleaned'], correct: 1 },
+      { question: 'A fossil was...?', options: ['Always a rock', 'Once alive', 'Man-made'], correct: 1 },
+      { question: 'Non-living things...?', options: ['Need food', 'Do not breathe/grow', 'Live forever'], correct: 1 }
     ]
   },
   {
@@ -414,7 +484,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What is the Sun?', options: ['A planet', 'A star', 'A moon'], correct: 1 },
-      { question: 'What does the Sun give us?', options: ['Only light', 'Light and heat', 'Nothing'], correct: 1 }
+      { question: 'What does the Sun give us?', options: ['Only light', 'Light and heat', 'Nothing'], correct: 1 },
+      { question: 'Sun is made of hot...?', options: ['Rocks', 'Gases', 'Ice'], correct: 1 },
+      { question: 'Without the Sun, Earth would...?', options: ['Be green', 'Freeze/Become ice', 'Stay same'], correct: 1 },
+      { question: 'The closest star to Earth is?', options: ['Polaris', 'The Sun', 'Mars'], correct: 1 },
+      { question: 'Is the Sun a planet?', options: ['Yes', 'No', 'Sometimes'], correct: 1 }
     ]
   },
   {
@@ -427,7 +501,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What makes the Moon look different?', options: ['Clouds', 'How much sunlight it reflects', 'The Moon moves'], correct: 1 },
-      { question: 'When is the Moon fully lit?', options: ['New Moon', 'Full Moon', 'No Moon'], correct: 1 }
+      { question: 'When is the Moon fully lit?', options: ['New Moon', 'Full Moon', 'No Moon'], correct: 1 },
+      { question: 'Produce Moon light?', options: ['Yes it shines', 'No it reflects Sun', 'Only at night'], correct: 1 },
+      { question: 'A crescent shape looks like?', options: ['A circle', 'A curved banana', 'A square'], correct: 1 },
+      { question: 'Moon cycle takes about?', options: ['7 days', '28-29 days', '365 days'], correct: 1 },
+      { question: 'Waxing Moon means it is?', options: ['Getting smaller', 'Getting bigger', 'Disappearing'], correct: 1 }
     ]
   },
   {
@@ -440,7 +518,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What property does rubber have?', options: ['Hard', 'Flexible', 'Metal'], correct: 1 },
-      { question: 'What is steel known for?', options: ['Softness', 'Hardness', 'Flexibility'], correct: 1 }
+      { question: 'What is steel known for?', options: ['Softness', 'Hardness', 'Flexibility'], correct: 1 },
+      { question: 'Material for windows is?', options: ['Opaque', 'Transparent', 'Soft'], correct: 1 },
+      { question: 'Magnets attract which metal?', options: ['Gold', 'Iron/Steel', 'Aluminum'], correct: 1 },
+      { question: 'Which carries heat fast?', options: ['Wood', 'Metal', 'Plastic'], correct: 1 },
+      { question: 'Why use plastic for bottles?', options: ['It is edible', 'Strong and waterproof', 'It is heavy'], correct: 1 }
     ]
   },
   {
@@ -454,7 +536,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'Is wood from nature?', options: ['No', 'Yes', 'Maybe'], correct: 1 },
-      { question: 'What is clay made into?', options: ['Paper', 'Bricks', 'Metal'], correct: 1 }
+      { question: 'What is clay made into?', options: ['Paper', 'Bricks', 'Metal'], correct: 1 },
+      { question: 'Plastic is made from?', options: ['Trees', 'Oil from Earth', 'Sand'], correct: 1 },
+      { question: 'Manufacturing means?', options: ['Planting seeds', 'Processing raw materials', 'Watching T.V'], correct: 1 },
+      { question: 'Paper comes from?', options: ['Oil', 'Trees', 'Rocks'], correct: 1 },
+      { question: 'Manufactured materials are?', options: ['Natural', 'Processed by humans', 'Raw'], correct: 1 }
     ]
   },
   {
@@ -467,7 +553,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What do particles in a solid do?', options: ['Move freely', 'Vibrate only', 'Disappear'], correct: 1 },
-      { question: 'Which state has particles that spread out?', options: ['Solid', 'Liquid', 'Gas'], correct: 2 }
+      { question: 'Which state has particles that spread out?', options: ['Solid', 'Liquid', 'Gas'], correct: 2 },
+      { question: 'Can you compress (squeeze) a gas?', options: ['Yes', 'No', 'Only when cold'], correct: 0 },
+      { question: 'Liquids have a fixed?', options: ['Shape', 'Volume', 'Color'], correct: 1 },
+      { question: 'Clouds are mostly?', options: ['Gas', 'Liquid water droplets', 'Air'], correct: 1 },
+      { question: 'Everything is made of?', options: ['Light', 'Matter', 'Magic'], correct: 1 }
     ]
   },
   {
@@ -480,11 +570,99 @@ const simulations = [
     ],
     quiz: [
       { question: 'What is in the head?', options: ['Stomach', 'Brain', 'Legs'], correct: 1 },
-      { question: 'What do legs help animals do?', options: ['Sleep', 'Move', 'Grow'], correct: 1 }
+      { question: 'What do legs help animals do?', options: ['Sleep', 'Move', 'Grow'], correct: 1 },
+      { question: 'An exoskeleton is?', options: ['Internal', 'External/Outside', 'Soft'], correct: 1 },
+      { question: 'Feathers help birds to?', options: ['Fly and stay warm', 'Swim fast', 'Eat better'], correct: 0 },
+      { question: 'Fish use gills to?', options: ['Walk', 'Breathe underwater', 'Hear'], correct: 1 },
+      { question: 'Mammals usually have?', options: ['Scales', 'Fur or hair', 'Feathers'], correct: 1 }
     ]
   },
   {
-    id: 27, topic: 'Living Things', topicClass: 'living', title: 'Structure of Plants', icon: '🌻',
+    id: 27, topic: 'Structures & Materials', topicClass: 'structures', title: 'Struts and Frame Structures', icon: '🔺',
+    intro: { title: 'The Strongest Shape!', description: 'Discover why triangles are the strongest!', instructions: ['Click to add weight to shapes', 'Watch which shape stays strong', 'Learn why triangles are special'], goal: 'Understand engineering!' },
+    interactions: [
+      { x: 200, y: 280, width: 120, height: 100, answer: 'SQUARE - Weakens and bends!', fact: 'Squares can easily change shape. The corners are weak points!' },
+      { x: 500, y: 280, width: 120, height: 100, answer: 'TRIANGLE - Super strong!', fact: 'Triangles are the strongest shape! They cannot change shape without changing the length of their sides!' }
+    ],
+    quiz: [
+      { question: 'Which shape is strongest?', options: ['Circle', 'Triangle', 'Square'], correct: 1 },
+      { question: 'Why is a triangle strong?', options: ['It bends easily', 'It cannot change shape', 'It is round'], correct: 1 },
+      { question: 'Bridges use frames and?', options: ['Paper', 'Struts', 'Glue'], correct: 1 },
+      { question: 'Cranes are what structure?', options: ['Solid', 'Frame', 'Shell'], correct: 1 },
+      { question: 'Struts help to?', options: ['Look pretty', 'Resist bending/Stay rigid', 'Melt'], correct: 1 },
+      { question: 'Skyscrapers often use?', options: ['Wooden frames', 'Steel frames', 'Thin paper'], correct: 1 }
+    ]
+  },
+  {
+    id: 28, topic: 'Earth, Moon & Sun', topicClass: 'earth', title: 'The Sun and Life', icon: '🌻',
+    intro: { title: 'Life from the Sun!', description: 'Discover how the Sun supports all life on Earth!', instructions: ['Click to follow the energy', 'See how Sun helps plants grow', 'Learn about the water cycle'], goal: 'Understand Sun\'s importance!' },
+    interactions: [
+      { x: 100, y: 150, width: 80, height: 80, answer: 'SUN - Energy source!', fact: 'The Sun provides ALL the energy for life on Earth. Every living thing depends on it!' },
+      { x: 400, y: 280, width: 100, height: 80, answer: 'PLANTS - Use Sun energy!', fact: 'Plants use sunlight to make food. This is called photosynthesis!' },
+      { x: 700, y: 280, width: 100, height: 80, answer: 'ANIMALS - Eat plants!', fact: 'Animals get energy by eating plants (or other animals that eat plants). This is the food chain!' }
+    ],
+    quiz: [
+      { question: 'What does the Sun provide?', options: ['Nothing', 'Energy', 'Water'], correct: 1 },
+      { question: 'What do plants use Sun for?', options: ['Sleep', 'Photosynthesis', 'Nothing'], correct: 1 },
+      { question: 'Lizards use Sun to?', options: ['Get cold', 'Get warm', 'Read'], correct: 1 },
+      { question: 'Day and Night come from?', options: ['Earth rotating', 'Sun moving', 'Rain'], correct: 0 },
+      { question: 'Does Sun help make rain?', options: ['Yes (evaporation)', 'No', 'Only sometimes'], correct: 0 },
+      { question: 'Plants store Sun energy in?', options: ['Roots only', 'Leaves and stems', 'Stones'], correct: 1 }
+    ]
+  },
+  {
+    id: 29, topic: 'Energy & Matter', topicClass: 'structures', title: 'The Water Cycle', icon: '💧',
+    intro: { title: 'Water\'s Amazing Journey!', description: 'Follow water as it travels around Earth!', instructions: ['Click to start the cycle', 'Watch evaporation, condensation, precipitation', 'Learn how water moves'], goal: 'Understand the water cycle!' },
+    interactions: [
+      { x: 100, y: 350, width: 150, height: 80, answer: 'EVAPORATION - Water rises!', fact: 'When water is heated by the Sun, it turns into invisible water vapour and rises into the air!' },
+      { x: 350, y: 200, width: 150, height: 80, answer: 'CONDENSATION - Clouds form!', fact: 'When water vapour cools, it turns back into tiny water drops. This makes clouds!' },
+      { x: 600, y: 250, width: 150, height: 80, answer: 'PRECIPITATION - Rain falls!', fact: 'When clouds get too heavy, water falls back to Earth as rain, snow, or hail!' }
+    ],
+    quiz: [
+      { question: 'What happens when water heats up?', options: ['Evaporation', 'Freezing', 'Nothing'], correct: 0 },
+      { question: 'What forms when water vapour cools?', options: ['Clouds', 'Fire', 'Rocks'], correct: 0 },
+      { question: 'Snow and hail are?', options: ['Gas', 'Solid precipitation', 'Heat'], correct: 1 },
+      { question: 'Plants release water via?', options: ['Excretion', 'Transpiration', 'Eating'], correct: 1 },
+      { question: 'Most evaporation comes from?', options: ['Pools', 'Oceans', 'Puddles'], correct: 1 },
+      { question: 'The water cycle is?', options: ['A loop/continuous', 'A straight line', 'Only in summer'], correct: 0 }
+    ]
+  },
+  {
+    id: 30, topic: 'Energy & Sound', topicClass: 'energy', title: 'Vibrations and Sound (Ruler)', icon: '📏',
+    intro: { title: 'Ruler Music!', description: 'Make sounds with a vibrating ruler!', instructions: ['Click to make the ruler vibrate', 'Change how much hangs over the edge', 'Hear different sounds'], goal: 'Learn about sound volume!' },
+    interactions: [
+      { x: 100, y: 280, width: 150, height: 80, answer: 'SHORT overhang - High pitch!', fact: 'When less hangs over, the ruler vibrates faster, making a higher pitched sound!' },
+      { x: 350, y: 280, width: 150, height: 80, answer: 'LONG overhang - Low pitch!', fact: 'When more hangs over, the ruler vibrates slower, making a lower pitched sound!' },
+      { x: 550, y: 280, width: 150, height: 80, answer: 'Vibration = Sound!', fact: 'All sounds are made by vibrations. Faster vibration = higher sound!' }
+    ],
+    quiz: [
+      { question: 'What makes the sound?', options: ['Color', 'Vibration', 'Size'], correct: 1 },
+      { question: 'More overhang = ? pitch', options: ['Higher', 'Lower', 'Same'], correct: 1 },
+      { question: 'Striking harder makes sound?', options: ['Quieter', 'Louder', 'Higher'], correct: 1 },
+      { question: 'Volume means sound...?', options: ['Speed', 'Loudness', 'Pitch'], correct: 1 },
+      { question: 'Sound travels through solids?', options: ['Yes', 'No', 'Never'], correct: 0 },
+      { question: 'Ears detect sound...?', options: ['Vibrations', 'Lights', 'Smells'], correct: 0 }
+    ]
+  },
+  {
+    id: 31, topic: 'Structures & Materials', topicClass: 'structures', title: 'Ways to Strengthen Materials', icon: '📦',
+    intro: { title: 'Build Super Strong!', description: 'Discover how to make materials stronger!', instructions: ['Click each shape to test strength', 'See which holds the most weight', 'Learn engineering tricks'], goal: 'Understand material strength!' },
+    interactions: [
+      { x: 150, y: 280, width: 100, height: 80, answer: 'FLAT SHEET - Weak!', fact: 'Flat sheets bend easily because they have no support. They can\'t hold much weight!' },
+      { x: 400, y: 280, width: 100, height: 80, answer: 'FOLDED - Stronger!', fact: 'Folding material creates more support. Corrugated cardboard is much stronger than flat!' },
+      { x: 650, y: 280, width: 100, height: 80, answer: 'ROLLED TUBE - Strongest!', fact: 'Rolling material into a tube creates the strongest shape. It can support a lot of weight!' }
+    ],
+    quiz: [
+      { question: 'What is the strongest shape?', options: ['Flat', 'Folded', 'Rolled'], correct: 2 },
+      { question: 'Why is a tube strong?', options: ['It is hollow', 'It has no shape', 'It is flat'], correct: 0 },
+      { question: 'Corrugated paper has?', options: ['Small holes', 'Ridges or folds', 'Color'], correct: 1 },
+      { question: 'Arch bridges are?', options: ['Strong shapes', 'Weak', 'Simple lines'], correct: 0 },
+      { question: 'Engineers use I-beams for?', options: ['Construction', 'Cooking', 'Painting'], correct: 0 },
+      { question: 'Adding layers makes it?', options: ['Weaker', 'Stronger', 'Soft'], correct: 1 }
+    ]
+  },
+  {
+    id: 32, topic: 'Living Things', topicClass: 'living', title: 'Structure of Plants', icon: '🌻',
     intro: { title: 'Plant Parts!', description: 'Discover what each part of a plant does!', instructions: ['Click each plant part', 'Learn about roots, stem, leaves, flowers', 'Understand how plants work'], goal: 'Know plant parts and jobs!' },
     interactions: [
       { x: 400, y: 380, width: 100, height: 60, answer: 'ROOTS - Absorb water!', fact: 'Roots take in water and minerals from the soil. They also anchor the plant!' },
@@ -494,71 +672,11 @@ const simulations = [
     ],
     quiz: [
       { question: 'What do roots do?', options: ['Make flowers', 'Absorb water', 'Make light'], correct: 1 },
-      { question: 'What do leaves do?', options: ['Make food', 'Hold the plant', 'Make seeds'], correct: 0 }
-    ]
-  },
-  {
-    id: 28, topic: 'Structures & Materials', topicClass: 'structures', title: 'Struts and Frame Structures', icon: '🔺',
-    intro: { title: 'The Strongest Shape!', description: 'Discover why triangles are the strongest!', instructions: ['Click to add weight to shapes', 'Watch which shape stays strong', 'Learn why triangles are special'], goal: 'Understand engineering!' },
-    interactions: [
-      { x: 200, y: 280, width: 120, height: 100, answer: 'SQUARE - Weakens and bends!', fact: 'Squares can easily change shape. The corners are weak points!' },
-      { x: 500, y: 280, width: 120, height: 100, answer: 'TRIANGLE - Super strong!', fact: 'Triangles are the strongest shape! They cannot change shape without changing the length of their sides!' }
-    ],
-    quiz: [
-      { question: 'Which shape is strongest?', options: ['Circle', 'Triangle', 'Square'], correct: 1 },
-      { question: 'Why is a triangle strong?', options: ['It bends easily', 'It cannot change shape', 'It is round'], correct: 1 }
-    ]
-  },
-  {
-    id: 29, topic: 'Earth, Moon & Sun', topicClass: 'earth', title: 'The Sun and Life', icon: '🌻',
-    intro: { title: 'Life from the Sun!', description: 'Discover how the Sun supports all life on Earth!', instructions: ['Click to follow the energy', 'See how Sun helps plants grow', 'Learn about the water cycle'], goal: 'Understand Sun\'s importance!' },
-    interactions: [
-      { x: 100, y: 150, width: 80, height: 80, answer: 'SUN - Energy source!', fact: 'The Sun provides ALL the energy for life on Earth. Every living thing depends on it!' },
-      { x: 400, y: 280, width: 100, height: 80, answer: 'PLANTS - Use Sun energy!', fact: 'Plants use sunlight to make food. This is called photosynthesis!' },
-      { x: 700, y: 280, width: 100, height: 80, answer: 'ANIMALS - Eat plants!', fact: 'Animals get energy by eating plants (or other animals that eat plants). This is the food chain!' }
-    ],
-    quiz: [
-      { question: 'What does the Sun provide?', options: ['Nothing', 'Energy', 'Water'], correct: 1 },
-      { question: 'What do plants use Sun for?', options: ['Sleep', 'Photosynthesis', 'Nothing'], correct: 1 }
-    ]
-  },
-  {
-    id: 30, topic: 'Energy & Matter', topicClass: 'structures', title: 'The Water Cycle', icon: '💧',
-    intro: { title: 'Water\'s Amazing Journey!', description: 'Follow water as it travels around Earth!', instructions: ['Click to start the cycle', 'Watch evaporation, condensation, precipitation', 'Learn how water moves'], goal: 'Understand the water cycle!' },
-    interactions: [
-      { x: 100, y: 350, width: 150, height: 80, answer: 'EVAPORATION - Water rises!', fact: 'When water is heated by the Sun, it turns into invisible water vapour and rises into the air!' },
-      { x: 350, y: 200, width: 150, height: 80, answer: 'CONDENSATION - Clouds form!', fact: 'When water vapour cools, it turns back into tiny water drops. This makes clouds!' },
-      { x: 600, y: 250, width: 150, height: 80, answer: 'PRECIPITATION - Rain falls!', fact: 'When clouds get too heavy, water falls back to Earth as rain, snow, or hail!' }
-    ],
-    quiz: [
-      { question: 'What happens when water heats up?', options: ['Evaporation', 'Freezing', 'Nothing'], correct: 0 },
-      { question: 'What forms when water vapour cools?', options: ['Clouds', 'Fire', 'Rocks'], correct: 0 }
-    ]
-  },
-  {
-    id: 31, topic: 'Energy & Sound', topicClass: 'energy', title: 'Vibrations and Sound (Ruler)', icon: '📏',
-    intro: { title: 'Ruler Music!', description: 'Make sounds with a vibrating ruler!', instructions: ['Click to make the ruler vibrate', 'Change how much hangs over the edge', 'Hear different sounds'], goal: 'Learn about sound volume!' },
-    interactions: [
-      { x: 100, y: 280, width: 150, height: 80, answer: 'SHORT overhang - High pitch!', fact: 'When less hangs over, the ruler vibrates faster, making a higher pitched sound!' },
-      { x: 350, y: 280, width: 150, height: 80, answer: 'LONG overhang - Low pitch!', fact: 'When more hangs over, the ruler vibrates slower, making a lower pitched sound!' },
-      { x: 550, y: 280, width: 150, height: 80, answer: 'Vibration = Sound!', fact: 'All sounds are made by vibrations. Faster vibration = higher sound!' }
-    ],
-    quiz: [
-      { question: 'What makes the sound?', options: ['Color', 'Vibration', 'Size'], correct: 1 },
-      { question: 'More overhang = ? pitch', options: ['Higher', 'Lower', 'Same'], correct: 1 }
-    ]
-  },
-  {
-    id: 32, topic: 'Structures & Materials', topicClass: 'structures', title: 'Ways to Strengthen Materials', icon: '📦',
-    intro: { title: 'Build Super Strong!', description: 'Discover how to make materials stronger!', instructions: ['Click each shape to test strength', 'See which holds the most weight', 'Learn engineering tricks'], goal: 'Understand material strength!' },
-    interactions: [
-      { x: 150, y: 280, width: 100, height: 80, answer: 'FLAT SHEET - Weak!', fact: 'Flat sheets bend easily because they have no support. They can\'t hold much weight!' },
-      { x: 400, y: 280, width: 100, height: 80, answer: 'FOLDED - Stronger!', fact: 'Folding material creates more support. Corrugated cardboard is much stronger than flat!' },
-      { x: 650, y: 280, width: 100, height: 80, answer: 'ROLLED TUBE - Strongest!', fact: 'Rolling material into a tube creates the strongest shape. It can support a lot of weight!' }
-    ],
-    quiz: [
-      { question: 'What is the strongest shape?', options: ['Flat', 'Folded', 'Rolled'], correct: 2 },
-      { question: 'Why is a tube strong?', options: ['It is hollow', 'It has no shape', 'It is flat'], correct: 0 }
+      { question: 'What do leaves do?', options: ['Make food', 'Hold the plant', 'Make seeds'], correct: 0 },
+      { question: 'The stem carries water to?', options: ['Roots', 'Leaves', 'Rocks'], correct: 1 },
+      { question: 'Where do seeds grow?', options: ['Inside flowers/fruit', 'On roots', 'In the air'], correct: 0 },
+      { question: 'Thorns help to?', options: ['Catch rain', 'Protect the plant', 'Make light'], correct: 1 },
+      { question: 'Pollen is moved by?', options: ['Bees and wind', 'Only humans', 'Nothing'], correct: 0 }
     ]
   }
 ];
@@ -578,9 +696,12 @@ function App() {
   const [animProgress, setAnimProgress] = useState(0);
   const [animPhase, setAnimPhase] = useState(0);
   const [breakPoint, setBreakPoint] = useState(null);
+  const [isTorchOn, setIsTorchOn] = useState(false);
 
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
+  const tempDirRef = useRef(1);
+  const tempWaitRef = useRef(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -609,10 +730,13 @@ function App() {
     // Reset simulation-specific states
     if (activeSim?.id === 2) {
       setTemperature(-20);
+      tempDirRef.current = 1;
+      tempWaitRef.current = 0;
     } else if (activeSim?.id >= 3 && activeSim?.id <= 31) {
       setAnimProgress(0);
       setAnimPhase(0);
       setBreakPoint(null);
+      setIsTorchOn(false);
     }
   };
 
@@ -637,7 +761,7 @@ function App() {
     }
 
     // Simulations 3-31: click canvas "Press Play" button
-    if (activeSim.id >= 3 && activeSim.id <= 31) {
+    if (activeSim?.id >= 3 && activeSim?.id <= 32) {
       if (!isAnimating && animProgress <= 0) {
         // Broad click area for the Play hints
         if (x >= 350 && x <= 550 && (y >= 150 && y <= 500)) {
@@ -645,14 +769,43 @@ function App() {
         }
       }
 
+      // Special interaction for Phases of the Moon (ID 22)
+      if (activeSim.id === 22) {
+        // Torch button area (bottom right: 780, 440, 80, 60 mapped to canvas coordinates)
+        if (x >= 750 && x <= 880 && y >= 400 && y <= 520) {
+          if (!isTorchOn) setIsAnimating(true);
+          setIsTorchOn(!isTorchOn);
+          return;
+        }
+      }
+
       // Special interaction for Food Chain (ID 8): click organism to break chain
       if (activeSim.id === 8 && isAnimating) {
-        // x-coordinates for Grasshopper (460), Frog (640), Eagle (820)
-        if (y >= 200 && y <= 300) {
-          if (x >= 420 && x <= 500) setBreakPoint(2); // Grasshopper
+        // coordinates for Grass (280), Grasshopper (460), Frog (640), Eagle (820)
+        if (y >= 200 && y <= 320) {
+          if (x >= 240 && x <= 320) setBreakPoint(1); // Grass
+          else if (x >= 420 && x <= 500) setBreakPoint(2); // Grasshopper
           else if (x >= 600 && x <= 680) setBreakPoint(3); // Frog
           else if (x >= 780 && x <= 860) setBreakPoint(4); // Eagle
         }
+      }
+      return;
+    }
+
+    // Special interaction for Drum (ID 14): click drum to vibrate
+    if (activeSim.id === 14) {
+      if (x >= 300 && x <= 600 && y >= 150 && y <= 450) {
+        setAnimProgress(0);
+        setIsAnimating(true);
+      }
+      return;
+    }
+
+    // Special interaction for Guitar (ID 16): click guitar to vibrate
+    if (activeSim.id === 16) {
+      if (x >= 50 && x <= 850 && y >= 100 && y <= 440) {
+        setAnimProgress(0);
+        setIsAnimating(true);
       }
       return;
     }
@@ -945,7 +1098,9 @@ function App() {
 
     // Phase labels (appear at transition points)
     const labelBoxY = 320;
-    if (temp >= -2 && temp <= 5) {
+    const dir = tempDirRef.current;
+
+    if (temp >= -5 && temp <= 10 && dir === 1) {
       // Melting label
       ctx.fillStyle = 'rgba(41, 128, 185, 0.9)';
       ctx.beginPath();
@@ -955,7 +1110,17 @@ function App() {
       ctx.font = 'bold 18px Nunito, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('⬆️ MELTING POINT (0°C) — Ice turns to water!', 430, labelBoxY + 32);
-    } else if (temp >= 98 && temp <= 105) {
+    } else if (temp >= -5 && temp <= 10 && dir === -1) {
+      // Freezing label
+      ctx.fillStyle = 'rgba(41, 128, 185, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(200, labelBoxY, 460, 50, 12);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('⬇️ FREEZING POINT (0°C) — Water turns to ice!', 430, labelBoxY + 32);
+    } else if (temp >= 90 && temp <= 110 && dir === 1) {
       // Boiling/Evaporation label
       ctx.fillStyle = 'rgba(192, 57, 43, 0.9)';
       ctx.beginPath();
@@ -965,6 +1130,16 @@ function App() {
       ctx.font = 'bold 18px Nunito, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('⬆️ BOILING POINT (100°C) — Water turns to steam!', 430, labelBoxY + 32);
+    } else if (temp >= 90 && temp <= 110 && dir === -1) {
+      // Condensation label
+      ctx.fillStyle = 'rgba(192, 57, 43, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(200, labelBoxY, 460, 50, 12);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('⬇️ CONDENSATION POINT (100°C) — Steam turns to water!', 430, labelBoxY + 32);
     }
 
     // Condensation info box (bottom)
@@ -1001,12 +1176,40 @@ function App() {
     if (isAnimating && activeSim?.id === 2 && gameState === 'playing') {
       animationRef.current = setInterval(() => {
         setTemperature(prev => {
-          if (prev >= 120) {
-            clearInterval(animationRef.current);
-            setIsAnimating(false);
-            return 120;
+          if (tempWaitRef.current > 0) {
+            tempWaitRef.current -= 1;
+            return prev;
           }
-          return prev + 0.5;
+
+          let nextTemp = prev + (tempDirRef.current === 1 ? 0.5 : -0.5);
+
+          if (tempDirRef.current === 1) {
+            if (prev < 0 && nextTemp >= 0) {
+              nextTemp = 0;
+              tempWaitRef.current = 50; // pause at 0
+            } else if (prev < 100 && nextTemp >= 100) {
+              nextTemp = 100;
+              tempWaitRef.current = 50; // pause at 100
+            } else if (nextTemp >= 120) {
+              nextTemp = 120;
+              tempWaitRef.current = 20; // brief pause at max
+              tempDirRef.current = -1;  // reverse
+            }
+          } else {
+            if (prev > 100 && nextTemp <= 100) {
+              nextTemp = 100;
+              tempWaitRef.current = 50; // pause at 100
+            } else if (prev > 0 && nextTemp <= 0) {
+              nextTemp = 0;
+              tempWaitRef.current = 50; // pause at 0
+            } else if (nextTemp <= -20) {
+              nextTemp = -20;
+              tempWaitRef.current = 20; // brief pause at min
+              tempDirRef.current = 1;   // reverse
+            }
+          }
+
+          return nextTemp;
         });
       }, 80);
       return () => clearInterval(animationRef.current);
@@ -1028,7 +1231,7 @@ function App() {
 
   // Animation effect for generic interactive sims (IDs 3-31)
   useEffect(() => {
-    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 31 && gameState === 'playing') {
+    if (isAnimating && activeSim?.id >= 3 && activeSim?.id <= 32 && gameState === 'playing') {
       animationRef.current = setInterval(() => {
         setAnimProgress(prev => {
           // Special case for food chain (ID 8): stop if broken
@@ -1039,10 +1242,20 @@ function App() {
           }
 
           if (prev >= 1) {
+            if (activeSim.id === 5) {
+              return 1; // Keep animating at full progress
+            }
+            if (activeSim.id === 17 || activeSim.id === 7 || activeSim.id === 12 || activeSim.id === 15 || activeSim.id === 19 || activeSim.id === 22 || activeSim.id === 23 || activeSim.id === 24 || activeSim.id === 28 || activeSim.id === 29 || activeSim.id === 30) {
+              return 0.001; // Loop the cycle
+            }
             clearInterval(animationRef.current);
             setIsAnimating(false);
             return 1;
           }
+          if (activeSim.id === 7 || activeSim.id === 12 || activeSim.id === 19) return prev + 0.005; // 50% slower transitions
+          if (activeSim.id === 14 || activeSim.id === 16) return prev + 0.007;
+          if (activeSim.id === 20) return prev + 0.004; // ~12.5 seconds total duration
+          if (activeSim.id === 17) return prev + 0.0035; // 65% slower
           return prev + 0.01;
         });
       }, 50);
@@ -1052,7 +1265,7 @@ function App() {
 
   // Continuous loop for rendering animations
   useEffect(() => {
-    if (activeSim?.id >= 3 && activeSim?.id <= 31 && gameState === 'playing') {
+    if (activeSim?.id >= 3 && activeSim?.id <= 32 && gameState === 'playing') {
       let frameId;
       const animate = () => {
         renderGame();
@@ -1383,7 +1596,7 @@ function App() {
 
       // Moon orbit
       if (progress > 0.5) {
-        const mt = t * 13; // moon orbits faster
+        const mt = t * 8.45; // moon orbits 35% slower
         const mDist = 40;
         const mx = ex + Math.cos(mt) * mDist;
         const my = ey + Math.sin(mt) * mDist;
@@ -1443,15 +1656,23 @@ function App() {
     ctx.fillStyle = '#FFF7C8';
     ctx.fillRect(0, 0, 900, 540);
 
-    // Use an internal cycle phase (0-3) based on time if animating, or progress if not
-    const cycle = isAnimating ? (Date.now() / 3000) % 3 : (progress * 3);
-    const activeObj = Math.floor(cycle);
+    // Slower cycle: 5 seconds per object (5000ms)
+    const cycleDuration = 5000;
+    const cycle = isAnimating ? (Date.now() / cycleDuration) % 3 : (progress * 3);
+    const activeObj = Math.floor(Math.min(2, cycle)); // Cap at 2
     const objProgress = cycle % 1; // 0 to 1 inside current object's turn
 
+    // Calculate smoothing alpha (fade in/out)
+    let viewAlpha = 1;
+    if (isAnimating) {
+      if (objProgress < 0.15) viewAlpha = objProgress / 0.15; // Fade in
+      else if (objProgress > 0.85) viewAlpha = (1 - objProgress) / 0.15; // Fade out
+    }
+
     const objects = [
-      { name: 'Kettle', icon: '🫖', in: '⚡ Electrical Energy', out: '🔥 Heat Energy', x: 200, y: 250 },
+      { name: 'Kettle', icon: '🫖', in: '⚡ Electrical Energy', out: '🔥 Heat Energy', x: 450, y: 250 },
       { name: 'Torch', icon: '🔦', in: '🔋 Chemical Energy', out: '💡 Light Energy', x: 450, y: 250 },
-      { name: 'Fan', icon: '🌬️', in: '⚡ Electrical Energy', out: '💨 Kinetic Energy', x: 700, y: 250 }
+      { name: 'Fan', icon: '🌬️', in: '⚡ Electrical Energy', out: '💨 Kinetic Energy', x: 450, y: 250 }
     ];
 
     ctx.fillStyle = '#1A2E5A';
@@ -1459,17 +1680,28 @@ function App() {
     ctx.textAlign = 'center';
     ctx.fillText('Energy cycles through everyday objects!', 450, 60);
 
-    objects.forEach((obj, idx) => {
-      const isActive = idx === activeObj && isAnimating;
-      const isDone = progress > 0.9 || (isAnimating && idx < activeObj) || (!isAnimating && progress > (idx + 1) / 3);
+    // Only render the currently active object
+    const obj = objects[activeObj];
+    if (obj) {
+      ctx.save();
+      ctx.globalAlpha = viewAlpha;
+      const isActive = isAnimating;
+
+      // Fade in text instructions if waiting to start
+      if (!isAnimating && progress <= 0 && activeObj === 0) {
+        ctx.fillStyle = '#1A2E5A';
+        ctx.font = 'bold 18px Nunito';
+        ctx.textAlign = 'center';
+        ctx.fillText('Press Play to see energy transform!', 450, 110);
+      }
 
       // Draw box
-      ctx.fillStyle = isActive ? '#FFF' : 'rgba(255,255,255,0.4)';
+      ctx.fillStyle = '#FFF';
       ctx.beginPath();
       ctx.roundRect(obj.x - 100, obj.y - 120, 200, 240, 16);
       ctx.fill();
-      ctx.strokeStyle = isActive ? '#F39C12' : '#BDC3C7';
-      ctx.lineWidth = isActive ? 4 : 2;
+      ctx.strokeStyle = '#F39C12';
+      ctx.lineWidth = 4;
       ctx.stroke();
 
       // Icon & Name
@@ -1480,16 +1712,16 @@ function App() {
       ctx.fillText(obj.name, obj.x, obj.y - 80);
 
       // Draw Arrows and Labels for the Active object
-      if (isActive || isDone) {
-        const arrowLen = 120;
+      if (isActive || progress > 0.1) {
+        const arrowLen = 220; // Much longer arrows!
 
         // Input Arrow (Left side)
         ctx.fillStyle = '#3498DB';
         const inProg = isActive ? Math.min(1, objProgress * 2) : 1;
         if (inProg > 0) {
           ctx.beginPath();
-          ctx.moveTo(obj.x - 110 - arrowLen, obj.y + 70);
-          ctx.lineTo(obj.x - 110 - arrowLen + (arrowLen * inProg), obj.y + 70);
+          ctx.moveTo(obj.x - 120 - arrowLen, obj.y + 70);
+          ctx.lineTo(obj.x - 120 - arrowLen + (arrowLen * inProg), obj.y + 70);
           ctx.lineWidth = 15;
           ctx.strokeStyle = '#3498DB';
           ctx.lineCap = 'round';
@@ -1498,15 +1730,15 @@ function App() {
           // Arrowhead
           if (inProg > 0.8) {
             ctx.beginPath();
-            ctx.moveTo(obj.x - 110, obj.y + 70);
-            ctx.lineTo(obj.x - 125, obj.y + 60);
-            ctx.lineTo(obj.x - 125, obj.y + 80);
+            ctx.moveTo(obj.x - 120, obj.y + 70);
+            ctx.lineTo(obj.x - 135, obj.y + 60);
+            ctx.lineTo(obj.x - 135, obj.y + 80);
             ctx.fill();
           }
 
           // Input Label
-          ctx.font = 'bold 14px Nunito';
-          ctx.fillText('IN: ' + obj.in, obj.x - 150, obj.y + 110);
+          ctx.font = 'bold 16px Nunito';
+          ctx.fillText('IN: ' + obj.in, obj.x - 220, obj.y + 110);
         }
 
         // Output Arrow (Right side)
@@ -1514,8 +1746,8 @@ function App() {
         const outProg = isActive ? Math.max(0, (objProgress - 0.5) * 2) : 1;
         if (outProg > 0) {
           ctx.beginPath();
-          ctx.moveTo(obj.x + 110, obj.y + 70);
-          ctx.lineTo(obj.x + 110 + (arrowLen * outProg), obj.y + 70);
+          ctx.moveTo(obj.x + 120, obj.y + 70);
+          ctx.lineTo(obj.x + 120 + (arrowLen * outProg), obj.y + 70);
           ctx.lineWidth = 15;
           ctx.strokeStyle = '#E74C3C';
           ctx.lineCap = 'round';
@@ -1524,18 +1756,18 @@ function App() {
           // Arrowhead
           if (outProg > 0.8) {
             ctx.beginPath();
-            ctx.moveTo(obj.x + 110 + arrowLen, obj.y + 70);
-            ctx.lineTo(obj.x + 95 + arrowLen, obj.y + 60);
-            ctx.lineTo(obj.x + 95 + arrowLen, obj.y + 80);
+            ctx.moveTo(obj.x + 120 + arrowLen, obj.y + 70);
+            ctx.lineTo(obj.x + 105 + arrowLen, obj.y + 60);
+            ctx.lineTo(obj.x + 105 + arrowLen, obj.y + 80);
             ctx.fill();
           }
 
           // Output Label
-          ctx.font = 'bold 14px Nunito';
-          ctx.fillText('OUT: ' + obj.out, obj.x + 150, obj.y + 110);
+          ctx.font = 'bold 16px Nunito';
+          ctx.fillText('OUT: ' + obj.out, obj.x + 220, obj.y + 110);
         }
       }
-    });
+    }
 
     // Play button hint
     if (!isAnimating && progress <= 0) {
@@ -1571,10 +1803,9 @@ function App() {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Draw entities
+    // Draw entities (Static once started)
     stages.forEach((stage, i) => {
-      // Scale up based on progress
-      const p = Math.max(0, Math.min(1, (progress - i * 0.2) * 4));
+      const p = progress > 0 ? 1 : 0;
 
       ctx.save();
       ctx.translate(stage.x, stage.y);
@@ -1592,8 +1823,8 @@ function App() {
     });
 
     // Arrow 1: Sun to Plant (Large)
-    if (progress > 0.4) {
-      const a1P = Math.min(1, (progress - 0.4) * 3);
+    if (progress > 0.2) {
+      const a1P = Math.min(1, (progress - 0.2) * 3);
       const startX = 220, endX = 380, y = 250;
 
       ctx.fillStyle = '#F39C12';
@@ -1621,8 +1852,8 @@ function App() {
     }
 
     // Arrow 2: Plant to Animal (Smaller)
-    if (progress > 0.7) {
-      const a2P = Math.min(1, (progress - 0.7) * 3);
+    if (progress > 0.5) {
+      const a2P = Math.min(1, (progress - 0.5) * 3);
       const startX = 520, endX = 680, y = 250;
 
       ctx.fillStyle = '#E67E22';
@@ -1651,7 +1882,7 @@ function App() {
     }
 
     // Final summary box
-    if (progress > 0.95) {
+    if (progress > 0.8) {
       ctx.fillStyle = 'rgba(255,255,255,0.95)';
       ctx.beginPath();
       ctx.roundRect(150, 420, 600, 60, 12);
@@ -1795,50 +2026,75 @@ function App() {
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.clip();
 
-    // Draw some continents that "rotate"
+    // Draw rotating continents
     for (let i = -1; i <= 1; i++) {
       const offset = (rotation % (Math.PI * 2)) + (i * Math.PI * 2);
-      const lx = cx + Math.cos(offset) * r * 0.8;
+      const lx = cx + Math.cos(offset) * r * 1.2;
 
       ctx.fillStyle = '#27AE60';
       ctx.beginPath();
-      ctx.ellipse(lx, cy, r * 0.4, r * 0.7, 0, 0, Math.PI * 2);
+      ctx.ellipse(lx, cy, r * 0.5, r * 0.8, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Simple mountains on continents
+      ctx.fillStyle = '#145A32';
+      ctx.beginPath();
+      ctx.moveTo(lx - 20, cy - 30);
+      ctx.lineTo(lx, cy - 60);
+      ctx.lineTo(lx + 20, cy - 30);
       ctx.fill();
     }
     ctx.restore();
 
-    // Features highlighting
+    // Features data
     const features = [
-      { name: 'Mountains', x: 400, y: 200, label: 'Tall landforms!' },
-      { name: 'Rivers', x: 480, y: 300, label: 'Moving fresh water!' },
-      { name: 'Oceans', x: 550, y: 250, label: 'Giant salt water!' },
-      { name: 'Continents', x: 380, y: 320, label: 'Massive land areas!' }
+      { name: 'Mountains', x: 400, y: 200, icon: '⛰️', desc: 'Tall landforms!' },
+      { name: 'Rivers', x: 480, y: 310, icon: '🌊', desc: 'Moving fresh water!' },
+      { name: 'Oceans', x: 550, y: 240, icon: '🐋', desc: 'Giant salt water!' },
+      { name: 'Continents', x: 370, y: 280, icon: '🌍', desc: 'Massive land areas!' }
     ];
 
+    // Highlight logic
     const activeIdx = Math.floor(progress * features.length);
-    if (progress > 0 && activeIdx < features.length) {
-      const f = features[activeIdx];
 
-      // Highlight circle
-      ctx.strokeStyle = '#F1C40F';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, 15, 0, Math.PI * 2);
-      ctx.stroke();
+    features.forEach((f, idx) => {
+      const isActive = progress > 0 && idx === activeIdx && isAnimating;
 
-      // Label
-      ctx.fillStyle = 'rgba(255,255,255,0.9)';
-      ctx.beginPath();
-      ctx.roundRect(f.x + 20, f.y - 40, 150, 45, 8);
-      ctx.fill();
+      // Draw feature marker/icon
+      ctx.save();
+      ctx.font = '30px Arial';
+      ctx.shadowBlur = isActive ? 15 : 0;
+      ctx.shadowColor = '#F1C40F';
+      ctx.globalAlpha = isActive ? 1.0 : 0.6;
+      ctx.fillText(f.icon, f.x, f.y);
+      ctx.restore();
 
-      ctx.fillStyle = '#1A2E5A';
-      ctx.font = 'bold 16px Nunito';
-      ctx.textAlign = 'left';
-      ctx.fillText(f.name, f.x + 30, f.y - 22);
-      ctx.font = '12px Nunito';
-      ctx.fillText(f.label, f.x + 30, f.y - 7);
-    }
+      if (isActive) {
+        // Highlight circle pulse
+        const pulse = Math.sin(Date.now() * 0.01) * 5;
+        ctx.strokeStyle = '#F1C40F';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(f.x + 5, f.y - 10, 25 + pulse, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Label box
+        ctx.fillStyle = 'rgba(255,255,255,0.95)';
+        ctx.beginPath();
+        ctx.roundRect(f.x + 40, f.y - 50, 160, 50, 10);
+        ctx.fill();
+        ctx.strokeStyle = '#3498DB';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = '#1A2E5A';
+        ctx.font = 'bold 18px Nunito';
+        ctx.textAlign = 'left';
+        ctx.fillText(f.name, f.x + 50, f.y - 30);
+        ctx.font = '14px Nunito';
+        ctx.fillText(f.desc, f.x + 50, f.y - 12);
+      }
+    });
 
     // Play button hint
     if (!isAnimating && progress <= 0) {
@@ -1855,73 +2111,124 @@ function App() {
 
   // Renderer for ID 10: Moon Features
   const renderMoonFeatures = (ctx, progress) => {
+    // Animation segments:
+    // 0.0 - 0.6: Craters
+    // 0.6 - 0.8: Transition (Move Moon left)
+    // 0.8 - 1.0: Comparison with Earth
+
+    // Determine current position of the Moon
+    let moonX = 450;
+    if (progress > 0.6) {
+      const moveP = Math.min(1, (progress - 0.6) / 0.2);
+      moonX = 450 - (moveP * 250); // Move from center to 200
+    }
+    const cy = 270;
+    const r = 80; // Smaller base radius for better comparison fit
+
+    // Space Background
     ctx.fillStyle = '#05070A';
     ctx.fillRect(0, 0, 900, 540);
 
-    const cx = 350;
-    const cy = 270;
-    const r = 160;
-
     // Moon Base
-    const moonGrad = ctx.createRadialGradient(cx - 30, cy - 30, 20, cx, cy, r);
+    const moonGrad = ctx.createRadialGradient(moonX - 20, cy - 20, 10, moonX, cy, r);
     moonGrad.addColorStop(0, '#ECF0F1');
     moonGrad.addColorStop(1, '#7F8C8D');
     ctx.fillStyle = moonGrad;
     ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.arc(moonX, cy, r, 0, Math.PI * 2);
     ctx.fill();
 
-    // Craters
-    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    // Craters and Explanations (only in first phase)
     const craters = [
-      { x: cx - 50, y: cy - 60, sr: 20, name: 'Tycho Crater' },
-      { x: cx + 60, y: cy - 20, sr: 30, name: 'Copernicus Crater' },
-      { x: cx - 20, y: cy + 70, sr: 25, name: 'Kepler Crater' }
+      { x: -30, y: -30, sr: 15, name: 'Tycho Crater', desc: 'A giant hole made by a space rock!' },
+      { x: 40, y: -10, sr: 20, name: 'Copernicus Crater', desc: 'Craters show the Moon has no air to stop rocks!' },
+      { x: -10, y: 40, sr: 18, name: 'Kepler Crater', desc: 'Meteorites hit the surface at high speeds!' }
     ];
 
+    const craterPhaseMax = 0.6;
+    const craterProgress = Math.min(1, progress / craterPhaseMax);
+
     craters.forEach((c, i) => {
+      // Relative positioning
+      const cx = moonX + c.x;
+      const cy_ = cy + c.y;
+
+      ctx.fillStyle = 'rgba(0,0,0,0.15)';
       ctx.beginPath();
-      ctx.arc(c.x, c.y, c.sr, 0, Math.PI * 2);
+      ctx.arc(cx, cy_, c.sr, 0, Math.PI * 2);
       ctx.fill();
 
-      // Highlight sequentially
-      const isActive = progress > (i / (craters.length + 1)) && progress < ((i + 1) / (craters.length + 1));
-      if (isActive) {
-        ctx.strokeStyle = '#F1C40F';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, c.sr + 5, 0, Math.PI * 2);
-        ctx.stroke();
+      if (progress < 0.7) {
+        const isActive = craterProgress > (i / craters.length) && craterProgress < ((i + 1) / craters.length);
+        if (isActive && isAnimating) {
+          ctx.strokeStyle = '#F1C40F';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(cx, cy_, c.sr + 5, 0, Math.PI * 2);
+          ctx.stroke();
 
-        ctx.fillStyle = 'white';
-        ctx.font = 'bold 18px Nunito';
-        ctx.textAlign = 'center';
-        ctx.fillText(c.name, c.x, c.y + c.sr + 30);
+          // Brief explanation box
+          ctx.fillStyle = 'rgba(255,255,255,0.95)';
+          ctx.beginPath();
+          ctx.roundRect(moonX - 150, 400, 300, 60, 10);
+          ctx.fill();
+          ctx.strokeStyle = '#F1C40F';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.fillStyle = '#1A2E5A';
+          ctx.font = 'bold 18px Nunito';
+          ctx.textAlign = 'center';
+          ctx.fillText(c.name, moonX, 425);
+          ctx.font = '14px Nunito';
+          ctx.fillText(c.desc, moonX, 448);
+        }
       }
     });
 
     // Earth Size Comparison
-    if (progress > 0.8) {
-      const ex = 750;
-      const ey = 270;
-      const er = r * 3.7; // Earth is about 3.7x moon size
+    if (progress > 0.7) {
+      const earthP = Math.min(1, (progress - 0.7) / 0.1);
+      const ex = 650;
+      const er = r * 4; // Diameter is 4x moon
 
-      ctx.strokeStyle = 'rgba(52, 152, 219, 0.5)';
-      ctx.setLineDash([10, 5]);
-      ctx.lineWidth = 2;
+      ctx.save();
+      ctx.globalAlpha = earthP;
+
+      // Earth Drawing
+      const earthGrad = ctx.createRadialGradient(ex - 60, cy - 60, 20, ex, cy, er);
+      earthGrad.addColorStop(0, '#3498DB');
+      earthGrad.addColorStop(0.6, '#2980B9');
+      earthGrad.addColorStop(1, '#1A5276');
+      ctx.fillStyle = earthGrad;
       ctx.beginPath();
-      ctx.arc(ex, ey, er, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.setLineDash([]);
+      ctx.arc(ex, cy, er, 0, Math.PI * 2);
+      ctx.fill();
 
-      ctx.fillStyle = 'rgba(52, 152, 219, 0.8)';
-      ctx.font = 'bold 20px Nunito';
+      // Labels
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 24px Nunito';
       ctx.textAlign = 'center';
-      ctx.fillText('Earth (Size Comparison)', ex, ey);
-      ctx.font = '14px Nunito';
-      ctx.fillText('The Moon is much smaller than Earth!', ex, ey + 30);
-    }
+      ctx.fillText('EARTH', ex, cy - er - 20);
+      ctx.fillText('MOON', moonX, cy - r - 20);
 
+      if (progress > 0.8) {
+        const textP = Math.min(1, (progress - 0.8) / 0.1);
+        ctx.globalAlpha = textP;
+        ctx.fillStyle = '#F1C40F';
+        ctx.font = 'bold 30px Nunito';
+        ctx.fillText('Earth is 4 times the size of the Moon!', 450, 480);
+
+        // Connecting arrows
+        ctx.strokeStyle = '#F1C40F';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(moonX + r + 10, cy);
+        ctx.lineTo(ex - er - 10, cy);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
     // Play button hint
     if (!isAnimating && progress <= 0) {
       ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
@@ -2033,9 +2340,17 @@ function App() {
       { name: 'Petrol Car', in: '⛽ Chemical', out: '🏎️ Kinetic (Useful)', waste: '🔊 Sound (Wasted)', icon: '🚗' }
     ];
 
-    const idx = Math.floor(progress * 3);
+    const idx = Math.min(2, Math.floor(progress * 3));
     const subProg = (progress * 3) % 1;
-    const device = devices[idx === 3 ? 2 : idx];
+    const device = devices[idx];
+
+    // Alpha fade for transitions
+    let viewAlpha = 1;
+    if (subProg < 0.1) viewAlpha = subProg / 0.1;
+    else if (subProg > 0.9) viewAlpha = (1 - subProg) / 0.1;
+
+    ctx.save();
+    ctx.globalAlpha = viewAlpha;
 
     ctx.fillStyle = '#1A2E5A';
     ctx.font = 'bold 24px Nunito';
@@ -2087,6 +2402,8 @@ function App() {
     if (subProg > 0.5) {
       drawArrow(550, 270, 750, 350, '#E67E22', 'OUT: ' + device.waste);
     }
+
+    ctx.restore();
 
     // Play button hint
     if (!isAnimating && progress <= 0) {
@@ -2160,15 +2477,19 @@ function App() {
     ctx.fillRect(0, 0, 900, 540);
 
     const cx = 450, cy = 270;
-    const isVibrating = isAnimating;
-    const vibration = isVibrating ? Math.sin(Date.now() * 0.05) * 5 : 0;
 
+    // Damping vibration: intensity decreases as progress approaches 1
+    const intensity = Math.max(0, 1 - progress);
+    const vibration = isAnimating ? Math.sin(Date.now() * 0.08) * (15 * intensity) : 0;
+
+    // Drum Body
     ctx.fillStyle = '#A04000';
     ctx.beginPath();
     ctx.ellipse(cx, cy + 50, 150, 40, 0, 0, Math.PI);
     ctx.fill();
     ctx.fillRect(cx - 150, cy - 50 + vibration, 300, 100);
 
+    // Drum Skin
     ctx.fillStyle = '#FAD7A0';
     ctx.beginPath();
     ctx.ellipse(cx, cy - 50 + vibration, 150, 40, 0, 0, Math.PI * 2);
@@ -2177,29 +2498,28 @@ function App() {
     ctx.lineWidth = 4;
     ctx.stroke();
 
+    // Sound Waves (fading)
     if (isAnimating) {
-      const waveProg = (progress * 5) % 1;
-      ctx.strokeStyle = `rgba(46, 134, 193, ${1 - waveProg})`;
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(cx, cy - 50, 150 + waveProg * 200, 0, Math.PI * 2);
-      ctx.stroke();
+      const waveCount = 3;
+      for (let i = 0; i < waveCount; i++) {
+        const waveProg = (progress * 5 + i * 0.3) % 1;
+        const alpha = Math.max(0, (1 - waveProg) * intensity);
+        ctx.strokeStyle = `rgba(46, 134, 193, ${alpha})`;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(cx, cy - 50, 150 + waveProg * 250, 0, Math.PI * 2);
+        ctx.stroke();
+      }
     }
 
     ctx.fillStyle = '#1A2E5A';
-    ctx.font = 'bold 22px Nunito';
+    ctx.font = 'bold 24px Nunito';
     ctx.textAlign = 'center';
-    ctx.fillText('Vibration produces sound!', 450, 100);
+    ctx.fillText('Click the drum to make it vibrate!', 450, 60);
 
-    if (!isAnimating && progress <= 0) {
-      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
-      ctx.beginPath();
-      ctx.roundRect(350, 450, 200, 45, 22);
-      ctx.fill();
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 18px Nunito, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('▶  Press Play', 450, 480);
+    if (isAnimating) {
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText(progress < 0.8 ? 'Vibrating! 🥁' : 'Slowing down...', 450, 110);
     }
   };
 
@@ -2221,26 +2541,45 @@ function App() {
     const endX = 700;
     const currentX = startX + (endX - startX) * progress;
 
-    if (isAnimating && progress < 0.9) {
-      ctx.fillStyle = 'rgba(52, 152, 219, 0.5)';
-      for (let i = 0; i < 5; i++) {
-        const px = currentX - 60 - Math.random() * 50;
-        const py = 270 + (Math.random() - 0.5) * 40;
-        ctx.beginPath();
-        ctx.arc(px, py, 5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.strokeStyle = '#E74C3C';
-      ctx.lineWidth = 8;
+    const drawForceArrow = (x, y, length, angle, color, label) => {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 6;
       ctx.beginPath();
-      ctx.moveTo(currentX - 80, 270);
-      ctx.lineTo(currentX - 150, 270);
+      ctx.moveTo(x, y);
+      const tx = x + Math.cos(angle) * length;
+      const ty = y + Math.sin(angle) * length;
+      ctx.lineTo(tx, ty);
       ctx.stroke();
-      ctx.fillStyle = '#E74C3C';
+
+      // Arrowhead
+      const headLen = 15;
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(tx - headLen * Math.cos(angle - Math.PI / 6), ty - headLen * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(tx - headLen * Math.cos(angle + Math.PI / 6), ty - headLen * Math.sin(angle + Math.PI / 6));
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      ctx.fillStyle = color;
       ctx.font = 'bold 14px Nunito';
       ctx.textAlign = 'center';
-      ctx.fillText('Action: Air Backward', currentX - 120, 240);
+      ctx.fillText(label, x + (tx - x) / 2, y + (ty - y) / 2 - 20);
+    };
+
+    if (isAnimating && progress < 0.95) {
+      // Action Arrow (Backward)
+      drawForceArrow(currentX - 60, 270, 100, Math.PI, '#E74C3C', 'Action: Air Backward');
+
+      // Particles
+      ctx.fillStyle = 'rgba(52, 152, 219, 0.4)';
+      for (let i = 0; i < 3; i++) {
+        const px = currentX - 80 - Math.random() * 60;
+        const py = 270 + (Math.random() - 0.5) * 30;
+        ctx.beginPath();
+        ctx.arc(px, py, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
     ctx.fillStyle = '#E74C3C';
@@ -2249,16 +2588,8 @@ function App() {
     ctx.fill();
 
     if (isAnimating) {
-      ctx.strokeStyle = '#27AE60';
-      ctx.lineWidth = 8;
-      ctx.beginPath();
-      ctx.moveTo(currentX + 80, 270);
-      ctx.lineTo(currentX + 150, 270);
-      ctx.stroke();
-      ctx.fillStyle = '#27AE60';
-      ctx.font = 'bold 14px Nunito';
-      ctx.textAlign = 'center';
-      ctx.fillText('Reaction: Balloon Forward', currentX + 120, 310);
+      // Reaction Arrow (Forward)
+      drawForceArrow(currentX + 80, 270, 100, 0, '#27AE60', 'Reaction: Balloon Forward');
     }
 
     if (!isAnimating && progress <= 0) {
@@ -2278,42 +2609,46 @@ function App() {
     ctx.fillStyle = '#FDEBD0';
     ctx.fillRect(0, 0, 900, 540);
 
+    // Guitar Body
     ctx.fillStyle = '#3E2723';
     ctx.beginPath();
-    ctx.roundRect(50, 100, 800, 340, 20);
+    ctx.roundRect(50, 150, 800, 240, 20);
     ctx.fill();
 
+    // Sound Hole
     ctx.fillStyle = 'black';
     ctx.beginPath();
-    ctx.arc(450, 270, 100, 0, Math.PI * 2);
+    ctx.arc(450, 270, 70, 0, Math.PI * 2);
     ctx.fill();
 
-    const speed = progress < 0.5 ? 0.05 : 0.15;
-    const vibration = isAnimating ? Math.sin(Date.now() * speed) * (10 * (1 - progress)) : 0;
+    // Damping effect
+    const intensity = Math.max(0, 1 - progress);
+    const speedBase = progress < 0.5 ? 0.08 : 0.15;
+    const currentSpeed = speedBase * (1 + intensity);
 
-    ctx.strokeStyle = '#D4AC0D';
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.moveTo(100, 270);
-    ctx.quadraticCurveTo(450, 270 + vibration * 2, 800, 270);
-    ctx.stroke();
+    // Draw 6 strings with different vibrations
+    const stringsY = [220, 240, 260, 280, 300, 320];
+    const colors = ['#D4AC0D', '#F1C40F', '#B7950B', '#D4AC0D', '#F1C40F', '#B7950B'];
+
+    stringsY.forEach((y, i) => {
+      const vibration = isAnimating ? Math.sin(Date.now() * (currentSpeed + i * 0.01)) * (12 * intensity) : 0;
+
+      ctx.strokeStyle = colors[i];
+      ctx.lineWidth = 2 + (5 - i) * 0.5; // Thicker strings at bottom
+      ctx.beginPath();
+      ctx.moveTo(100, y);
+      ctx.quadraticCurveTo(450, y + vibration, 800, y);
+      ctx.stroke();
+    });
+
+    ctx.fillStyle = '#1A2E5A';
+    ctx.font = 'bold 24px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('Click the strings to pluck them!', 450, 60);
 
     if (isAnimating) {
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 20px Nunito';
-      ctx.textAlign = 'center';
-      ctx.fillText(progress < 0.5 ? 'Low Pitch (Slow Vibration)' : 'High Pitch (Fast Vibration!)', 450, 150);
-    }
-
-    if (!isAnimating && progress <= 0) {
-      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
-      ctx.beginPath();
-      ctx.roundRect(350, 460, 200, 45, 22);
-      ctx.fill();
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 18px Nunito, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('▶  Press Play', 450, 490);
+      ctx.font = 'bold 18px Nunito';
+      ctx.fillText(progress < 0.5 ? 'Vibrating! 🎸' : 'Tone fading...', 450, 100);
     }
   };
 
@@ -2346,13 +2681,21 @@ function App() {
     ctx.arc(ex, ey, 20, 0, Math.PI * 2);
     ctx.fill();
 
-    const mAngle = progress * Math.PI * 24;
+    const mAngle = progress * Math.PI * 15.6; // 35% slower (24 * 0.65)
     const mx = ex + Math.cos(mAngle) * 40;
     const my = ey + Math.sin(mAngle) * 40;
     ctx.fillStyle = '#BDC3C7';
     ctx.beginPath();
     ctx.arc(mx, my, 8, 0, Math.PI * 2);
     ctx.fill();
+
+    // Labels
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 16px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('SUN', cx, cy + 85);
+    ctx.fillText('EARTH', ex, ey + 40);
+    ctx.fillText('MOON', mx, my + 25);
 
     ctx.fillStyle = 'white';
     ctx.beginPath();
@@ -2381,42 +2724,47 @@ function App() {
     ctx.fillRect(0, 0, 900, 540);
 
     const needs = [
-      { name: 'Food', emoji: '🍎', x: 200 },
-      { name: 'Water', emoji: '💧', x: 450 },
-      { name: 'Shelter', emoji: '🏠', x: 700 }
+      { name: 'Food', emoji: '🦴', x: -140, y: 0 },
+      { name: 'Water', emoji: '💧', x: 0, y: -140 },
+      { name: 'Shelter', emoji: '🏠', x: 140, y: 0 }
     ];
 
     const isWoke = progress > 0.8;
     ctx.font = '120px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('🐘', 450, 300);
+    ctx.fillText('🐕', 450, 310);
+
     if (!isWoke) {
       ctx.fillStyle = '#7F8C8D';
-      ctx.font = 'bold 14px Nunito';
-      ctx.fillText('Zzz...', 480, 220);
+      ctx.font = 'bold 16px Nunito';
+      ctx.fillText('Zzz...', 490, 220);
     } else {
       ctx.fillStyle = '#27AE60';
       ctx.font = 'bold 24px Nunito';
-      ctx.fillText('Healthy & Active!', 450, 180);
+      ctx.fillText('Happy Dog! 🦴', 450, 160);
     }
 
     needs.forEach((n, i) => {
       const isVisible = progress > (i / 4);
-      ctx.globalAlpha = isVisible ? 1.0 : 0.1;
+      ctx.globalAlpha = isVisible ? 1.0 : 0.05;
+
+      const nx = 450 + n.x;
+      const ny = 270 + n.y;
 
       ctx.fillStyle = 'white';
       ctx.beginPath();
-      ctx.roundRect(n.x - 60, 400, 120, 100, 15);
+      ctx.roundRect(nx - 50, ny - 50, 100, 100, 20);
       ctx.fill();
-      ctx.strokeStyle = '#1A2E5A';
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = isVisible ? '#3498DB' : '#BDC3C7';
+      ctx.lineWidth = 3;
       ctx.stroke();
 
       ctx.fillStyle = 'black';
-      ctx.font = '40px Arial';
-      ctx.fillText(n.emoji, n.x, 445);
+      ctx.font = '50px Arial';
+      ctx.fillText(n.emoji, nx, ny + 10);
+      ctx.fillStyle = '#1A2E5A';
       ctx.font = 'bold 16px Nunito';
-      ctx.fillText(n.name, n.x, 480);
+      ctx.fillText(n.name, nx, ny + 40);
     });
     ctx.globalAlpha = 1.0;
 
@@ -2463,19 +2811,73 @@ function App() {
     ctx.arc(cx, cy, r - 20, Math.PI + 2 * Math.PI / 3, Math.PI * 2);
     ctx.stroke();
 
-    const level = progress < 0.3 ? progress * 3 * 1.0 : (progress < 0.7 ? 1.0 : 1.0 - (progress - 0.7) * 3);
-    const angle = Math.PI + level * Math.PI;
+    // Needle movement
+    const needleLevel = progress; // 0 to 1 linear sweep
+    const angle = Math.PI + needleLevel * Math.PI;
+
+    // Draw Needle Shadow
+    ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.moveTo(cx + 4, cy + 4);
+    ctx.lineTo(cx + Math.cos(angle) * (r - 35) + 4, cy + Math.sin(angle) * (r - 35) + 4);
+    ctx.stroke();
+
+    // Draw Needle
     ctx.strokeStyle = '#2C3E50';
     ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(cx, cy);
     ctx.lineTo(cx + Math.cos(angle) * (r - 40), cy + Math.sin(angle) * (r - 40));
     ctx.stroke();
 
-    ctx.fillStyle = '#1A2E5A';
-    ctx.font = 'bold 24px Nunito';
+    // Center pin
+    ctx.fillStyle = '#2C3E50';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Text Feedback with Alpha Fading
+    const sectors = [
+      { name: 'QUIET', db: '40-60 dB', desc: 'Safe for your ears!', limit: 0.33, color: '#27AE60' },
+      { name: 'LOUD', db: '70-85 dB', desc: 'Risky over long time!', limit: 0.66, color: '#F1C40F' },
+      { name: 'DANGEROUS', db: '90+ dB', desc: 'Can damage hearing!', limit: 1.0, color: '#C0392B' }
+    ];
+
+    const activeIdx = Math.min(2, Math.floor(needleLevel * 3));
+    const activeSector = sectors[activeIdx];
+
+    // Smooth alpha for text based on position in sector
+    const sectorProgress = (needleLevel * 3) % 1;
+    let fadeAlpha = 1;
+    if (sectorProgress < 0.1) fadeAlpha = sectorProgress / 0.1;
+    else if (sectorProgress > 0.9) fadeAlpha = (1 - sectorProgress) / 0.1;
+
+    ctx.save();
+    ctx.globalAlpha = fadeAlpha;
+    ctx.fillStyle = activeSector.color;
+    ctx.font = 'bold 32px Nunito';
     ctx.textAlign = 'center';
-    ctx.fillText(level > 0.8 ? 'UNSAFE: Too Loud!' : 'SAFE: Quiet', 450, 100);
+    ctx.fillText(activeSector.name, 450, 80);
+
+    ctx.fillStyle = '#34495E';
+    ctx.font = 'bold 20px Nunito';
+    ctx.fillText(activeSector.db, 450, 115);
+    ctx.font = '16px Nunito';
+    ctx.fillText(activeSector.desc, 450, 140);
+    ctx.restore();
+
+    // Highlight active arc segment
+    ctx.strokeStyle = activeSector.color;
+    ctx.lineWidth = 45;
+    ctx.globalAlpha = 0.3 * fadeAlpha;
+    ctx.beginPath();
+    const startAngle = Math.PI + (activeIdx * Math.PI / 3);
+    const endAngle = startAngle + (Math.PI / 3);
+    ctx.arc(cx, cy, r - 20, startAngle, endAngle);
+    ctx.stroke();
+    ctx.globalAlpha = 1.0;
 
     if (!isAnimating && progress <= 0) {
       ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
@@ -2575,20 +2977,21 @@ function App() {
     ctx.arc(ex, ey, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Light rays
-    if (isAnimating) {
-      ctx.strokeStyle = 'rgba(241, 196, 15, 0.4)';
-      ctx.lineWidth = 2;
-      for (let i = 0; i < 8; i++) {
-        const offset = (i * 45 * Math.PI) / 180;
-        const rayProg = (progress * 3 + i * 0.125) % 1;
-        const rx = cx + Math.cos(offset) * (200 + rayProg * 500);
-        const ry = cy + Math.sin(offset) * (200 + rayProg * 500);
-        ctx.beginPath();
-        ctx.moveTo(cx + Math.cos(offset) * 200, cy + Math.sin(offset) * 200);
-        ctx.lineTo(rx, ry);
-        ctx.stroke();
-      }
+    // Light rays - persist even when not animating
+    const rayTime = Date.now() * 0.001;
+    ctx.strokeStyle = 'rgba(241, 196, 15, 0.4)';
+    ctx.lineWidth = 2;
+    for (let i = 0; i < 8; i++) {
+      const offset = (i * 45 * Math.PI) / 180;
+      // Use progress for initial length, but keep them flowing with rayTime
+      const baseRayProg = progress > 0 ? progress : 0.5;
+      const rayProg = (baseRayProg * 3 + i * 0.125 + rayTime) % 1;
+      const rx = cx + Math.cos(offset) * (200 + rayProg * 500);
+      const ry = cy + Math.sin(offset) * (200 + rayProg * 500);
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(offset) * 200, cy + Math.sin(offset) * 200);
+      ctx.lineTo(rx, ry);
+      ctx.stroke();
     }
 
     ctx.fillStyle = 'white';
@@ -2618,66 +3021,124 @@ function App() {
 
     const cx = 450, cy = 270;
 
+    // Torch / Sun source on the right
+    const torchX = 820, torchY = 460;
+
+    // Draw Torch Button
+    ctx.fillStyle = isTorchOn ? '#F1C40F' : '#34495E';
+    ctx.beginPath();
+    ctx.roundRect(torchX - 40, torchY - 30, 80, 60, 10);
+    ctx.fill();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.fillStyle = 'white';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('🔦', torchX, torchY + 10);
+    ctx.font = 'bold 12px Nunito';
+    ctx.fillText(isTorchOn ? 'ON' : 'OFF', torchX, torchY + 25);
+
+    // Sunlight from the right
+    if (isTorchOn) {
+      const gradient = ctx.createLinearGradient(900, cy, 500, cy);
+      gradient.addColorStop(0, 'rgba(241, 196, 15, 0.4)');
+      gradient.addColorStop(1, 'rgba(241, 196, 15, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(500, cy - 200, 400, 400);
+
+      // Rays
+      ctx.strokeStyle = 'rgba(241, 196, 15, 0.2)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 10; i++) {
+        const ry = cy - 150 + i * 30 + Math.sin(Date.now() * 0.002 + i) * 10;
+        ctx.beginPath();
+        ctx.moveTo(900, ry);
+        ctx.lineTo(550, ry);
+        ctx.stroke();
+      }
+    }
+
     // Earth
     ctx.fillStyle = '#3498DB';
     ctx.beginPath();
-    ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+    ctx.arc(cx, cy, 50, 0, Math.PI * 2);
     ctx.fill();
-
-    // Sun (light source from right)
-    ctx.fillStyle = '#F1C40F';
+    // Earth detail
+    ctx.fillStyle = '#27AE60';
     ctx.beginPath();
-    ctx.arc(850, cy, 40, 0, Math.PI * 2);
+    ctx.arc(cx - 10, cy - 10, 20, 0, Math.PI * 2);
     ctx.fill();
 
-    // Moon Orbit
+    // Moon Orbit path
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath();
+    ctx.arc(cx, cy, 180, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Moon Position
     const angle = progress * Math.PI * 2;
     const mx = cx + Math.cos(angle) * 180;
     const my = cy + Math.sin(angle) * 180;
 
-    // Draw Moon with shadow
+    // Phase Calculation
+    const normalizedProgress = (progress % 1 + 1) % 1;
+    let currentPhaseName = 'New Moon';
+    let isFullMoon = false;
+
+    if (normalizedProgress >= 0.125 && normalizedProgress < 0.375) {
+      currentPhaseName = 'First Quarter';
+    } else if (normalizedProgress >= 0.375 && normalizedProgress < 0.625) {
+      currentPhaseName = 'Full Moon';
+      isFullMoon = true;
+    } else if (normalizedProgress >= 0.625 && normalizedProgress < 0.875) {
+      currentPhaseName = 'Last Quarter';
+    }
+
+    // Draw Moon
     ctx.save();
     ctx.translate(mx, my);
 
-    // Base moon (dark part)
+    // Base Moon 
     ctx.fillStyle = '#2C3E50';
     ctx.beginPath();
-    ctx.arc(0, 0, 30, 0, Math.PI * 2);
+    ctx.arc(0, 0, 25, 0, Math.PI * 2);
     ctx.fill();
 
-    // Lit part (always facing right towards Sun)
-    // We mask the moon based on its position relative to the sun
-    ctx.beginPath();
-    ctx.arc(0, 0, 30, -Math.PI / 2, Math.PI / 2);
-    ctx.clip();
-
-    // The "phase" is determined by how much of the lit side we see from Earth
-    // Actually, for simplicity on canvas, we'll draw the lit half facing the sun,
-    // and then potentially another circle to create the phases.
-    ctx.fillStyle = '#ECF0F1';
-    ctx.beginPath();
-    ctx.arc(0, 0, 30, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
+    if (isTorchOn && !isFullMoon) {
+      // Lit part always faces right (where sunlight comes from)
+      // Except during Full Moon as requested (shadowed by Earth/no sunlight hitting visible side)
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(0, 0, 25, -Math.PI / 2, Math.PI / 2); // Half lit facing right
+      ctx.clip();
+      ctx.fillStyle = '#FDFEFE';
+      ctx.beginPath();
+      ctx.arc(0, 0, 25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
 
     // Phase Labels
-    const phaseIdx = Math.floor(((progress + 0.0625) % 1) * 4);
-    const phases = ['New Moon', 'First Quarter', 'Full Moon', 'Last Quarter'];
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 16px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText(currentPhaseName, 0, 45);
+    ctx.restore();
 
+    // Main Title
     ctx.fillStyle = 'white';
     ctx.font = 'bold 24px Nunito';
     ctx.textAlign = 'center';
-    ctx.fillText(phases[phaseIdx], cx, 60);
+    ctx.fillText('Moon Phases Simulation', cx, 40);
 
-    if (!isAnimating && progress <= 0) {
-      ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
-      ctx.beginPath();
-      ctx.roundRect(350, 450, 200, 45, 22);
-      ctx.fill();
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 18px Nunito, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('▶  Press Play', 450, 480);
+    if (!isTorchOn) {
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.font = '18px Nunito';
+      ctx.fillText('Click the torch to start!', cx, 100);
     }
   };
 
@@ -2768,55 +3229,162 @@ function App() {
 
   // Renderer for ID 24: Material Processing
   const renderMaterialProcessing = (ctx, progress) => {
-    ctx.fillStyle = '#F4F6F7';
+    ctx.fillStyle = '#FDFEFE';
     ctx.fillRect(0, 0, 900, 540);
 
+    const cx = 450, cy = 270;
+
+    const drawTree = (x, y) => {
+      // Trunk
+      ctx.fillStyle = '#795548';
+      ctx.fillRect(x - 15, y, 30, 40);
+      // Leaves
+      ctx.fillStyle = '#2E7D32';
+      ctx.beginPath();
+      ctx.arc(x, y - 10, 45, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x - 30, y - 40, 35, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x + 30, y - 40, 35, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    const drawPaper = (x, y) => {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.strokeStyle = '#D5DBDB';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.rect(x - 40, y - 60, 80, 110);
+      ctx.fill();
+      ctx.stroke();
+      // Lines
+      ctx.strokeStyle = '#AED6F1';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        ctx.moveTo(x - 30, y - 40 + i * 15);
+        ctx.lineTo(x + 30, y - 40 + i * 15);
+        ctx.stroke();
+      }
+      // Folded corner
+      ctx.fillStyle = '#E5E7E9';
+      ctx.beginPath();
+      ctx.moveTo(x + 40, y + 30);
+      ctx.lineTo(x + 40, y + 50);
+      ctx.lineTo(x + 20, y + 50);
+      ctx.closePath();
+      ctx.fill();
+    };
+
+    const drawClay = (x, y) => {
+      ctx.fillStyle = '#A1887F';
+      ctx.beginPath();
+      ctx.ellipse(x, y, 60, 45, 0, 0, Math.PI * 2);
+      ctx.fill();
+      // Texture
+      ctx.fillStyle = 'rgba(0,0,0,0.1)';
+      ctx.beginPath();
+      ctx.arc(x - 20, y - 10, 10, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x + 15, y + 5, 8, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    const drawBricks = (x, y) => {
+      ctx.fillStyle = '#C0392B';
+      // Bottom 2
+      ctx.fillRect(x - 65, y + 5, 60, 30);
+      ctx.fillRect(x + 5, y + 5, 60, 30);
+      // Top 1
+      ctx.fillRect(x - 30, y - 30, 60, 30);
+      // Outline
+      ctx.strokeStyle = '#922B21';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x - 65, y + 5, 60, 30);
+      ctx.strokeRect(x + 5, y + 5, 60, 30);
+      ctx.strokeRect(x - 30, y - 30, 60, 30);
+    };
+
     const stages = [
-      { raw: '🌲 Tree', manufactured: '📄 Paper', y: 180 },
-      { raw: '🧱 Clay', manufactured: '🏠 Bricks', y: 380 }
+      { raw: 'Tree', manufactured: 'Paper', y: 160, drawR: drawTree, drawM: drawPaper },
+      { raw: 'Clay', manufactured: 'Bricks', y: 400, drawR: drawClay, drawM: drawBricks }
     ];
 
-    stages.forEach((s, i) => {
-      ctx.font = 'bold 22px Nunito';
-      ctx.fillStyle = '#1A2E5A';
-      ctx.textAlign = 'left';
-      ctx.fillText('Raw Material', 150, s.y - 60);
-      ctx.textAlign = 'right';
-      ctx.fillText('Manufactured Product', 750, s.y - 60);
-
-      // Raw
-      ctx.font = '80px Arial';
+    stages.forEach((s) => {
+      // Labels
+      ctx.font = 'bold 20px Nunito';
+      ctx.fillStyle = '#2C3E50';
       ctx.textAlign = 'center';
-      ctx.globalAlpha = 1 - progress;
-      ctx.fillText(s.raw.split(' ')[1], 200, s.y);
+      ctx.fillText('RAW MATERIAL', 200, s.y - 100);
+      ctx.fillText('MANUFACTURED', 700, s.y - 100);
 
-      // Arrow
-      ctx.globalAlpha = 1.0;
-      ctx.strokeStyle = '#BDC3C7';
-      ctx.lineWidth = 10;
+      // Raw Label
+      ctx.font = '18px Nunito';
+      ctx.fillText(s.raw, 200, s.y + 80);
+      // Manufactured Label
+      ctx.fillText(s.manufactured, 700, s.y + 80);
+
+      // Transition Logic
+      let rawAlpha = 1;
+      let mAlpha = 0;
+      let arrowOpacity = 0.3;
+
+      if (progress < 0.4) {
+        rawAlpha = 1;
+        mAlpha = 0;
+      } else if (progress < 0.7) {
+        const p = (progress - 0.4) / 0.3;
+        rawAlpha = 1 - p;
+        mAlpha = p;
+        arrowOpacity = 0.3 + p * 0.7;
+      } else {
+        rawAlpha = 0;
+        mAlpha = 1;
+        arrowOpacity = 1;
+      }
+
+      // Draw Raw
+      ctx.save();
+      ctx.globalAlpha = rawAlpha;
+      s.drawR(200, s.y);
+      ctx.restore();
+
+      // Draw Arrow
+      ctx.save();
+      ctx.globalAlpha = arrowOpacity;
+      ctx.strokeStyle = '#3498DB';
+      ctx.lineWidth = 8;
       ctx.beginPath();
-      ctx.moveTo(350, s.y - 10);
-      ctx.lineTo(550, s.y - 10);
+      ctx.moveTo(350, s.y);
+      ctx.lineTo(550, s.y);
       ctx.stroke();
+      // Arrow head
+      ctx.beginPath();
+      ctx.moveTo(530, s.y - 15);
+      ctx.lineTo(555, s.y);
+      ctx.lineTo(530, s.y + 15);
+      ctx.stroke();
+      ctx.restore();
 
-      // Manufactured
-      ctx.globalAlpha = progress;
-      ctx.fillText(s.manufactured.split(' ')[1], 700, s.y);
-      ctx.globalAlpha = 1.0;
-
-      ctx.font = 'bold 18px Nunito';
-      ctx.fillText(s.raw.split(' ')[1] + ' becomes ' + s.manufactured.split(' ')[1], 450, s.y + 60);
+      // Draw Manufactured
+      ctx.save();
+      ctx.globalAlpha = mAlpha;
+      s.drawM(700, s.y);
+      ctx.restore();
     });
 
     if (!isAnimating && progress <= 0) {
       ctx.fillStyle = 'rgba(46, 204, 113, 0.9)';
       ctx.beginPath();
-      ctx.roundRect(350, 470, 200, 45, 22);
+      ctx.roundRect(350, 480, 200, 45, 22);
       ctx.fill();
       ctx.fillStyle = 'white';
       ctx.font = 'bold 18px Nunito, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('▶  Press Play', 450, 500);
+      ctx.fillText('▶  Press Play', 450, 510);
     }
   };
 
@@ -2957,10 +3525,11 @@ function App() {
     const size = 120;
 
     // Weight falling
-    const weightY = 100 + progress * 150;
+    const weightY = 20 + progress * 450;
+    const hitY = baseP - size - 20; // weightTop when it hits (280 - 20 = 260)
 
     // Square Frame
-    const collapse = progress > 0.6 ? (progress - 0.6) * 100 : 0;
+    const collapse = progress > 0.53 ? (progress - 0.53) * 100 : 0;
     ctx.strokeStyle = '#2C3E50';
     ctx.lineWidth = 10;
     ctx.beginPath();
@@ -2982,8 +3551,10 @@ function App() {
 
     // Weights
     ctx.fillStyle = '#7B241C';
-    ctx.fillRect(squareX - 40 + collapse, weightY - 20, 80, 40);
-    ctx.fillRect(triX - 40, weightY - 20, 80, 40);
+    // Square weight follows collapse and stops at top
+    ctx.fillRect(squareX - 40 + collapse, Math.min(weightY, hitY + 20) - 20, 80, 40);
+    // Triangle weight stops at top
+    ctx.fillRect(triX - 40, Math.min(weightY, hitY + 20) - 20, 80, 40);
 
     ctx.fillStyle = '#1A2E5A';
     ctx.font = 'bold 22px Nunito';
@@ -3050,6 +3621,24 @@ function App() {
         ctx.arc(200 + Math.sin(vy / 20) * 10, vy, 4, 0, Math.PI * 2);
         ctx.fill();
       }
+    }
+
+    // Cloud Formation
+    if (progress > 0.4) {
+      const cloudAlpha = Math.min(0.9, (progress - 0.4) * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${cloudAlpha})`;
+
+      const drawCloud = (x, y, s) => {
+        ctx.beginPath();
+        ctx.arc(x, y, s, 0, Math.PI * 2);
+        ctx.arc(x + s * 0.6, y - s * 0.4, s * 0.8, 0, Math.PI * 2);
+        ctx.arc(x + s * 1.2, y, s * 0.9, 0, Math.PI * 2);
+        ctx.fill();
+      };
+
+      drawCloud(300, 120, 30);
+      drawCloud(550, 150, 40);
+      drawCloud(750, 100, 35);
     }
 
     ctx.fillStyle = '#1A2E5A';
@@ -3446,38 +4035,65 @@ function App() {
 
     // Draw fact box - adjusted for mobile vertical layout
     if (showFact && currentInteraction) {
-      const boxY = isMobile ? 480 : 400;
+      ctx.font = 'bold 18px Nunito, sans-serif';
+      const answerWords = currentInteraction.answer.split(' ');
+      const answerLines = [];
+      let currentLine = '';
+      for (let n = 0; n < answerWords.length; n++) {
+        const testLine = currentLine + answerWords[n] + ' ';
+        if (ctx.measureText(testLine).width > 700 && n > 0) {
+          answerLines.push(currentLine.trim());
+          currentLine = answerWords[n] + ' ';
+        } else {
+          currentLine = testLine;
+        }
+      }
+      answerLines.push(currentLine.trim());
+
+      ctx.font = '14px Nunito, sans-serif';
+      const factWords = showFact.split(' ');
+      const factLines = [];
+      currentLine = '';
+      for (let n = 0; n < factWords.length; n++) {
+        const testLine = currentLine + factWords[n] + ' ';
+        if (ctx.measureText(testLine).width > 700 && n > 0) {
+          factLines.push(currentLine.trim());
+          currentLine = factWords[n] + ' ';
+        } else {
+          currentLine = testLine;
+        }
+      }
+      factLines.push(currentLine.trim());
+
+      const totalHeight = answerLines.length * 22 + factLines.length * 18 + 40;
+      const boxY = Math.min(isMobile ? 480 : 400, 540 - totalHeight - 10);
+
       ctx.fillStyle = 'rgba(0,0,0,0.85)';
       ctx.beginPath();
-      ctx.roundRect(50, boxY, 800, 120, 20);
+      ctx.roundRect(50, boxY, 800, totalHeight, 20);
       ctx.fill();
 
       ctx.strokeStyle = '#FFD700';
       ctx.lineWidth = 3;
       ctx.stroke();
 
+      ctx.textAlign = 'center';
+
+      let textY = boxY + 30;
       ctx.fillStyle = '#FFD700';
       ctx.font = 'bold 18px Nunito, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(currentInteraction.answer, 450, 430);
+      answerLines.forEach(line => {
+        ctx.fillText(line, 450, textY);
+        textY += 22;
+      });
 
+      textY += 6;
       ctx.fillStyle = 'white';
       ctx.font = '14px Nunito, sans-serif';
-
-      const words = showFact.split(' ');
-      let line = '';
-      let y = 460;
-      for (let n = 0; n < words.length; n++) {
-        const testLine = line + words[n] + ' ';
-        if (ctx.measureText(testLine).width > 700) {
-          ctx.fillText(line, 450, y);
-          line = words[n] + ' ';
-          y += 18;
-        } else {
-          line = testLine;
-        }
-      }
-      ctx.fillText(line, 450, y);
+      factLines.forEach(line => {
+        ctx.fillText(line, 450, textY);
+        textY += 18;
+      });
     }
   };
 
@@ -3830,6 +4446,14 @@ function App() {
                   </div>
                 </div>
 
+                {activeSim.id === 2 && (
+                  <div className="label-bar" style={{ marginBottom: '1rem', background: '#e0f7fa', padding: '1rem', borderRadius: '12px' }}>
+                    <p className="label-text" style={{ textAlign: 'center', fontSize: '1.1rem', fontWeight: 'bold', color: '#1A2E5A', margin: 0 }}>
+                      🌡️ Watch ice melt into water and evaporate into steam! Temperature: {Math.round(temperature)}°C
+                    </p>
+                  </div>
+                )}
+
                 <div className="canvas-container" style={{ position: 'relative' }}>
                   <canvas
                     ref={canvasRef}
@@ -3842,14 +4466,13 @@ function App() {
                   {renderQuiz()}
                 </div>
 
-                <div className="label-bar">
-                  <p className="label-text" style={{ textAlign: 'center' }}>
-                    {activeSim.id === 2
-                      ? `🌡️ Watch ice melt into water and evaporate into steam! Temperature: ${Math.round(temperature)}°C`
-                      : `👆 Click on each item to learn about it! There are ${activeSim.interactions.length} things to discover.`
-                    }
-                  </p>
-                </div>
+                {activeSim.id !== 2 && (
+                  <div className="label-bar">
+                    <p className="label-text" style={{ textAlign: 'center' }}>
+                      👆 Click on each item to learn about it! There are {activeSim.interactions.length} things to discover.
+                    </p>
+                  </div>
+                )}
               </>
             )}
 
